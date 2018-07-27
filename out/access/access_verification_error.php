@@ -1,0 +1,1 @@
+<?php echo "<pre><b>Sorry can't verify!</b></pre>"; ?>

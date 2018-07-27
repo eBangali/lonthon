@@ -1,0 +1,1 @@
+<?php echo "<pre>eMail verification done</pre>"; ?>

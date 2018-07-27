@@ -1,0 +1,1 @@
+<?php include_once(ebcontents.'/views/'.$controller.'/'.$view.'.php'); ?>
