@@ -22,7 +22,7 @@
 </div>
 <div class='well'>
 <p title='Terms and Conditions'>Welcome to <?php echo domain; ?> . If you use this website, you are agree with and be bound by the following terms and conditions of use, which together with our privacy policy <?php echo domain; ?> link with you in relation to this site. If you disagree with any part of these terms and conditions, please do not use our website.</p> 
-<p>The term <?php echo domain; ?> refers to the owner of the website whose registered office in Dhaka, Bangladesh. The term ‘you’ refers to the user or viewer of our website. The use of this website is subject to the following terms of use:</p>
+<p>The term <?php echo domain; ?> refers to the owner of the website. The term "you" refers to the user or viewer of our website. The use of this website is subject to the following terms of use:</p>
 <ol>
 <li>The content of the pages of this website is for your general information. It is subject to change without notice.</li>
 <li>This website uses sessions, cookies to monitor browsing preferences. If you do allow cookies to be used, your personal data may be stored by us for use.</li>

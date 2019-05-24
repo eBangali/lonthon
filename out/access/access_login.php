@@ -41,9 +41,9 @@ $username_error = "<b class='text-warning'>Username required.</b>";
 $error =1;
 }
 /* valitation username */
-elseif(! preg_match("/^[a-z0-9_]{6,64}$/",$username))
+elseif(! preg_match("/^[a-z0-9]{2,32}$/",$username))
 {
-$username_error = "<b class='text-warning'>Use no-whitespace Mini 6 Max 64.</b>";
+$username_error = "<b class='text-warning'>Use no-whitespace Mini 2 Max 32.</b>";
 $error =1;
 }
 else
@@ -57,7 +57,7 @@ $password_error = "<b class='text-warning'>Password required.</b>";
 $error =1;
 }
 /* valitation password  */
-elseif (! preg_match("/^[A-Za-z0-9\-\.\,\_\[\]\+\=\)\(\*\&\^\%\$\#\@\!]{6,16}$/",$password))
+elseif (! preg_match("/^[A-Za-z0-9\-\.\,\_\[\]\+\=\)\(\*\&\^\%\$\#\@\!]{6,32}$/",$password))
 {
 $password_error = "<b class='text-warning'>Use Mini 6 Max 32.</b>";
 $error =1;
@@ -94,15 +94,15 @@ if(empty($_SESSION['username']))
 <?php include_once (eblayout.'/a-common-header.php'); ?>
 <?php include_once (eblayout.'/a-common-navebar.php'); ?>
 <div class='container'>
-<div class='row row-offcanvas row-offcanvas-right'>
-<div class='col-xs-12 col-md-2'>
-
-</div>
-<div class='col-xs-12 col-md-7 sidebar-offcanvas'>
-<div class='well'>
+  <div class='row row-offcanvas row-offcanvas-right'>
+    <div class='col-xs-12 col-md-2'>
+    
+    </div>
+    <div class='col-xs-12 col-md-7 sidebar-offcanvas'>
+    <div class='well'>
 <h2 title='Sign in'>Sign in</h2>
 </div>
-<div class='well'>
+    <div class='well'>
 <form method='post'>
 <fieldset class='group-select'>
 <input type='hidden' name='form_key' value='<?php echo $formKey->outputKey(); ?>'>
@@ -120,12 +120,12 @@ Password: <?php echo $password_error; ?>
 <a href='<?php echo outAccessLink; ?>/access_frogetlogin.php'>Forget username or password?</a>
 <hr />
 <a href='<?php echo outAccessLink; ?>/signup.php' title='New User Signup'>New User Signup</a>
-</div>
-</div>
-</div>
-<div class='col-xs-12 col-md-3 sidebar-offcanvas'>
-
-</div>
+</div> 
+    </div>
+    <div class='col-xs-12 col-md-3 sidebar-offcanvas'>
+    
+    </div>
+  </div>
 </div>	
 <?php include_once (eblayout.'/a-common-footer.php'); ?>
 <?php exit(); } ?>

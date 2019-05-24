@@ -18,18 +18,17 @@
                         <div class='col-sm-6'>
                           <ul class='nav'>
                             <?php if ($_SESSION['memberlevel'] >= 1) { ?>
-                            <li><a href='<?php echo outContentsLink; ?>/contents/' title='Blog'><i class='fa fa-pencil-square-o fa-lg' aria-hidden='true'></i> Blog View</a></li>
+                            <li><a href='<?php echo outContentsLink; ?>/contents/' title='Blog'><i class='fa fa-pencil-square-o fa-lg' aria-hidden='true'></i> Blog</a></li>
                             <?php } ?>
-                            <?php if ($_SESSION['memberlevel'] >= 2) { ?>
+                            <?php if ($_SESSION['memberlevel'] >= 1) { ?>
                             <li><a href='<?php echo outContentsLink; ?>/contents-items-status.php' title='Post Status'><i class='fa fa-tasks fa-lg' aria-hidden='true'></i> Post Status</a></li>
-                            <li><a href='<?php echo outContentsLink; ?>/contents-add-items.php' title='New Post'><i class='fa fa-plus fa-lg' aria-hidden='true'></i> New Post</a></li>
+                            <li><a href='<?php echo outContentsLink; ?>/contents-add-items.php' title='Write for us'><i class='fa fa-plus fa-lg' aria-hidden='true'></i> Write for us</a></li>
                             <?php } ?>
                           </ul>
                         </div>
                         <div class='col-sm-6 has-sep'>
                           <ul class='nav'>
                             <?php if ($_SESSION['memberlevel'] >= 9) { ?>
-                            <li><a href='<?php echo outContentsLink; ?>/contentsMrssGenerator.php' title='Blog mRSS'><i class='fa fa-rss fa-lg' aria-hidden='true'></i> Blog mRSS</a></li>
                             <li><a href='<?php echo outContentsLink; ?>/contents-admin-view-items.php' title='Approval'><i class='fa fa-refresh fa-lg' aria-hidden='true'></i> Approval</a></li>
                             <li><a href='<?php echo outContentsLink; ?>/contents-approve-query.php' title='Comments'><i class='fa fa-comment fa-lg' aria-hidden='true'></i> Comments</a></li>
                             <li><a href='<?php echo outContentsLink; ?>/contents-add-sub-category.php' title='Add Sub Category'><i class='fa fa-sort-amount-asc fa-lg' aria-hidden='true'></i> Add Sub Category</a></li>
@@ -64,11 +63,12 @@
                   </div>
                 </li>
                 <!--SATTINGS-->
-                <li> <a href='<?php echo outAccessLink; ?>/home.php'><i class='fa fa-cogs fa-lg' aria-hidden='true'></i> <?php echo $_SESSION['username']; ?></a>
+                <li> <a href='<?php echo outAccessLink; ?>/home.php'><i class='fa fa-cogs fa-lg' aria-hidden='true'></i> </a>
                   <div class='wrap-popup column1'>
                     <div class='popup'>
                       <ul class='nav'>
                         <?php if ($_SESSION['memberlevel'] >= 9) { ?>
+                        <li><a href='<?php echo outAccessLink; ?>/sendMassMail.php' title='Send Mass eMail'><i class='fa fa-envelope fa-lg' aria-hidden='true'></i> Send Mass eMail</a></li>
                         <li><a href='<?php echo outAccessLink; ?>/access_all_account_information.php' title='User Info'><i class='fa fa-users fa-lg' aria-hidden='true'></i> User Info</a></li>
                         <li><a href='<?php echo outAccessLink; ?>/mrss.php' title='All mRSS'><i class='fa fa-rss fa-lg' aria-hidden='true'></i> All mRSS</a></li>
                         <li><a href='<?php echo outAccessLink; ?>/access-admin-merchant-profile.php' title='Business Info'><i class='fa fa-briefcase fa-lg' aria-hidden='true'></i> Business Info</a></li>
@@ -84,7 +84,6 @@
                 <?php } else { ?>
                 <?php if(!mysqli_connect_errno()){ ?>
                 <li class='nosub'><a href='<?php echo outAccessLink; ?>/home.php' title='Sign In'><i class='fa fa-sign-in fa-lg' aria-hidden='true'></i> Sign In</a></li>
-                <li class='nosub'><a href='<?php echo outAccessLink; ?>/signup.php' title='Sign Up'><i class='fa fa-user-plus fa-lg' aria-hidden='true'></i> Sign Up</a></li>
                 <!--Start Blog Dextop Menue-->
                 <?php include_once (ebblog.'/blog.php'); ?>
                 <li><a href='<?php echo outContentsLink; ?>/contents/' title='Blog'><i class='fa fa-pencil-square-o fa-lg' aria-hidden='true'></i> Blog</a>
@@ -119,7 +118,7 @@
           </div>
         </div>
       </div>
-      <?php
+<?php
 $path = $_SERVER['REQUEST_URI'];
 $folders = explode('/', $path);
 if(isset($folders[2])){ $eBcms = $folders[2]; 

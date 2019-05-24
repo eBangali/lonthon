@@ -1,8 +1,4 @@
 <?php include_once (dirname(dirname(dirname(__FILE__))).'/initialize.php'); ?>
-<?php include_once (eblayout.'/a-common-header-icon.php'); ?>
-<?php include_once (eblayout.'/a-common-header-meta-scripts.php'); ?>
-<?php include_once (eblayout.'/a-common-header.php'); ?>
-<?php include_once (eblayout.'/a-common-navebar.php'); ?>
 <?php include_once (ebHashKey.'/hashPassword.php'); ?>
 <?php include_once (ebformkeys.'/valideForm.php'); ?>
 <?php $formKey = new ebapps\formkeys\valideForm(); ?>
@@ -45,9 +41,9 @@ $username_error = "<b class='text-warning'>Username required</b>";
 $error =1;
 }
 /* valitation username */
-elseif(! preg_match("/^[a-z0-9_]{2,64}$/",$username))
+elseif(! preg_match("/^[a-z0-9]{2,32}$/",$username))
 {
-$username_error = "<b class='text-warning'>Use no-whitespace mini 6 max 64</b>";
+$username_error = "<b class='text-warning'>Use no-whitespace mini 2 max 32</b>";
 $error =1;
 }
 else
@@ -61,10 +57,10 @@ $password_error = "<b class='text-warning'>Password required</b>";
 $error =1;
 }
 /* valitation password  */
-elseif (! preg_match("/^[A-Za-z0-9\-\_\[\]\+\=\)\(\*\&\^\%\$\#\@\!]{6,16}$/",$password))
+elseif (! preg_match("/^[A-Za-z0-9\-\_\[\]\+\=\)\(\*\&\^\%\$\#\@\!]{6,32}$/",$password))
 {
-$password_error = "<b class='text-warning'>Use no-whitespace, mini 6 max 16</b>";
-$error =1;
+$password_error = "<b class='text-warning'>Use no-whitespace, mini 6 max 32</b>";
+$esrror =1;
 }
 else
 {
@@ -82,9 +78,13 @@ $user -> login2system($username, $password);
 }
 ?>
 <?php
-if(!$user->getsession_verify())
+if(empty($_SESSION['username']))
 {
 ?>
+<?php include_once (eblayout.'/a-common-header-icon.php'); ?>
+<?php include_once (eblayout.'/a-common-header-meta-scripts.php'); ?>
+<?php include_once (eblayout.'/a-common-header.php'); ?>
+<?php include_once (eblayout.'/a-common-navebar.php'); ?>
 <div class='container'>
 <div class='row row-offcanvas row-offcanvas-right'>
 <div class='col-xs-12 col-md-2'>
@@ -101,8 +101,6 @@ if(!$user->getsession_verify())
 <ul>
 <input type='hidden' name='form_key' value='<?php echo $formKey->outputKey(); ?>'>
 <?php echo $formKey_error; ?>
-<input type='hidden' name='signup_date' value='<?php echo date('r'); ?>'>
-<input type='hidden' name='user_ip_address' value='<?php echo $ip_user ?>'>
 <li>
 <label>Username <span class='required'><?php echo $username_error; ?></span></label>
 <input class='form-control' type='text' name='username' placeholder='username' required autofocus />

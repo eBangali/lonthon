@@ -22,6 +22,7 @@
           <?php if(!empty($linkedin_link)){echo "<li class='linkedin'><a href='https://$linkedin_link' rel='nofollow'><i class='fa fa-linkedin'></i></a></li>"; } ?>
           <?php if(!empty($pinterest_link)){echo "<li class='pinterest'><a href='https://$pinterest_link' rel='nofollow'><i class='fa fa-pinterest'></i></a></li>"; } ?>
           <?php if(!empty($youtube_link)){echo "<li class='youtube'><a href='https://$youtube_link' rel='nofollow'><i class='fa fa-youtube-play'></i></a></li>"; } ?>
+		  <?php if(!empty($instagram_link)){echo "<li class='youtube'><a href='https://$instagram_link' rel='nofollow'><i class='fa fa-instagram'></i></a></li>"; } ?>
           </ul>
         </div>
         </div>

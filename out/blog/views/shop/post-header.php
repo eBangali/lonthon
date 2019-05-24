@@ -17,11 +17,62 @@ $postArticle .="<img class='img-responsive' alt='".ucfirst($contents_og_image_ti
 $postArticle .=hypertextWithOrWithoutWww."$contents_og_image_url";
 $postArticle .="' />";
 $postArticle .="</div>";
+
 $postArticle .="<div class='entry-content'>";
 $postArticle .="<ul class='post-meta'>";
 $postArticle .="<li><i class='fa fa-user'></i>Posted by <a href='";
-$postArticle .=outContentsLink."/contents/user/$contents_id/";
+$postArticle .=outContentsLink."/contents/writer/$username_contents/";
 $postArticle .="'>$username_contents</a></li>";
+/*Like?*/
+$postArticle .="<li>";
+$countLikeNow = new ebapps\blog\blog();
+$countLikeNow ->count_like_now($contents_id);
+if($countLikeNow->data)
+{
+foreach($countLikeNow->data as $valcountLikeNow): extract($valcountLikeNow);	
+if(isset($_SESSION['username']) and $likeNow == 0)
+{
+/*Logined True with hober effect */
+/*Like Now*/
+if(isset($_REQUEST['add_for_like']))
+{
+extract($_REQUEST);
+$countLike = new ebapps\blog\blog();
+$countLike ->add_for_like($contents_id_for_like);
+}
+$postArticle .="<form method='post' class='toLike'><input type='hidden' name='contents_id_for_like' value='$contents_id' /><button type='submit' name='add_for_like'><i class='fa fa-heart'></i></button></form>";
+}
+else 
+{
+/*Logined False with hober effect */
+/* Login to like */
+$postArticle .="<i class='fa fa-heart'></i>";
+/** **/
+}
+endforeach;
+} 		   				   
+$postArticle .="<a href='";
+$postArticle .=outContentsLink."/contents/solve/$contents_id/".$objPost->seoUrl($contents_og_image_title)."/";			   
+$postArticle .="'>";
+$countComment = new ebapps\blog\blog();
+$countComment ->count_total_like($contents_id);
+if($countComment->data)
+{
+foreach($countComment->data as $valcountComment): extract($valcountComment);	
+if($totalPostLikes <= 1)
+{
+$postArticle .=$totalPostLikes;
+$postArticle .=" like";
+}
+else 
+{
+$postArticle .=$totalPostLikes;
+$postArticle .=" Likes";	
+}
+endforeach;
+}
+$postArticle .="</a></li>";
+/* */				   
 $postArticle .="<li><i class='fa fa-comments'></i><a href='";
 $postArticle .=outContentsLink."/contents/solve/$contents_id/".$objPost->seoUrl($contents_og_image_title)."/";
 $postArticle .="'>";
@@ -47,6 +98,7 @@ $postArticle .="<li><i class='fa fa-clock-o'></i><span class='day'>".date('d M Y
 $postArticle .="</ul>";
 $postArticle .="</div>";
 $postArticle .="</div>";
+
 $postArticle .="<footer class='entry-meta'> This entry was posted in <a title='View all posts in ".$objPost->visulString($contents_category)."' href='";
 $postArticle .=outContentsLink."/contents/category/$contents_id/";
 $postArticle .="'>".$objPost->visulString($contents_category)."</a> and <a title='View all posts in ".$objPost->visulString($contents_sub_category)."' href='";
@@ -57,5 +109,11 @@ endforeach;
 }
 $postArticle .="</div>";
 $postArticle .="</div>";
+
+if(!empty($contents_affiliate_link)){
+$postArticle .="<div class='entry-content'>";
+$postArticle .="<p><a class='eb-cart-back' href='".hypertextWithOrWithoutWww."$contents_affiliate_link' target='_blank'";
+$postArticle .="'><i class='fa fa-shopping-cart fa-lg' aria-hidden='true'></i> <b>Buy Now</b></a></p></div>";
+}
 echo $postArticle;
 ?>

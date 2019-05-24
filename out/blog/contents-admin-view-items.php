@@ -11,7 +11,7 @@
       <?php include_once (eblayout.'/a-common-ad.php'); ?>
     </div>
     <div class='col-xs-12 col-md-7 sidebar-offcanvas'>
-      <div class="well">
+     <div class='well'>
         <h2 title='Approval'>Approval</h2>
       </div>
       <?php include_once (ebblog.'/blog.php'); ?>
@@ -111,6 +111,12 @@ if(!empty($contents_og_image_how_to_solve))
 {
 $contentviewitems .= "<tr><td>How to do:</td><td class='well'>".ucfirst($contents_og_image_how_to_solve)."</td></tr>";
 }
+
+if(!empty($contents_affiliate_link))
+{
+$contentviewitems .= "<tr><td>Affiliate Link:</td><td><a rel='nofollow' href='".hypertextWithOrWithoutWww."$contents_affiliate_link' target='_blank'><button type='button' class='button submit' title='Visit'><span> Visit </span></button></a></td></tr>";
+}
+
 if(!empty($contents_github_link))
 {
 $contentviewitems .= "<tr><td>Download:</td><td><a rel='nofollow' href='".hypertextWithOrWithoutWww."$contents_github_link' target='_blank'><button type='button' class='button submit' title='Download'><span> Download </span></button></a></td></tr>";
@@ -152,7 +158,7 @@ else
 {
 echo "<pre>No Entry Found</pre>";
 }
-?>
+?> 
     </div>
     <div class='col-xs-12 col-md-3 sidebar-offcanvas'>
       <?php include_once ("contents-my-account.php"); ?>

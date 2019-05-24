@@ -10,7 +10,7 @@
 <div class='page-not-found'>
 <h2>404</h2>
 <h3><img src='<?php echo themeResource; ?>/images/signal.png'>Oops! The Page you requested was not found!</h3>
-<div><a href='<?php echo outLink; ?>/index.php' type='button' class='btn-home'><span>Back To Home</span></a></div>
+<div><a href='<?php echo hostingAndRoot; ?>/index.php' type='button' class='btn-home'><span>Back To Home</span></a></div>
 </div>
 </div>
 </div>

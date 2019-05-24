@@ -15,11 +15,10 @@ unset($_SESSION['password']);
 <div class='col-xs-12 col-md-2'>
 </div>
 <div class='col-xs-12 col-md-7 sidebar-offcanvas'>
-<div class="well">
-<h2 title='You are Sign Out'>You are Sign Out</h2>
-</div>
+<pre><b>You are Sign Out</b></pre>
 </div>
 <div class='col-xs-12 col-md-3 sidebar-offcanvas'>
+
 </div>
 </div>
 </div>

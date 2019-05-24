@@ -14,7 +14,6 @@
 <div class="well">
 <h2 title='Mobile verify'>Mobile verify</h2>
 </div>
-<div class="well">
 <?php 
 include_once (eblogin.'/registration_page.php'); 
 ?>
@@ -68,6 +67,7 @@ $user->submit_user_mobile_to_verify($username);
 //
 }
 ?>
+<div class="well">
 <?php
 $obj = new ebapps\login\registration_page();
 $obj->edit_view_user_mobile_to_verify($username);

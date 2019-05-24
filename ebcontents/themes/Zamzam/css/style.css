@@ -1513,7 +1513,6 @@ nav {
 .features-block {
 	background: #f5f5f5;
 	overflow: hidden;
-	margin-top: 22px;
 	border: 1px #e5e5e5 solid;
 	border-radius: 3px
 }
@@ -1763,6 +1762,7 @@ nav {
 	text-align: center;
 	margin-bottom: 10px;
 	letter-spacing: -1px;
+
 }
 .offer-slider h3 {
 	width: 100px;
@@ -4010,17 +4010,26 @@ a.button.detail-bnt span {
 .post-meta li {
 	display: inline-block;
 	margin-right: 10px;
-	color: #a7a7a7;
+	color: #333;
 	text-transform: none;
 	font-size: 12px;
 }
+
 .post-meta li a {
 	margin-right: 5px;
-	color: #a7a7a7;
+	color: #333;
 }
 .post-meta li i {
 	padding-right: 10px;
 }
+
+.toLike {
+	display: inline-block;
+}
+.toLike button{
+	background: none;
+}
+
 .title-primary {
 	font-size: 24px;
 	letter-spacing: 3px;
@@ -4774,6 +4783,7 @@ ul#magicat li .open-close, .block-layered-nav dt .toggleBtn {
 .sidebar .link-cart:hover, .sidebar .link-wishlist:hover, .sidebar .link-reorder:hover, .sidebar .link-compare:hover, .sidebar .link-cart:focus, .sidebar .link-wishlist:focus, .sidebar .link-reorder:focus, .sidebar .link-compare:focus, .block .actions a:hover, .block .actions a:focus {
 	color: #333;
 }
+
 .sidebar .block dl {
 	border-bottom: 0px solid #ccc;
 	margin: 0;
@@ -7350,7 +7360,7 @@ a.shop-now-btn {
 	padding: 0;
 }
 .social .fb a:hover {
-	background: #3C5B9B;
+	background: #ccc;
 }
 .social .tw a:before {
 	content: "\f099";
@@ -7369,7 +7379,7 @@ a.shop-now-btn {
 	padding: 0;
 }
 .social .tw a:hover {
-	background: #359BED;
+	background: #ccc;
 }
 .social .googleplus a:before {
 	content: "\f0d5";
@@ -7388,7 +7398,7 @@ a.shop-now-btn {
 	padding: 0;
 }
 .social .googleplus a:hover {
-	background: #E33729;
+	background: #ccc;
 }
 .social .github a:before {
 	content: "\f092";
@@ -7407,7 +7417,7 @@ a.shop-now-btn {
 	padding: 0;
 }
 .social .github a:hover {
-	background: #3C3C3C;
+	background: #ccc;
 }
 .social .rss a:before {
 	content: "\f09e";
@@ -7428,7 +7438,7 @@ a.shop-now-btn {
 	padding: 0;
 }
 .social .rss a:hover {
-	background: #FD9F13;
+	background: #ccc;
 }
 .social .pintrest a:before {
 	content: "\f0d3";
@@ -7449,7 +7459,7 @@ a.shop-now-btn {
 	padding: 0;
 }
 .social .pintrest a:hover {
-	background: #cb2027;
+	background: #ccc;
 }
 .social .linkedin a:before {
 	content: "\f0e1";
@@ -7470,7 +7480,7 @@ a.shop-now-btn {
 	padding: 0;
 }
 .social .linkedin a:hover {
-	background: #027ba5;
+	background: #ccc;
 }
 .social .youtube a:before {
 	content: "\f167";
@@ -7489,7 +7499,26 @@ a.shop-now-btn {
 	padding: 0;
 }
 .social .youtube a:hover {
-	background: #F03434;
+	background: #ccc;
+}
+.social .instagram a:before {
+	content: "\f16d";
+	font-family: FontAwesome;
+}
+.social .instagram a {
+	background: #212020;
+	font-size: 18px;
+	border-radius: 3px;
+	line-height: 35px;
+	display: inline-block;
+	width: 35px;
+	height: 35px;
+	color: #fff;
+	text-align: center;
+	padding: 0;
+}
+.social .instagram a:hover {
+	background: #ccc;
 }
 .social {
 	float: left;
@@ -12751,6 +12780,7 @@ ul.slideshow {
 	font-size: 20px;
 	padding: 0px 10px;
 	line-height: 24px;
+
 }
 .toolbar .pager {
 	float: left;

@@ -6,6 +6,7 @@
     <div class='block-content'>
       <ul>
         <?php if ($_SESSION['memberlevel'] >= 9) { ?>
+        <li><a href='<?php echo outAccessLink; ?>/sendMassMail.php' title='Send Mass eMail'><i class='fa fa-envelope fa-lg' aria-hidden='true'></i> Send Mass eMail</a></li>
         <li><a href='<?php echo outAccessLink; ?>/access_all_account_information.php' title='User Info'><i class='fa fa-users fa-lg' aria-hidden='true'></i> User Info</a></li>
         <li><a href='<?php echo outAccessLink; ?>/mrss.php' title='All mRSS'><i class='fa fa-rss fa-lg' aria-hidden='true'></i> All mRSS</a></li>
         <li><a href='<?php echo outAccessLink; ?>/access-admin-merchant-profile.php' title='Business Info'><i class='fa fa-briefcase fa-lg' aria-hidden='true'></i> Business Info</a></li>

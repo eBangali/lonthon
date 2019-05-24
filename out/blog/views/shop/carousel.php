@@ -9,7 +9,7 @@
 <div class='tp-caption ExtraLargeTitle sft tp-resizeme' data-endspeed='500' data-speed='500' data-start='1100' data-easing='Linear.easeNone' data-splitin='none' data-splitout='none' data-elementdelay='0.1' data-endelementdelay='0.1'><span class='eBTextBack'><?php echo $obj->visulString($contents_category); ?></span> </div>
 <div class='tp-caption LargeTitle sfl tp-resizeme' data-endspeed='500' data-speed='500' data-start='1300' data-easing='Linear.easeNone' data-splitin='none' data-splitout='none' data-elementdelay='0.1' data-endelementdelay='0.1'><span class='eBTextBack'><?php echo $obj->visulString($contents_sub_category); ?></span> </div>
 <div class='tp-caption Title sft tp-resizeme' data-endspeed='500' data-speed='500' data-start='1450' data-easing='Power2.easeInOut' data-splitin='none' data-splitout='none' data-elementdelay='0.1' data-endelementdelay='0.1'><span class='eBTextBack'><?php echo strtoupper($contents_og_image_title); ?></span></div>
-<div class='tp-caption sfb  tp-resizeme' data-endspeed='500' data-speed='500' data-start='1500' data-easing='Linear.easeNone' data-splitin='none' data-splitout='none' data-elementdelay='0.1' data-endelementdelay='0.1'><a href='<?php echo outContentsLink; ?>/contents/category/<?php echo $contents_id; ?>/' class='buy-btn eBTextBack'>Compare</a> </div>
+<div class='tp-caption sfb  tp-resizeme' data-endspeed='500' data-speed='500' data-start='1500' data-easing='Linear.easeNone' data-splitin='none' data-splitout='none' data-elementdelay='0.1' data-endelementdelay='0.1'><a href='<?php echo outContentsLink; ?>/contents/category/<?php echo $contents_id; ?>/' class='buy-btn eBTextBack'>Read More</a> </div>
 </div>
 </li>
 <?php endforeach;  ?>

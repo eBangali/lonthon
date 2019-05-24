@@ -3,10 +3,10 @@
 <?php
 if ($_SESSION['memberlevel'] >= 4)
 {
-include_once (ebcontents.'/contents.php');
+include_once (ebcontents.'/contents/');
 }
 else
 {
-include_once (ebcontents.'/contents.php');
+include_once (ebcontents.'/contents/');
 }
 ?>

@@ -4,7 +4,7 @@
 <?php include_once (eblayout.'/a-common-header-meta-scripts-text-editor.php'); ?>
 <?php include_once (eblayout.'/a-common-header.php'); ?>
 <?php include_once (eblayout.'/a-common-navebar.php'); ?>
-<?php include_once (ebaccess.'/access_permission_staff_minimum.php'); ?>
+<?php include_once (ebaccess."/access_permission_online_minimum.php"); ?>
 <div class='container'>
 <div class='row row-offcanvas row-offcanvas-right'>
 <div class='col-xs-12 col-md-2'>
@@ -15,7 +15,7 @@
 <h2 title='Profile Image:'>Profile Image:</h2>
 </div> 
 <?php include_once (ebblog.'/blog.php'); ?>
-<?php include_once (ebimageupload.'/uploadimage-lonthon.php'); ?>
+<?php include_once (ebimageupload.'/uploadimage-blog.php'); ?>
 <?php
 if(isset($_REQUEST['submit']))
 {

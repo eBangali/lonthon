@@ -4,7 +4,7 @@
 <?php include_once (eblayout.'/a-common-header-meta-scripts-text-editor.php'); ?>
 <?php include_once (eblayout.'/a-common-header.php'); ?>
 <?php include_once (eblayout.'/a-common-navebar.php'); ?>
-<?php include_once (ebaccess.'/access_permission_staff_minimum.php'); ?>
+<?php include_once (ebaccess."/access_permission_online_minimum.php"); ?>
 
 <div class='container'>
   <div class='row row-offcanvas row-offcanvas-right'>
@@ -98,6 +98,13 @@ $solutionStatus .= "<tr><td>Profile Image:</td><td><form action='contents-image-
 }
 $solutionStatus .= "<tr><td>What to do:</td><td class='well'>".ucfirst($contents_og_image_what_to_do)."</td></tr>";
 $solutionStatus .= "<tr><td>How to do:</td><td class='well'>".ucfirst($contents_og_image_how_to_solve)."</td></tr>";
+
+
+if(!empty($contents_affiliate_link)){
+$solutionStatus .= "<tr><td>Affiliate Link:</td><td>";
+$solutionStatus .= "<p><a rel='nofollow' href='".hypertextWithOrWithoutWww."$contents_affiliate_link' target='_blank'><button type='button' class='button submit' title='Affiliate Link'><span> Visit </span></button></a></p>";
+}
+
 if(!empty($contents_github_link)){
 $solutionStatus .= "<tr><td>Download:</td><td>";
 $solutionStatus .= "<p><a rel='nofollow' href='".hypertextWithOrWithoutWww."$contents_github_link' target='_blank'><button type='button' class='button submit' title='Download'><span> Download </span></button></a></p>";

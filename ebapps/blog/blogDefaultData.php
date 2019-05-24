@@ -1,16 +1,77 @@
 <?php
-$this->ebmysqli->query("INSERT INTO `blog_category` (`contents_category_id`, `contents_category`) VALUES
-(1, 'Handbags-and-Accessories'),
-(2, 'Jewelry-and-Watches'),
-(3, 'Men-s'),
-(4, 'Women-s')");
+eBConDb::eBgetInstance()->eBgetConection()->query("INSERT INTO `blog_category` (`contents_category_id`, `contents_category`) VALUES
+(1, 'WordPress'),
+(2, 'PHP'),
+(3, 'CSS'),
+(4, 'JavaScript'),
+(5, 'JQuery'),
+(6, 'GitHub'),
+(7, 'Angular'),
+(8, 'Website-Template'),
+(9, 'eBangali'),
+(10, 'Laravel'),
+(11, 'Java'),
+(12, 'UI-UX'),
+(13, 'Graphics'),
+(14, 'Print'),
+(15, 'Web-Graphics'),
+(16, 'Photoshop')");
 
-$this->ebmysqli->query("INSERT INTO `blog_sub_category` (`contents_sub_category_id`, `contents_sub_category`, `contents_category_in_blog_sub_category`) VALUES
-(1, 'Women-s-Handbags', 'Handbags-and-Accessories'),
-(2, 'Fine-Jewelry', 'Jewelry-and-Watches'),
-(3, 'Watches', 'Jewelry-and-Watches'),
-(4, 'T-shirt', 'Men-s'),
-(5, 'Sweaters', 'Men-s'),
-(6, 'T-shirt', 'Women-s'),
-(7, 'Sweaters', 'Women-s')");
+eBConDb::eBgetInstance()->eBgetConection()->query("INSERT INTO `blog_sub_category` (`contents_sub_category_id`, `contents_sub_category`, `contents_category_in_blog_sub_category`) VALUES
+(1, 'Retail-Store-Point-of-Sale', 'eBangali'),
+(2, 'Superstore-Point-of-Sale', 'eBangali'),
+(3, 'Library-Point-of-Sale', 'eBangali'),
+(4, 'Restararunt-Point-of-Sale', 'eBangali'),
+(5, 'Stocklot-Point-of-Sale', 'eBangali'),
+(6, 'Fashion-Shop-Point-of-Sale', 'eBangali'),
+(7, 'Distributor-Online-Order-Collection', 'eBangali'),
+(8, 'Pharmacy-Point-of-Sale', 'eBangali'),
+(9, 'Cash-on-Delivery-Websites', 'eBangali'),
+(10, 'Ticket-Booking-System', 'eBangali'),
+(11, 'Hospital-Management-System', 'eBangali'),
+(12, 'School-Management-System', 'eBangali'),
+(13, 'Lonthon-Blog', 'eBangali'),
+(14, 'Zamzam-Portfolio-Website', 'eBangali'),
+(15, 'Digonto-Portfolio-Website', 'eBangali'),
+(16, 'Osman-eCommerce-Website', 'eBangali'),
+
+(17, 'Blog-Magazine', 'WordPress'),
+(18, 'eCommerce', 'WordPress'),
+(19, 'Education', 'WordPress'),
+(20, 'Entertainment', 'WordPress'),
+(21, 'Real-estate', 'WordPress'),
+(22, 'Wedding', 'WordPress'),
+(23, 'WooCommerce', 'WordPress'),
+
+(24, 'Admin-Templates', 'Website-Template'),
+(25, 'Landing-Pages', 'Website-Template'),
+(26, 'Contact-Pages', 'Website-Template'),
+(27, '404-Pages', 'Website-Template'),
+(28, 'Search-Pages', 'Website-Template'),
+
+(29, 'Clipping-path', 'Photoshop'),
+(30, 'Color-correction', 'Photoshop'),
+(31, 'Image-manipulation', 'Photoshop'),
+(32, 'Image-masking', 'Photoshop'),
+(33, 'Manequin-ghost', 'Photoshop'),
+(34, 'Multi-clipping-path', 'Photoshop'),
+(35, 'Neck-joint', 'Photoshop'),
+(36, 'Photo-retouch', 'Photoshop'),
+(37, 'Shadow', 'Photoshop'),
+(38, 'PSD-Templates', 'Photoshop'),
+
+(39, 'IOS-PSD-Templates', 'UI-UX'),
+(40, 'Android-PSD-Template', 'UI-UX'),
+
+(41, 'Background-Images', 'Graphics'),
+(42, 'Hero-Image', 'Graphics'),
+(43, 'Product-Mockup-Templates', 'Graphics'),
+
+(44, 'Brochure-Templates', 'Print'),
+(45, 'Business-Card-Templates', 'Print'),
+(46, 'Magazine-Templates', 'Print'),
+(47, 'Packaging-Templates', 'Print'),
+
+(48, 'Product-PSD-Mockup', 'Web-Graphics'),
+(49, 'Banner-ADs', 'Web-Graphics')");
 ?>

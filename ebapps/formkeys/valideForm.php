@@ -9,6 +9,9 @@ namespace ebapps\formkeys;
 include_once(ebbd.'/dbconfig.php');
 use ebapps\dbconnection\dbconfig;
 /*** ***/
+include_once(ebbd.'/eBConDb.php');
+use ebapps\dbconnection\eBConDb;
+
 class valideForm extends dbconfig
 {
 private function generateKey()
@@ -27,7 +30,7 @@ $fromkey = $this->generateKey();
 
 
 $query = "INSERT INTO fromkey set requestip='$ip', domain='$domain', fromkey='$fromkey', fromkeystatus='NO'";
-$result = $this->ebmysqli->query($query);
+$result = eBConDb::eBgetInstance()->eBgetConection()->query($query);
 return $fromkey;
 }
 
@@ -36,15 +39,15 @@ public function read_and_check_formkey($form_key)
 {
 $dom = domain;
 $query = "SELECT fromkey FROM fromkey where domain='$dom' and fromkey='$form_key' and fromkeystatus='NO'";
-$testresult = $this->ebmysqli->query($query);
+$testresult = eBConDb::eBgetInstance()->eBgetConection()->query($query);
 $num_result = $testresult->num_rows;
 if($num_result == 1)
 {
 $query2nd = "UPDATE fromkey SET fromkeystatus = 'OK' WHERE fromkey = '$form_key'";
-$testresult = $this->ebmysqli->query($query2nd);
+$testresult = eBConDb::eBgetInstance()->eBgetConection()->query($query2nd);
 
 $query3 = "DELETE FROM fromkey WHERE fromkey = '$form_key' and fromkeystatus = 'NO'";
-$testresult3 = $this->ebmysqli->query($query3);
+$testresult3 = eBConDb::eBgetInstance()->eBgetConection()->query($query3);
 return true;
 }
 }

@@ -59,9 +59,6 @@ $error =1;
 } 
 /* valitation contentCategory  */
 elseif (! preg_match('/^([a-zA-Z0-9\/\-]+)$/',$contentCategory))
-/* For Bangla
-elseif (! preg_match('/^[\pL\pN\-\ ]+/u',$contentCategory)) 
-*/
 {
 $contentCategory_error = "<b class='text-warning'>Whitespace, single or double quotes, certain special characters are not allowed.</b>";
 $error =1;
@@ -78,9 +75,6 @@ $error =1;
 } 
 /* valitation contentsSub_category  */
 elseif (!preg_match('/^([a-zA-Z0-9\/\-]+)$/',$contentsSub_category))
-/* For Bangla
-elseif (! preg_match('/^[\pL\pN\-\ ]+/u',$contentsSub_category)) 
-*/
 {
 $contentsSub_category_error = "<b class='text-warning'>Whitespace, single or double quotes, certain special characters are not allowed.</b>";
 $error =1;

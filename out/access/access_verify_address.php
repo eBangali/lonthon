@@ -13,8 +13,7 @@
 <div class='well'>
 <h2 title='Address verification'>Address verification</h2>
 <p>Submit address verify verification code.</p>
-</div>
-<div class='well'> 
+</div> 
 <?php include_once (eblogin.'/registration_page.php'); ?>
 <?php include_once (ebformkeys.'/valideForm.php'); ?>
 <?php $formKey = new ebapps\formkeys\valideForm(); ?>
@@ -74,6 +73,7 @@ $user -> varify_address($addressCode);
 //
 }
 ?>
+<div class='well'>
 <form method='post'>
 <fieldset class='group-select'>
 <ul>

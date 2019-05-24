@@ -13,7 +13,6 @@
 <div class='well'>
 <h2 title='Settings'>Settings</h2>
 </div>
-<div class='well'> 
 <?php include_once (ebHashKey.'/hashPassword.php'); ?>
 <?php include_once (eblogin.'/registration_page.php'); ?>
 <?php include_once (ebformkeys.'/valideForm.php'); ?>
@@ -34,11 +33,11 @@ $postal_code_error = "*";
 $country_error = "*";
 $facebook_link_error = "*";
 $twitter_link_error = "*";
-$google_plus_link_error = "*";
 $github_link_error = "*";
 $linkedin_link_error = "*";
 $pinterest_link_error = "*";
 $youtube_link_error = "*";
+$instagram_link_error = "*";
 ?>
 <?php
 /* Data Sanitization */
@@ -260,22 +259,7 @@ else
 {
 $twitter_link = $sanitization -> test_input($_POST["twitter_link"]);
 }
-/* google_plus_link */
-if (empty($_REQUEST["google_plus_link"]))
-{
 
-} 
-/* valitation google_plus_link  */
-elseif (!preg_match("/^([a-zA-Z0-9\,\.\/\+\?\-\=\_\-]{3,255})$/",$google_plus_link))
-{
-$google_plus_link_error = "<b class='text-warning'>Error on Google plus link</b>";
-$error =1;
-}
-
-else 
-{
-$google_plus_link = $sanitization -> test_input($_POST["google_plus_link"]);
-}
 /* github_link */
 if (empty($_REQUEST["github_link"]))
 {
@@ -339,16 +323,33 @@ else
 $youtube_link = $sanitization -> test_input($_POST["youtube_link"]);
 }
 
+/* instagram_link */
+if (empty($_REQUEST["instagram_link"]))
+{
+
+} 
+/* valitation instagram_link  */
+elseif (!preg_match("/^([a-zA-Z0-9\,\.\/\+\?\-\=\_\-]{3,255})$/",$instagram_link))
+{
+$instagram_link_error = "<b class='text-warning'>Error on Instagram link</b>";
+$error =1;
+}
+else 
+{
+$instagram_link = $sanitization -> test_input($_POST["instagram_link"]);
+}
+
 /* Submition form */
 if($error == 0)
 {
 extract($_REQUEST);
 //
 $update = new ebapps\login\registration_page();
-$update ->update_account_information($email, $full_name, $mobile, $position_names, $state_province_region, $address_line_1, $address_line_2, $city_town, $postal_code, $country, $facebook_link, $twitter_link, $google_plus_link, $github_link, $linkedin_link, $pinterest_link, $youtube_link);
+$update ->update_account_information($email, $full_name, $mobile, $position_names, $state_province_region, $address_line_1, $address_line_2, $city_town, $postal_code, $country, $facebook_link, $twitter_link, $github_link, $linkedin_link, $pinterest_link, $youtube_link, $instagram_link);
 }
 }
 ?>
+<div class='well'>
 <?php
 $obj = new ebapps\login\registration_page();
 $obj->update_account_info_read();
@@ -414,8 +415,9 @@ $updateAccount .="<li>Country: $country_error <input class='form-control' type='
 else
 {
 $updateAccount .="<li>";
-$updateAccount .="Country: $country_error <select class='form-control' name='country'>";
-$updateAccount .="<option>Please Select</option>";
+$updateAccount .="Country: $country_error";
+$updateAccount .="<select class='form-control' name='country'>";
+
 $objCountry = new ebapps\login\registration_page();
 $objCountry->select_user_country();
 if($objCountry->data)
@@ -426,25 +428,26 @@ extract($val);
 $updateAccount .="<option value='$country_name'>".ucfirst($country_name)."</option>";
 }
 }
+$updateAccount .="</select>";
+$updateAccount .="</li>";
 }
-$updateAccount .="</select></li>";
 
-if($mobileactive ==1 and $active ==1 and $member_level < 3)
+if($mobileactive ==1 and $active ==1 and $member_level < 4 and $_SESSION['addressverified']==1)
 {
-$updateAccount .= "<li><a href='/out/access/update-to-merchant-account.php'><b> Update to Merchant Account</b></a></li>";
+$updateAccount .= "<li><a href='/out/access/upgrade-your-membership.php'><b> Upgrade your membership</b></a></li>";
 }
+$updateAccount .="<li>OMR (Online Marketing Representative): ".$_SESSION['omrusername']."</li>";
 $updateAccount .="<li>FaceBook url without http://: $facebook_link_error <input class='form-control' type='text' name='facebook_link' placeholder='facebook.com' value='$facebook_link' /></li>";
 $updateAccount .="<li>Twitter url without http://: $twitter_link_error <input class='form-control' type='text' name='twitter_link' placeholder='twitter.com' value='$twitter_link' /></li>";
-$updateAccount .="<li>Google Plus url without http://: $google_plus_link_error <input class='form-control' type='text' name='google_plus_link' placeholder='plus.google.com' value='$google_plus_link' /></li>";
 $updateAccount .="<li>GitHub url without http://: $github_link_error <input class='form-control' type='text' name='github_link' placeholder='github.com' value='$github_link' /></li>";
 $updateAccount .="<li>Linkedin url without http://: $linkedin_link_error <input class='form-control' type='text' name='linkedin_link' placeholder='linkedin.com' value='$linkedin_link' /></li>";
 $updateAccount .="<li>Pinterest url without http://: $pinterest_link_error <input class='form-control' type='text' name='pinterest_link' placeholder='pinterest.com' value='$pinterest_link' /></li>";
 $updateAccount .="<li>Youtube url without http://: $youtube_link_error <input class='form-control' type='text' name='youtube_link' placeholder='youtube.com' value='$youtube_link' /></li>";
-$updateAccount .="<li><a href='/out/access/access_change_passsword.php'><button type='button' class='button submit' title='Change Password'><span> Change Password </span></button></a></li>"; 
-
+$updateAccount .="<li>Instagram url without http://: $instagram_link_error <input class='form-control' type='text' name='instagram_link' placeholder='instagram.com' value='$instagram_link' /></li>";
 $updateAccount .="<div class='buttons-set'>";
 $updateAccount .="<button type='submit' name='updateregister' title='Update' class='button submit'>Update</button>";
 $updateAccount .="</div>"; 
+$updateAccount .="<div class='buttons-set'><a href='/out/access/access_change_passsword.php'><button type='button' class='button submit' title='Change Password'><span> Change Password </span></button></a></div>";  
 $updateAccount .="</ul>";
 $updateAccount .="</fieldset>";
 $updateAccount .="</form>";

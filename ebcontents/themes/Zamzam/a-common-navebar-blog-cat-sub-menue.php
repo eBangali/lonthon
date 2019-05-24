@@ -2,7 +2,8 @@
 if(!mysqli_connect_errno()){ ?>
 <li> <a href='<?php echo outContentsLink; ?>/contents/' class='dropdown-toggle' data-toggle='dropdown'><i class='fa fa-pencil-square-o fa-lg' aria-hidden='true'></i> Blog <b class='caret'></b></a>
 <ul class='dropdown-menu multi-level'>
-<li><a href='<?php echo outContentsLink; ?>/contents/' title='Blog'><i class='fa fa-pencil-square-o fa-lg' aria-hidden='true'></i> Blog View</a></li>
+<li><a href='<?php echo outContentsLink; ?>/contents-add-items.php' title='Write For Us'><i class='fa fa-plus fa-lg' aria-hidden='true'></i> Write For Us</a></li>
+<li><a href='<?php echo outContentsLink; ?>/contents/' title='Blog'><i class='fa fa-pencil-square-o fa-lg' aria-hidden='true'></i> Blog</a></li>
 <?php include_once (ebblog.'/blog.php'); ?>
 <?php
 $category = new ebapps\blog\blog();

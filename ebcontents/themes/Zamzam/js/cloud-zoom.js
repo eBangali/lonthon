@@ -1410,15 +1410,15 @@ if (typeof Object.create !== 'function') {
 		zoomEnabled: true, //false disables zoomwindow from showing
 		preloading: 1, //by default, load all the images, if 0, then only load images after activated (PLACEHOLDER FOR NEXT VERSION)
 		zoomLevel: 1, //default zoom level of image
-		scrollZoom: false, //allow zoom on mousewheel, true to activate
-		scrollZoomIncrement: 0.1, //steps of the scrollzoom
+		scrollZoom: true, //allow zoom on mousewheel, true to activate
+		scrollZoomIncrement: 0.01, //steps of the scrollzoom
 		minZoomLevel: false,
 		maxZoomLevel: false,
 		easing: false,
 		easingAmount: 12,
 		lensSize: 200,
-		zoomWindowWidth: 400,
-		zoomWindowHeight: 400,
+		zoomWindowWidth: 845,
+		zoomWindowHeight: 600,
 		zoomWindowOffetx: 0,
 		zoomWindowOffety: 0,
 		zoomWindowPosition: 1,
@@ -1431,20 +1431,20 @@ if (typeof Object.create !== 'function') {
 		zoomWindowAlwaysShow: false,
 		zoomTintFadeIn: false,
 		zoomTintFadeOut: false,
-		borderSize: 4,
+		borderSize: 1,
 		showLens: true,
-		borderColour: "#888",
+		borderColour: "#000",
 		lensBorderSize: 1,
 		lensBorderColour: "#000",
-		lensShape: "square", //can be "round"
+		lensShape: "square", //can be "round", "square"
 		zoomType: "window", //window is default,  also "lens" available -
 		containLensZoom: false,
 		lensColour: "white", //colour of the lens background
-		lensOpacity: 0.4, //opacity of the lens
+		lensOpacity: 0.5, //opacity of the lens
 		lenszoom: false,
 		tint: false, //enable the tinting
 		tintColour: "#333", //default tint color, can be anything, red, #ccc, rgb(0,0,0)
-		tintOpacity: 0.4, //opacity of the tint
+		tintOpacity: 0.3, //opacity of the tint
 		gallery: false,
 		galleryActiveClass: "zoomGalleryActive",
 		imageCrossfade: false,
@@ -1462,11 +1462,11 @@ if (typeof Object.create !== 'function') {
 /* Zoom image */
 if (jQuery('#product-zoom').length > 0) {
 	jQuery('#product-zoom').elevateZoom({
-		zoomType: "inner",
+		zoomType: "window",
 		cursor: "crosshair",
 		zoomWindowFadeIn: 500,
 		zoomWindowFadeOut: 750,
-		gallery: 'gallery_01'
+        gallery: 'gallery_01',
 	});
 }
 jQuery("#gallery_01 .slider-items").owlCarousel({

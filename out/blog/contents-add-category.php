@@ -28,7 +28,6 @@ $contents_category_error = '*';
 include_once(ebsanitization.'/sanitization.php'); 
 $sanitization = new ebapps\sanitization\formSanitization();
 ?>
-
 <?php
 if(isset($_REQUEST['contents_category_submit']))
 {
@@ -57,8 +56,8 @@ $error =1;
 } 
 /* valitation contents_category  */
 elseif (! preg_match('/^([a-zA-Z0-9\/\-]+)$/',$contents_category))
-/** For Bangla
-elseif (! preg_match('/^[\pL\pN\-\ ]+/u',$contents_category))
+/*
+elseif (! preg_match('/^[\p{L}\p{N}\-]+/u',$contents_category))
 */
 {
 $contents_category_error = "<b class='text-warning'>Whitespace, single or double quotes, certain special characters are not allowed.</b>";

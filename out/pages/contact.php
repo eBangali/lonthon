@@ -8,4 +8,5 @@
 <?php include_once (eblayout.'/a-common-header.php'); ?>
 <?php include_once (eblayout.'/a-common-navebar.php'); ?>
 <?php include_once (eblayout.'/a-common-contact-map.php'); ?>
+<?php include_once (eblayout.'/a-common-supportteam.php'); ?>
 <?php include_once (eblayout.'/a-common-footer.php'); ?>

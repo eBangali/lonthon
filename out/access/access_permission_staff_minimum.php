@@ -32,6 +32,6 @@ $printText .= "</section>";
 echo $printText;
 include_once (eblayout.'/a-common-footer.php');
 die();
-}	
+}
 }
 ?>

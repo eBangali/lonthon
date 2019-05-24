@@ -131,7 +131,7 @@ We are open 24/7/365 for smooth operation.
 </div>
 <div id="collapse8" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading8">
 <div class="panel-body">
-Our team consists of skilled and professional members. If this happens, please send us an email so that we can review it right away and get back to you with the best solution for you in the shortest possible time. There will be no added cost for the corrections.
+Our team consists of skilled and professional members. If this happens, please send us an email so that we can review it right away and get back to you with the best solution for you in the shortest possible time. There will be no added cost for the corrections. If we can not satisfi you will shall refund your payment. Tranjaction Fee, TAX/ VAT, Shipping Fee will not refunded.
 </div>
 </div>
 </div>
@@ -145,7 +145,7 @@ Our team consists of skilled and professional members. If this happens, please s
 </div>
 <div id="collapse9" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading9">
 <div class="panel-body">
-We accept payment through PayPal, MasterCard, Visa, American Express Card and Bank Transfer.
+We accept payment through Stripe, PayPal, MasterCard, Visa, American Express Card and also Alipay, bKash.
 </div>
 </div>
 <div class="panel panel-default">

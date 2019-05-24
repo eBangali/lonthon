@@ -10,7 +10,6 @@
               <?php if(!mysqli_connect_errno()){ ?>
               <li><a href='<?php echo outPagesLink; ?>/aboutus.php' title='About us'><span>About us</span></a></li>
               <li><a href='<?php echo outPagesLink; ?>/terms-conditions.php' title='Terms'><span>Terms</span></a></li>
-              <li class='last'><a href='<?php echo outPagesLink; ?>/contact.php' title='Contact us'><span>Contact us</span></a></li>
               <?php } ?>
             </ul>
           </div>
@@ -32,7 +31,7 @@
             <ul class='links'>
             <?php if(!mysqli_connect_errno()){ ?>
               <li><a href='<?php echo outPagesLink; ?>/faq.php' title='FAQs'><span>FAQs</span></a></li>
-              <li><a href='<?php echo outPagesLink; ?>/pricing.php' title='Pricing'><span>Pricing</span></a></li>
+			<li class='last'><a href='<?php echo outPagesLink; ?>/contact.php' title='Contact us'><span>Contact us</span></a></li>
               <?php } ?>
             </ul>
           </div>
@@ -47,11 +46,11 @@
         ?>
         <?php if($siteLocation->data >= 1) { foreach($siteLocation->data as $val){ extract($val); ?>
             <address>
-            <i class='add-icon'>&nbsp;</i><?php if(!empty($business_name)){echo "$business_name <br>"; } ?>
+            <i class='add-icon'></i><?php if(!empty($business_name)){echo "$business_name <br>"; } ?>
             <?php if(!empty($business_full_address)){echo "$business_full_address"; } ?>
             </address>
-            <div class='phone-footer'><i class='phone-icon'>&nbsp;</i> <?php echo adminMobile; ?></div>
-            <div class='email-footer'><i class='email-icon'>&nbsp;</i> <a href='mailto:<?php echo adminEmail; ?>'><?php echo adminEmail; ?></a> </div>
+            <div class='phone-footer'><?php echo "<a href='tel:+".adminMobile."'><i class='phone-icon'></i></a>".adminMobile; ?></div>
+            <div class='email-footer'><i class='email-icon'></i> <a href='mailto:<?php echo adminEmail; ?>'><?php echo adminEmail; ?></a> </div>
             <?php }} ?>
             <?php } ?>
           </div>
@@ -79,6 +78,7 @@
             <?php if(!empty($linkedin_link)){echo "<li class='linkedin'><a href='".hypertextWithOrWithoutWww."$linkedin_link' target='_blank' rel='nofollow'></a></li>"; } ?>
             <?php if(!empty($pinterest_link)){echo "<li class='pintrest'><a href='".hypertextWithOrWithoutWww."$pinterest_link' target='_blank' rel='nofollow'></a></li>"; } ?>
             <?php if(!empty($youtube_link)){echo "<li class='youtube'><a href='".hypertextWithOrWithoutWww."$youtube_link' target='_blank' rel='nofollow'></a></li>"; } ?>
+			<?php if(!empty($instagram_link)){echo "<li class='instagram'><a href='".hypertextWithOrWithoutWww."$instagram_link' target='_blank' rel='nofollow'></a></li>"; } ?>
             <?php }} ?>
             <?php } ?>
             </ul>
@@ -93,7 +93,7 @@
   <div class='footer-bottom'>
     <div class='container'>
       <div class='row'>
-        <div class='col-sm-5 col-xs-12 coppyright'> &copy; 2007 - <?php echo date('Y'); ?> <a href='<?php echo hypertextWithOrWithoutWww.domain; ?>'><?php echo domain; ?></a> All Rights Reserved. Develop by <a href='https://ebangali.com'>eBangali</a></div>
+        <div class='col-sm-5 col-xs-12 coppyright'> &copy; <?php echo date('Y'); ?> <a href='<?php echo hypertextWithOrWithoutWww.domain; ?>'><?php echo domain; ?></a> All Rights Reserved. Develop by <a href='http://ebangali.com'>eBangali</a></div>
       </div>
     </div>
   </div>
@@ -105,12 +105,10 @@
 <script src='<?php echo themeResource; ?>/js/bootstrap.min.js'></script> 
 <script src='<?php echo themeResource; ?>/js/revslider.js'></script> 
 <script src='<?php echo themeResource; ?>/js/common.js'></script> 
-<script src='<?php echo themeResource; ?>/js/jquery.bxslider.min.js'></script> 
 <script src='<?php echo themeResource; ?>/js/owl.carousel.min.js'></script> 
 <script src='<?php echo themeResource; ?>/js/jquery.mobile-menu.min.js'></script> 
 <script src='<?php echo themeResource; ?>/js/countdown.js'></script> 
 <script src='<?php echo themeResource; ?>/js/cloud-zoom.js'></script>
-
 <script src='<?php echo themeResource; ?>/js/jquery.waypoints.min.7.10.js'></script> 
 <script src='<?php echo themeResource; ?>/js/main.eb.7.10.js'></script>
 <script src='<?php echo themeResource; ?>/js/filter.bootstrap.7.10.js'></script>

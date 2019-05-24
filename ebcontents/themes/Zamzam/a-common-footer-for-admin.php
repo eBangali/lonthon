@@ -19,7 +19,7 @@
   <div class='footer-bottom'>
     <div class='container'>
       <div class='row'>
-        <div class='col-sm-5 col-xs-12 coppyright'> &copy; 2007 - <?php echo date('Y'); ?> <a href='<?php echo hypertextWithOrWithoutWww.domain; ?>'><?php echo domain; ?></a> All Rights Reserved. Develop by <a href='https://ebangali.com'>eBangali</a></div>
+        <div class='col-sm-5 col-xs-12 coppyright'> &copy; <?php echo date('Y'); ?> <a href='<?php echo hypertextWithOrWithoutWww.domain; ?>'><?php echo domain; ?></a> All Rights Reserved. Develop by <a href='http://ebangali.com'>eBangali</a></div>
       </div>
     </div>
   </div>
@@ -30,12 +30,10 @@
 <script src='<?php echo themeResource; ?>/js/bootstrap.min.js'></script> 
 <script src='<?php echo themeResource; ?>/js/revslider.js'></script> 
 <script src='<?php echo themeResource; ?>/js/common.js'></script> 
-<script src='<?php echo themeResource; ?>/js/jquery.bxslider.min.js'></script> 
 <script src='<?php echo themeResource; ?>/js/owl.carousel.min.js'></script> 
 <script src='<?php echo themeResource; ?>/js/jquery.mobile-menu.min.js'></script> 
 <script src='<?php echo themeResource; ?>/js/countdown.js'></script> 
 <script src='<?php echo themeResource; ?>/js/cloud-zoom.js'></script>
-
 <script src='<?php echo themeResource; ?>/js/jquery.waypoints.min.7.10.js'></script> 
 <script src='<?php echo themeResource; ?>/js/main.eb.7.10.js'></script>
 <script src='<?php echo themeResource; ?>/js/filter.bootstrap.7.10.js'></script>

@@ -4,7 +4,7 @@
 <?php include_once (eblayout.'/a-common-header-meta-scripts-text-editor.php'); ?>
 <?php include_once (eblayout.'/a-common-header.php'); ?>
 <?php include_once (eblayout.'/a-common-navebar.php'); ?>
-<?php include_once (ebaccess.'/access_permission_staff_minimum.php'); ?>
+<?php include_once (ebaccess."/access_permission_online_minimum.php"); ?>
 <div class='container'>
 <div class='row row-offcanvas row-offcanvas-right'>
 <div class='col-xs-12 col-md-2'>
@@ -12,7 +12,7 @@
 </div>
 <div class='col-xs-12 col-md-7 sidebar-offcanvas'>
 <div class="well">
-<h2 title='New Post'>New Post</h2>
+<h2 title='Write for us'>Write for us</h2>
 </div>
 <?php include_once (ebformkeys.'/valideForm.php'); ?>
 <?php $formKey = new ebapps\formkeys\valideForm(); ?>
@@ -56,6 +56,7 @@ $contents_sub_category_error = "*";
 $contents_og_image_title_error = "*";
 $contents_og_image_what_to_do_error = "*";
 $contents_og_image_how_to_solve_error = "*";
+$contents_affiliate_link_error = "*";
 $contents_github_link_error = "*";
 $contents_preview_link_error = "*";
 $contents_video_link_error = "*";
@@ -92,9 +93,6 @@ $error =1;
 } 
 /* valitation contents_category  */
 elseif (!preg_match("/^([a-zA-Z0-9\/\-]+)$/",$contents_category))
-/* For Bangla
-elseif (! preg_match('/^[\pL\pN\-]+/u',$contents_category)) 
-*/
 {
 $contents_category_error = "<b class='text-warning'>Whitespace, single or double quotes, certain special characters are not allowed.</b>";
 $error =1;
@@ -111,9 +109,6 @@ $error =1;
 } 
 /* valitation contents_sub_category  */
 elseif (!preg_match("/^([a-zA-Z0-9\/\-]+)$/",$contents_sub_category))
-/* For Bangla
-elseif (! preg_match('/^[\pL\pN\-]+/u',$contents_sub_category)) 
-*/
 {
 $contents_sub_category_error = "<b class='text-warning'>Whitespace, single or double quotes, certain special characters are not allowed.</b>";
 $error =1;
@@ -131,9 +126,6 @@ $error =1;
 } 
 /* valitation contents_og_image_title  Tested allow (productname-productname-product-name)*/
 elseif (!preg_match("/^([A-Za-z0-9\?\.\,\-\ ]+)$/",$contents_og_image_title))
-/* For Bangla
-elseif (! preg_match('/^[\pL\pN\?\-\ ]+/u',$contents_og_image_title)) 
-*/
 {
 $contents_og_image_title_error = "<b class='text-warning'>Single or double quotes, certain special characters are not allowed.</b>";
 $error =1;
@@ -160,7 +152,6 @@ else
 $contents_og_image_what_to_do = $sanitization -> testArea($_POST["contents_og_image_what_to_do"]);
 }
 /* contents_og_image_how_to_solve */
-
 if (empty($_REQUEST["contents_og_image_how_to_solve"]))
 {
 $contents_og_image_how_to_solve_error = "<b class='text-warning'>How to solve description required</b>";
@@ -176,6 +167,22 @@ $error =1;
 else 
 {
 $contents_og_image_how_to_solve = $sanitization -> testArea($_POST["contents_og_image_how_to_solve"]);
+}
+	
+/* contents_affiliate_link */ 
+if (!empty($_REQUEST['contents_affiliate_link']))
+{
+/* valitation contents_affiliate_link  */
+if (!preg_match('/^([a-zA-Z0-9\,\.\/\+\?\-\=\_\-]{3,255})$/',$contents_affiliate_link))
+{
+$contents_affiliate_link_error = "<b class='text-warning'>Error on affiliate link</b>";
+$error =1;
+}
+
+else 
+{
+$contents_affiliate_link = $sanitization -> test_input($_POST['contents_affiliate_link']);
+}
 }
 
 /* contents_github_link */ 
@@ -227,7 +234,7 @@ $contents_video_link = $sanitization -> test_input($_POST['contents_video_link']
 /* Submition form */
 if($error == 0){
 extract($_REQUEST);
-$merchant->submit_new_contents_item($contents_category, $contents_sub_category, $contents_og_image_title, $contents_og_image_what_to_do, $contents_og_image_how_to_solve, $contents_github_link, $contents_preview_link, $contents_video_link);
+$merchant->submit_new_contents_item($contents_category, $contents_sub_category, $contents_og_image_title, $contents_og_image_what_to_do, $contents_og_image_how_to_solve, $contents_affiliate_link, $contents_github_link, $contents_preview_link, $contents_video_link);
 }
 //
 }
@@ -248,12 +255,14 @@ $merchant->submit_new_contents_item($contents_category, $contents_sub_category, 
 <li><textarea class='form-control' name='contents_og_image_what_to_do' rows='6' placeholder="Certain special characters are not allowed." id="WhatToDo"></textarea></li>
 <li>How to do?: <?php echo $contents_og_image_how_to_solve_error;  ?></li>
 <textarea class="form-control" name="contents_og_image_how_to_solve" placeholder="Certain special characters are not allowed." id="HowToDo"></textarea>
+<li>Affiliate link whthout https://www: <?php echo $contents_affiliate_link_error;  ?></li>
+<li><input class='form-control' placeholder="amazon.com/abc/" type="text" name="contents_affiliate_link" /></li>
 <li>Download link whthout https://www: <?php echo $contents_github_link_error;  ?></li>
-<li><input class='form-control' placeholder="bacd.com/abcd/" type="text" name="contents_github_link" /></li>
+<li><input class='form-control' placeholder="github.com/abc/" type="text" name="contents_github_link" /></li>
 <li>Preview link whthout https://www: <?php echo $contents_preview_link_error;  ?></li>
-<li><input class='form-control'  placeholder="bacd.com/abcd/" type="text" name="contents_preview_link" /></li>
+<li><input class='form-control'  placeholder="domain.com/abc/" type="text" name="contents_preview_link" /></li>
 <li>Video link whthout https://www: <?php echo $contents_video_link_error;  ?></li>
-<li><input class='form-control'  placeholder="bacd.com/abcd/" type="text" name="contents_video_link" /></li>
+<li><input class='form-control'  placeholder="youtube.com/abc/" type="text" name="contents_video_link" /></li>
 <div class='buttons-set'><button type='submit' name='contents_add_items' title='Submit' class='button submit'> <span> Submit </span> </button></div>
 </ul>
 </fieldset>

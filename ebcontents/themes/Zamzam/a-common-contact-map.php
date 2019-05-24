@@ -1,13 +1,3 @@
-<script src='https://maps.googleapis.com/maps/api/js?v=3.exp&amp;libraries=places'></script>
-<script>
-function initialize() {
-var myLatlng = new google.maps.LatLng(23.814226,90.359259);
-var mapOptions = {zoom: 12,center: myLatlng}
-var map = new google.maps.Map(document.getElementById('map_canvas'), mapOptions);
-var marker = new google.maps.Marker({position: myLatlng, map: map, title: '<?php echo domain; ?>'});
-}
-google.maps.event.addDomListener(window, 'load', initialize);
-</script>
 <?php include_once(ebformmail.'/formMail.php'); ?>
 <?php $formMail = new ebapps\formmail\formMail(); ?>
 <?php include_once (ebformkeys.'/valideForm.php'); ?>
@@ -147,7 +137,7 @@ exit();
 <section id='contact' class='contact'>
 <div class='container'>
     <div class='row'>
-      <div class='col-xs-12 col-sm-5'>
+      <div class='col-xs-12 col-sm-6'>
         <h2>E-MAIL US</h2>
         <form method='post' name='eBformName'>
           <fieldset>
@@ -168,12 +158,12 @@ exit();
                 $captcha = $cap -> captchaFun();
                 echo "<b class='btn btn-Captcha btn-sm gradient'>$captcha</b>";
                 ?>
-                <input type='text' name='answer' placeholder='Enter captcha here' required />
+                <input class='form-control' type='text' name='answer' placeholder='Enter captcha here' required />
                 <div class='buttons-set'><button type='submit' name='contact_button' title='Submit' class='button submit'> <span> Submit </span> </button></div>
           </fieldset>
         </form>
       </div>
-      <div class='col-xs-12 col-sm-7'>
+      <div class='col-xs-12 col-sm-6'>
         <h2>SITE LOCATION</h2>
         <?php include_once(eblogin.'/registration_page.php');
         $social = new ebapps\login\registration_page();
@@ -184,7 +174,9 @@ exit();
         <?php if(!empty($business_bd_bkash_id)){echo "<p><i class='fa fa-mobile fa-lg' aria-hidden='true'> $business_bd_bkash_id</i></p>"; } ?>
         <?php if(!empty($business_full_address)){echo "<p><i class='fa fa-location-arrow fa-lg'></i> $business_full_address</p>"; } ?>
         <?php }} ?>
-        <div id='map_canvas'></div>
+        <div>
+        <?php include_once (eblayout.'/a-common-google-map.php'); ?>
+        </div>
       </div>
     </div>
   </div>

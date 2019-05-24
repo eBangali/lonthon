@@ -1,6 +1,7 @@
+<?php include_once (eblayout.'/a-common-header-meta-scripts.php'); ?>
 <?php include_once (eblayout.'/a-common-header.php'); ?>
 <?php include_once (eblayout.'/a-common-navebar.php'); ?>
-<?php include_once ('searchForIndex.php'); ?>
+<?php include_once('search.php'); ?>
 <?php include_once ('carousel.php'); ?>
 <section class='contentIndex'>
 <h2 class='text-uppercase text-center'>Blog Posts</h2>
@@ -15,6 +16,8 @@
 <div class='col-right sidebar col-md-3 col-xs-12'>
 <?php include_once ('rightWidgetForPost.php'); ?>
 </div>
-</div>
+</div
+><?php include_once ('video.php'); ?>
 </div>
 </section>
+<?php include_once (eblayout.'/a-common-footer.php'); ?>

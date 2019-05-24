@@ -21,7 +21,6 @@
 <div class='well'>
 <h2 title='Please change your password'>Please change your password</h2>
 </div>
-<div class='well'>
 <?php include_once (ebHashKey.'/hashPassword.php'); ?>
 <?php include_once (ebformkeys.'/valideForm.php'); ?>
 <?php $formKey = new ebapps\formkeys\valideForm(); ?>
@@ -64,7 +63,7 @@ $password_error = "<b class='text-warning'>password required</b>";
 $error =1;
 }
 /* valitation password */
-elseif(! preg_match('/^[A-Za-z0-9\-\_\[\]\+\=\)\(\*\&\^\%\$\#\@\!]{6,16}$/',$password))
+elseif(! preg_match('/^[A-Za-z0-9\-\_\[\]\+\=\)\(\*\&\^\%\$\#\@\!]{6,32}$/',$password))
 {
 $password_error = "<b class='text-warning'>Passowrd?</b>";
 $error =1;
@@ -80,7 +79,7 @@ $confirmpassword_error = "<b class='text-warning'>Confirm Password required</b>"
 $error =1;
 }
 /* valitation confirmpassword  */
-elseif (! preg_match('/^[A-Za-z0-9\-\_\[\]\+\=\)\(\*\&\^\%\$\#\@\!]{6,16}$/',$confirmpassword))
+elseif (! preg_match('/^[A-Za-z0-9\-\_\[\]\+\=\)\(\*\&\^\%\$\#\@\!]{6,32}$/',$confirmpassword))
 {
 $confirmpassword_error = "<b class='text-warning'>Confirm Password?</b>";
 $error =1;
@@ -102,12 +101,12 @@ $ha = new ebapps\hashpassword\hashPassword();
 $password = $ha -> hashPassword($password);
 $user->changepassword($password);
 }
-else{echo '<b>Password does not match</b>';}
+else{echo '<pre><b>Password does not match</b></pre>';}
 }
 }
 }
 ?>
-
+<div class='well'>
 <form method='post'>
 <fieldset class='group-select'>
 <ul>

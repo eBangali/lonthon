@@ -60,7 +60,7 @@ $usernameemail_error = "<b class='text-warning'>Username or eMail or Mobile Numb
 $error =1;
 } 
 /* valitation fullname  */
-elseif (! preg_match("/^[a-z0-9\@\.\_]{2,32}$/",$usernameemail))
+elseif (! preg_match("/^[a-z0-9\@\.\_]{2,64}$/",$usernameemail))
 {
 $usernameemail_error = "<b class='text-warning'>Username or eMail or Mobile Number?</b>";
 $error =1;
@@ -84,8 +84,8 @@ $user -> retrieve($usernameemail);
 <ul>
 <input type='hidden' name='form_key' value='<?php echo $formKey->outputKey(); ?>'>
 <?php echo $formKey_error; ?>
-<li>Username or Email or Mobile Number: <?php echo $usernameemail_error;  ?></li>
-<li><input class='form-control' type='text' name='usernameemail' placeholder='username or eMail' required autofocus /></li>
+<li>Username or Email or Mobile: <?php echo $usernameemail_error;  ?></li>
+<li><input class='form-control' type='text' name='usernameemail' placeholder='Username or Email or Mobile' required autofocus /></li>
 <div class='buttons-set'>
 <button type='submit' name='retrieve' title='Submit' class='button submit'> <span> Submit </span> </button>
 </div>
@@ -95,8 +95,9 @@ $user -> retrieve($usernameemail);
 <a href='<?php echo outAccessLink; ?>/signup.php'>Register new user</a>
 </div>
 </div>
+
 <div class='col-xs-12 col-md-3 sidebar-offcanvas'>
-<?php include_once (eblayout.'/a-common-ad-right.php'); ?>
+
 </div>
 </div>
 </div>

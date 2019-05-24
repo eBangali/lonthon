@@ -8,12 +8,15 @@ namespace ebapps\login;
 include_once(ebbd.'/dbconfig.php');
 use ebapps\dbconnection\dbconfig;
 /*** ***/
+include_once(ebbd.'/eBConDb.php');
+use ebapps\dbconnection\eBConDb;
+
 class login extends dbconfig
 {
 /*** for login process ***/
-public function login2system($ebusername, $ebpassword)
+public function login2system($username, $password)
 {
-$check = $this -> ebmysqli -> query("SELECT username, password, active, full_name, mobileactive, account_type, member_level, address_verified FROM excessusers WHERE username='$ebusername' and password='$ebpassword'");
+$check = eBConDb::eBgetInstance()->eBgetConection()-> query("SELECT username, password, active, full_name, mobileactive, account_type, member_level, address_verified, omrusername FROM excessusers WHERE username='$username' and password='$password'");
 $userinfo = mysqli_fetch_array($check);
 if ($check -> num_rows == 1)
 {
@@ -25,6 +28,7 @@ $this->activeMobil = $_SESSION['activeMobile'] = $userinfo['mobileactive'];
 $this->membertype = $_SESSION['membertype'] = $userinfo['account_type'];
 $this->memberlevel = $_SESSION['memberlevel'] = $userinfo['member_level'];
 $this->addressverified = $_SESSION['addressverified'] = $userinfo['address_verified'];
+$this->omrusername = $_SESSION['omrusername'] = $userinfo['omrusername'];
 }
 }
 /*** For email verification ***/
@@ -78,7 +82,7 @@ $this->login2system(isset($_SESSION['username']), isset($_SESSION['password']));
 public function retrieve($usernameemail)
 {
 $query = "SELECT username, password, email, mobile from excessusers WHERE username='$usernameemail' OR email='$usernameemail' OR mobile ='$usernameemail'";
-$result = $this->ebmysqli->query($query);
+$result = eBConDb::eBgetInstance()->eBgetConection()->query($query);
 $num_result = $result->num_rows;
 $userinfo = mysqli_fetch_array($result);
 if ($num_result == 1)
@@ -205,7 +209,7 @@ $message .="<td>Username: ".$userinfo['username']."</td>";
 $message .="</tr>";
 //
 $message .="<tr>";
-$message .="<td>Username: ".$userinfo['password']."</td>";
+$message .="<td>Temporary Password: ".$userinfo['password']."</td>";
 $message .="</tr>";
 //
 $message .="<tr>";

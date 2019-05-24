@@ -81,5 +81,5 @@ $category ->menu_category_contents();
 </div>
 
 <!-- mgk wishlist -->
-<div class='mgk-wishlist'><a title='My Wishlist' href='<?php echo outContentsLink; ?>/contents/wishlist/'><i class='fa fa-heart'></i><span class='title-wishlist hidden-xs'>Wishlist</span></a></div>
+<div class='mgk-wishlist'><a title='My Likelist' href='<?php echo outContentsLink; ?>/contents/wishlist/'><i class='fa fa-heart'></i><span class='title-wishlist hidden-xs'>Likelist</span></a></div>
 </div>

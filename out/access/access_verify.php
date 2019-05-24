@@ -13,7 +13,6 @@
 <div class='well'>
 <h2 title='eMail verification'>eMail verification</h2>
 </div>
-<div class='well'> 
 <?php include_once (eblogin.'/registration_page.php'); ?>
 <?php
 if(isset($_GET['email']) && !empty($_GET['email']) && isset($_GET['hash']) && !empty($_GET['hash'])){
@@ -31,10 +30,9 @@ $user -> varify_email($email, $hash);
 }
 ?>
 </div>
-</div>
 <div class='col-xs-12 col-md-3 sidebar-offcanvas'>
 <?php include_once (eblayout.'/a-common-ad-right.php'); ?>
 </div>
 </div>
 </div>
-<?php include_once (eblayout.'/a-common-footer.php'); ?>
+<?php include_once (eblayout.'/a-common-footer-for-admin.php'); ?>

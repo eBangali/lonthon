@@ -7,7 +7,7 @@
 <?php include_once (ebaccess.'/access_permission_admin_minimum.php'); ?>
 <div class='container'>
 <div class='row'>
-<div class='col-xs-12'>
+<div class='col-xs-12 col-md-9'>
 <div class='well'>
 <h2 title='User Info'>User Info</h2>
 </div>
@@ -22,7 +22,7 @@ $updateAccount ="<div class='table-responsive'>";
 $updateAccount .="<table class='table'>";
 $updateAccount .="<thead>";
 $updateAccount .="<tr>";
-$updateAccount .="<th>Eidt</th>";
+$updateAccount .="<th>Edit</th>";
 $updateAccount .="<th>Username</th>";
 $updateAccount .="<th>Position</th>";
 $updateAccount .="<th>Power</th>";
@@ -32,8 +32,9 @@ $updateAccount .="<th>Mobile</th>";
 $updateAccount .="<th>Mobile Verified</th>";
 $updateAccount .="<th>eMail</th>";
 $updateAccount .="<th>eMail Verified</th>";
+$updateAccount .="<th>IP Location</th>";
 $updateAccount .="<th>Address Verified</th>";
-$updateAccount .="<th>A.V.CODE</th>";
+$updateAccount .="<th>Address Verification Code</th>";
 $updateAccount .="</tr>";
 $updateAccount .="</thead>";
 $updateAccount .="<tbody>";
@@ -82,6 +83,11 @@ $updateAccount .="$mobileactive";
 $updateAccount .="</td>";
 $updateAccount .="<td>$email</td>";
 $updateAccount .="<td>$active</td>";
+//
+$ip = $user_ip;
+$details = json_decode(file_get_contents("http://ipinfo.io/{$ip}/json"));
+//
+$updateAccount .="<td>$details->city, $details->region, $details->country</td>";
 $updateAccount .="<td>$address_verified</td>";
 $updateAccount .="<td>$address_verification_codes</td>";
 $updateAccount .="</tr>";
@@ -93,6 +99,9 @@ $updateAccount .="</div>";
 echo $updateAccount;
 ?>
 </div>
+</div>
+<div class='col-xs-12 col-md-3'>
+<?php include_once ("access-my-account.php"); ?>
 </div>
 </div>
 </div>	

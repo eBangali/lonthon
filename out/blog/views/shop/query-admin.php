@@ -27,7 +27,7 @@ if($formKey->read_and_check_formkey($form_key) == true)
 }
 else
 {
-$formKey_error = "Sorry the server is currently too busy please try again later.";
+$formKey_error = "<b class='text-warning'>Sorry the server is currently too busy please try again later.</b>";
 $error = 1;
 }
 }
@@ -40,9 +40,10 @@ $error =1;
 }
 elseif (! preg_match("/^([a-zA-Z0-9\<\,\>\.\?\/\|\'\"\!\@\#\(\)\-\_\=\+\ ]{3,1000})/",$blogs_comment_details))
 {
-$blogs_comment_details_error = "Query???";
+$blogs_comment_details_error = "<b class='text-warning'>Whitespace, single or double quotes, certain special characters are not allowed.</b>";
 $error =1;
 }
+
 else
 {
 $blogs_comment_details = $sanitization -> testArea($_POST["blogs_comment_details"]);
@@ -73,7 +74,7 @@ $queryMe .= $formKey->outputKey();
 $queryMe .=">";
 $queryMe .="$formKey_error"; 
 $queryMe .="<input type='hidden' name='blogs_id_in_comments' value=".$blogs_id_in_comments." />"; 
-$queryMe .="Query Description: $blogs_comment_details_error <textarea class='form-control' name='blogs_comment_details' rows='6' required autofocus placeholder='Please use  Google Drive, WeTransfer, Dropbox to link a file.'></textarea>";
+$queryMe .="Query Description: $blogs_comment_details_error <textarea class='form-control' name='blogs_comment_details' rows='6' required autofocus placeholder='Please use  Google Drive, WeTransfer, Dropbox to link a file. Certain special characters are not allowed.' id='HowToDo'></textarea>";
 $queryMe .="<div class='buttons-set'><button type='submit' name='contents_submit_query' title='Reply' class='button submit'><span> Reply </span> </button></div>"; 
 $queryMe .="</fieldset>";
 $queryMe .="</form>";

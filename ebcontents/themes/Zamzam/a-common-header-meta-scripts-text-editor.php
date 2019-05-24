@@ -8,15 +8,13 @@
 <link rel='stylesheet' type='text/css' href='<?php echo themeResource; ?>/css/simple-line-icons.css' media='all'>
 <link rel='stylesheet' type='text/css' href='<?php echo themeResource; ?>/css/owl.carousel.css'>
 <link rel='stylesheet' type='text/css' href='<?php echo themeResource; ?>/css/owl.theme.css'>
-<link rel='stylesheet' type='text/css' href='<?php echo themeResource; ?>/css/jquery.bxslider.css'>
 <link rel='stylesheet' type='text/css' href='<?php echo themeResource; ?>/css/jquery.mobile-menu.css'>
 <link rel='stylesheet' type='text/css' href='<?php echo themeResource; ?>/css/style.css' media='all'>
 <link rel='stylesheet' type='text/css' href='<?php echo themeResource; ?>/css/revslider.css'>
 <link rel='stylesheet' type='text/css' href='<?php echo themeResource; ?>/dist/summernote.css'>
-
 <link href='<?php echo themeResource; ?>/css/animate.7.10.css' rel='stylesheet'>
 <!--Custom CSS-->
-<link rel='stylesheet' type='text/css' href='<?php echo themeResource; ?>/css/main.7.10.css'>
+<link rel='stylesheet' type='text/css' href='<?php echo themeResource; ?>/css/main.8.00.css'>
 <script src='<?php echo themeResource; ?>/js/jquery.min.js'></script>
 <!-- Google Fonts -->
 <link href='https://fonts.googleapis.com/css?family=Open+Sans:700,600,800,400' rel='stylesheet' type='text/css'>

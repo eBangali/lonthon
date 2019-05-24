@@ -14,10 +14,14 @@
 <div class='well'>
 <h2 title='Admin Accounting Setup'>Admin Accounting Setup</h2>
 </div>
-<div class='well'>
 <?php include_once (eblogin.'/registration_page.php'); ?>
 <?php include_once (ebformkeys.'/valideForm.php'); ?>
 <?php $formKey = new ebapps\formkeys\valideForm(); ?>
+<?php
+/* Data Sanitization */
+include_once(ebsanitization.'/sanitization.php'); 
+$sanitization = new ebapps\sanitization\formSanitization();
+?>
 <?php
 /* Initialize valitation */
 $error = 0;
@@ -26,15 +30,12 @@ $business_name_error = '*';
 $business_full_address_error = '*';
 $business_paypal_id_error = '*';
 $business_bd_bkash_id_error = '*';
+$stripe_secret_key_error = '*';
+$stripe_publishable_key_error = '*';
 $business_geolocation_longitude_error = '*';
 $business_geolocation_latitude_error = '*';
 $cash_on_delivery_distance_meter_error = '*';
 
-?>
-<?php
-/* Data Sanitization */
-include_once(ebsanitization.'/sanitization.php'); 
-$sanitization = new ebapps\sanitization\formSanitization();
 ?>
 <?php
 if(isset($_REQUEST['BusinessSettings']))
@@ -72,11 +73,11 @@ else
 {
 $business_name = $sanitization -> test_input($_POST['business_name']);
 }
+
 /* business_full_address */
 if (empty($_REQUEST['business_full_address']))
 {
 $business_full_address_error = "<b class='text-warning'>Legal Business Full Address Required.</b>";
-$error =1;
 } 
 /* valitation business_full_address Tested*/
 elseif (!preg_match('/^([A-Za-z0-9\.\,\- ]{3,160})$/',$business_full_address))
@@ -93,7 +94,7 @@ $business_full_address = $sanitization -> test_input($_POST['business_full_addre
 if (empty($_REQUEST['business_paypal_id']))
 {
 $business_paypal_id_error = "<b class='text-warning'>PayPal ID Required</b>";
-$error =1;
+$error = 1;
 } 
 /* valitation eMail  Tested allow (info@bd.com)(info234_bd@google.com)*/
 elseif (!preg_match('/^[a-z0-9._]+@[a-z0-9.\-]{1,16}[a-z]{2,4}$/',$business_paypal_id))
@@ -115,7 +116,6 @@ $business_paypal_id = $sanitization -> test_input($_POST['business_paypal_id']);
 if (empty($_REQUEST['business_bd_bkash_id']))
 {
 $business_bd_bkash_id_error = "<b class='text-warning'>bKash ID Required.</b>";
-$error =1;
 } 
 /* valitation business_bd_bkash_id  Tested*/
 elseif (!preg_match('/^([A-Za-z0-9\.\,\- ]{3,160})$/',$business_bd_bkash_id))
@@ -128,11 +128,42 @@ else
 $business_bd_bkash_id = $sanitization -> test_input($_POST['business_bd_bkash_id']);
 }
 
+/* stripe_secret_key */
+if (empty($_REQUEST['stripe_secret_key']))
+{
+$stripe_secret_key_error = "<b class='text-warning'>Secret Key</b>";
+} 
+/* valitation stripe_secret_key  Tested*/
+elseif (!preg_match('/^([A-Za-z0-9\.\,\-]{3,160})$/',$stripe_secret_key))
+{
+$stripe_secret_key_error = "<b class='text-warning'>Secret Key</b>";
+$error =1;
+}
+else 
+{
+$stripe_secret_key = $sanitization -> test_input($_POST['stripe_secret_key']);
+}
+
+/* stripe_publishable_key */
+if (empty($_REQUEST['stripe_publishable_key']))
+{
+$stripe_publishable_key_error = "<b class='text-warning'>Publishable Key</b>";
+} 
+/* valitation stripe_publishable_key  Tested*/
+elseif (!preg_match('/^([A-Za-z0-9\.\,\-]{3,160})$/',$stripe_publishable_key))
+{
+$stripe_publishable_key_error = "<b class='text-warning'>Publishable Key</b>";
+$error =1;
+}
+else 
+{
+$stripe_publishable_key = $sanitization -> test_input($_POST['stripe_publishable_key']);
+}
+
 /* business_geolocation_longitude */
 if (empty($_REQUEST['business_geolocation_longitude']))
 {
 $business_geolocation_longitude_error = "<b class='text-warning'>GEO Location Longitude Required.</b>";
-$error =1;
 } 
 /* valitation business_geolocation_longitude Tested*/
 elseif (!preg_match('/^[0-9.]{1,16}$/',$business_geolocation_longitude))
@@ -148,7 +179,6 @@ $business_geolocation_longitude = $sanitization -> test_input($_POST['business_g
 if (empty($_REQUEST['business_geolocation_latitude']))
 {
 $business_geolocation_latitude_error = "<b class='text-warning'>GEO Location Latitude Required</b>";
-$error =1;
 } 
 /* valitation business_geolocation_latitude Tested*/
 elseif (!preg_match('/^[0-9.]{1,16}$/',$business_geolocation_latitude))
@@ -164,7 +194,6 @@ $business_geolocation_latitude = $sanitization -> test_input($_POST['business_ge
 if (empty($_REQUEST['cash_on_delivery_distance_meter']))
 {
 $cash_on_delivery_distance_meter_error = "<b class='text-warning'>Meter required.</b>";
-$error =1;
 }
 /* valitation cash_on_delivery_distance_meter Tested*/
 elseif (!preg_match('/^[0-9]{1,6}$/',$cash_on_delivery_distance_meter))
@@ -181,11 +210,12 @@ $cash_on_delivery_distance_meter = $sanitization -> test_input($_POST['cash_on_d
 if($error == 0){
 $user = new ebapps\login\registration_page();
 extract($_REQUEST);
-$user->update_merchant_business_details($business_name, $business_full_address, $business_paypal_id, $business_bd_bkash_id, $business_geolocation_longitude, $business_geolocation_latitude, $cash_on_delivery_distance_meter);
+$user->update_merchant_business_details($business_name, $business_full_address, $business_paypal_id, $business_bd_bkash_id, $stripe_secret_key, $stripe_publishable_key, $business_geolocation_longitude, $business_geolocation_latitude, $cash_on_delivery_distance_meter);
 }
 //
 }
 ?>
+<div class='well'>
 <?php
 $obj = new ebapps\login\registration_page();
 $obj->update_business_info_read();
@@ -207,17 +237,25 @@ $updateBusinessInfo .="<li>Business Username: $business_username</li>";
 $updateBusinessInfo .="<li>Legal Company/ Brand name: $business_name_error</li>";
 $updateBusinessInfo .="<li><input class='form-control' type='text' name='business_name' placeholder='' required autofocus value='$business_name' /></li>"; 
 $updateBusinessInfo .="<li>Business Address: $business_full_address_error</li>";
-$updateBusinessInfo .="<li><input class='form-control' type='text' name='business_full_address' placeholder='' required autofocus  value='$business_full_address'/></li>";
+$updateBusinessInfo .="<li><input class='form-control' type='text' name='business_full_address'  value='$business_full_address'/></li>";
 $updateBusinessInfo .="<li>PayPal ID : $business_paypal_id_error</li>";
-$updateBusinessInfo .="<li><input class='form-control' type='text' name='business_paypal_id' placeholder='' required autofocus value='$business_paypal_id' /></li>";
+$updateBusinessInfo .="<li><input class='form-control' type='text' name='business_paypal_id' value='$business_paypal_id' /></li>";
+
 $updateBusinessInfo .="<li>bKash ID : $business_bd_bkash_id_error</li>";
-$updateBusinessInfo .="<li><input class='form-control' type='text' name='business_bd_bkash_id' placeholder='' required autofocus value='$business_bd_bkash_id' /></li>";
+$updateBusinessInfo .="<li><input class='form-control' type='text' name='business_bd_bkash_id' value='$business_bd_bkash_id' /></li>";
+	
+$updateBusinessInfo .="<li>Stripe Secret Key : $stripe_secret_key_error</li>";
+$updateBusinessInfo .="<li><input class='form-control' type='text' name='stripe_secret_key' value='$stripe_secret_key' /></li>";
+
+$updateBusinessInfo .="<li>Stripe Publishable Key : $stripe_publishable_key_error</li>";
+$updateBusinessInfo .="<li><input class='form-control' type='text' name='stripe_publishable_key' value='$stripe_publishable_key' /></li>";
+	
 $updateBusinessInfo .="<li>Business GPS Longitude : $business_geolocation_longitude_error</li>";
-$updateBusinessInfo .="<li><input class='form-control' type='text' name='business_geolocation_longitude' placeholder='' required autofocus value='$business_geolocation_longitude' /></li>";
+$updateBusinessInfo .="<li><input class='form-control' type='text' name='business_geolocation_longitude' value='$business_geolocation_longitude' /></li>";
 $updateBusinessInfo .="<li>Business GPS Latitude : $business_geolocation_latitude_error</li>";
-$updateBusinessInfo .="<li><input class='form-control' type='text' name='business_geolocation_latitude' placeholder='' required autofocus value='$business_geolocation_latitude' /></li>";
+$updateBusinessInfo .="<li><input class='form-control' type='text' name='business_geolocation_latitude' value='$business_geolocation_latitude' /></li>";
 $updateBusinessInfo .="<li>Cash on Delivery Distance in Meter: $cash_on_delivery_distance_meter_error</li>";
-$updateBusinessInfo .="<li><input class='form-control' type='text' name='cash_on_delivery_distance_meter' placeholder='' required autofocus value='$cash_on_delivery_distance_meter' /></li>";  
+$updateBusinessInfo .="<li><input class='form-control' type='text' name='cash_on_delivery_distance_meter' value='$cash_on_delivery_distance_meter' /></li>";  
 $updateBusinessInfo .="<div class='buttons-set'><button type='submit' name='BusinessSettings' title='Update' class='button submit'> <span> Update </span> </button></div>";
 $updateBusinessInfo .="</ul>";
 $updateBusinessInfo .="</fieldset>";

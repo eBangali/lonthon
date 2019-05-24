@@ -7,7 +7,7 @@ namespace ebapps\sanitization;
 *************************************************************/
 include_once(ebbd.'/dbconfig.php');
 use ebapps\dbconnection\dbconfig;
-/*** ***/
+
 class formSanitization extends dbconfig
 {
 public function test_input($data)
@@ -16,6 +16,7 @@ public function test_input($data)
 $data = trim($data);
 $data = htmlspecialchars($data);
 $data = json_encode($data);
+/* if your use addslashes you have to use stripslashes to print */
 $data = addslashes($data);
 return $data;
 }
@@ -34,10 +35,11 @@ return checkdnsrr($eMailDomain[1]);
 public function testArea($data)
 {
 $data = trim($data);
-$data = strip_tags($data, "<ul><ol><li><strong><b><i><em>");
+$data = strip_tags($data, "<p><ul><ol><li><strong><b><i><em>");
 $data = htmlspecialchars($data);
 $data = urlencode($data);
 $data = json_encode($data);
+/* if your use addslashes you have to use stripslashes to print */
 $data = addslashes($data);
 return $data;
 }

@@ -1,8 +1,4 @@
 <?php include_once (dirname(dirname(dirname(__FILE__))).'/initialize.php'); ?>
-<?php include_once (eblayout.'/a-common-header-icon.php'); ?>
-<?php include_once (eblayout.'/a-common-header-meta-scripts.php'); ?>
-<?php include_once (eblayout.'/a-common-header.php'); ?>
-<?php include_once (eblayout.'/a-common-navebar.php'); ?>
 <?php include_once (ebHashKey.'/hashPassword.php'); ?>
 <?php include_once (ebformkeys.'/valideForm.php'); ?>
 <?php $formKey = new ebapps\formkeys\valideForm(); ?>
@@ -45,9 +41,9 @@ $username_error = "<b class='text-warning'>Username required</b>";
 $error =1;
 }
 /* valitation username */
-elseif(! preg_match('/^[a-z0-9_]{2,64}$/',$username))
+elseif(! preg_match('/^[a-z0-9]{2,32}$/',$username))
 {
-$username_error = "<b class='text-warning'>Use no-whitespace mini 2 max 64</b>";
+$username_error = "<b class='text-warning'>Use no-whitespace mini 2 max 32</b>";
 $error =1;
 }
 else
@@ -57,7 +53,7 @@ $username = $sanitization->test_input($_POST['username']);
 /* password */
 if (empty($_REQUEST['password']))
 {
-$password_error = "<b class='text-warning'>Password required</b>";
+$password_error = "<b class='text-warning'>Temporary Password required</b>";
 $error =1;
 }
 /* valitation password  */
@@ -80,9 +76,13 @@ $user -> login2system($username, $password);
 }
 ?>
 <?php
-if(!$user->getsession())
+if(empty($_SESSION['username']))
 {
 ?>
+<?php include_once (eblayout.'/a-common-header-icon.php'); ?>
+<?php include_once (eblayout.'/a-common-header-meta-scripts.php'); ?>
+<?php include_once (eblayout.'/a-common-header.php'); ?>
+<?php include_once (eblayout.'/a-common-navebar.php'); ?>
 <div class='container'>
 <div class='row row-offcanvas row-offcanvas-right'>
 <div class='col-xs-12 col-md-2'>
@@ -100,7 +100,7 @@ if(!$user->getsession())
 <?php echo $formKey_error; ?>
 <li>Username: <?php echo $username_error; ?></li>
 <li><input class='form-control' type='text' name='username' placeholder='username' required autofocus /></li>
-<li>Password: <?php echo $password_error; ?></li>
+<li>Temporary Password: <?php echo $password_error; ?></li>
 <li><input class='form-control' type='password' name='password' placeholder='password' required autofocus /></li>
 <div class='buttons-set'>
 <button type='submit' name='login' title='Login' class='button submit'> <span> Login </span> </button>

@@ -1,16 +1,27 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <dwsync>
-<file name="contents-add-category.php" server="ebangali.com" local="131748898839176180" remote="131748538800000000" Dst="0" />
-<file name="contents-my-account.php" server="ebangali.com" local="131692961060000000" remote="131721827400000000" Dst="0" />
-<file name="contents-add-items.php" server="ebangali.com" local="131703512813097753" remote="131703152400000000" Dst="0" />
-<file name="contents-add-items_edit.php" server="ebangali.com" local="131722187992821195" remote="131721827400000000" Dst="0" />
-<file name="contents-add-sub-category.php" server="ebangali.com" local="131692965960000000" remote="131698432200000000" Dst="0" />
-<file name="contents-admin-view-items.php" server="ebangali.com" local="131693822040000000" remote="131698432200000000" Dst="0" />
-<file name="contents-approve-query.php" server="ebangali.com" local="131704018028119456" remote="131703657600000000" Dst="0" />
-<file name="contents-image-upload.php" server="ebangali.com" local="131748888329082657" remote="131748528000000000" Dst="0" />
-<file name="contents-items-status.php" server="ebangali.com" local="131685284720000000" remote="131698432800000000" Dst="0" />
-<file name="contents.php" server="ebangali.com" local="131682611000000000" remote="131698432800000000" Dst="0" />
-<file name="contentsMrssGenerator.php" server="ebangali.com" local="131659069020000000" remote="131698432800000000" Dst="0" />
-<file name="contents_select_b_from_b.php" server="ebangali.com" local="131691926360000000" remote="131698432800000000" Dst="0" />
-<file name="index.php" server="ebangali.com" local="130889454980000000" remote="131698432800000000" Dst="0" />
+<file name="contents-add-category.php" server="ebangali.com" local="131761735680000000" remote="131835834000000000" Dst="0" />
+<file name="contents-add-items.php" server="ebangali.com" local="131807243061596427" remote="131835834000000000" Dst="0" />
+<file name="contents-add-items_edit.php" server="ebangali.com" local="131811320305415763" remote="131835834000000000" Dst="0" />
+<file name="contents-add-sub-category.php" server="ebangali.com" local="131761735700000000" remote="131835834000000000" Dst="0" />
+<file name="contents-admin-view-items.php" server="ebangali.com" local="131807264174638409" remote="131835834000000000" Dst="0" />
+<file name="contents-approve-query.php" server="ebangali.com" local="131761735700000000" remote="131835834000000000" Dst="0" />
+<file name="contents-image-upload.php" server="ebangali.com" local="131761735720000000" remote="131835834000000000" Dst="0" />
+<file name="contents-items-status.php" server="ebangali.com" local="131807261473677101" remote="131835834000000000" Dst="0" />
+<file name="contents-my-account.php" server="ebangali.com" local="131819087054138205" remote="131835834000000000" Dst="0" />
+<file name="contents_select_b_from_b.php" server="ebangali.com" local="131761735760000000" remote="131835834000000000" Dst="0" />
+<file name="contents.php" server="ebangali.com" local="131804526500286360" remote="131835834000000000" Dst="0" />
+<file name="index.php" server="ebangali.com" local="131761735780000000" remote="131835834000000000" Dst="0" />
+<file name="contents-add-category.php" server="ebangali.com/public_html/" local="132027930768843400" remote="132030323400000000" Dst="0" />
+<file name="contents-add-items.php" server="ebangali.com/public_html/" local="132027930840724979" remote="132030323400000000" Dst="0" />
+<file name="contents-add-items_edit.php" server="ebangali.com/public_html/" local="132027930908289462" remote="132030323400000000" Dst="0" />
+<file name="contents-add-sub-category.php" server="ebangali.com/public_html/" local="132027930996855848" remote="132030323400000000" Dst="0" />
+<file name="contents-admin-view-items.php" server="ebangali.com/public_html/" local="132027948203602952" remote="132030323400000000" Dst="0" />
+<file name="contents-approve-query.php" server="ebangali.com/public_html/" local="132027931186331566" remote="132030323400000000" Dst="0" />
+<file name="contents-image-upload.php" server="ebangali.com/public_html/" local="132027931255083032" remote="132030323400000000" Dst="0" />
+<file name="contents-items-status.php" server="ebangali.com/public_html/" local="132027931329478339" remote="132030323400000000" Dst="0" />
+<file name="contents-my-account.php" server="ebangali.com/public_html/" local="132030712030098140" remote="132030323400000000" Dst="0" />
+<file name="contents.php" server="ebangali.com/public_html/" local="132025633325025108" remote="132030323400000000" Dst="0" />
+<file name="contents_select_b_from_b.php" server="ebangali.com/public_html/" local="132014507293465626" remote="132030323400000000" Dst="0" />
+<file name="index.php" server="ebangali.com/public_html/" local="131761735780000000" remote="132030323400000000" Dst="0" />
 </dwsync>

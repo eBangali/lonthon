@@ -4,7 +4,7 @@
 <?php include_once (eblayout.'/a-common-header-meta-scripts-text-editor.php'); ?>
 <?php include_once (eblayout.'/a-common-header.php'); ?>
 <?php include_once (eblayout.'/a-common-navebar.php'); ?>
-<?php include_once (ebaccess.'/access_permission_staff_minimum.php'); ?>
+<?php include_once (ebaccess."/access_permission_online_minimum.php"); ?>
 <div class='container'>
 <div class='row row-offcanvas row-offcanvas-right'>
 <div class='col-xs-12 col-md-2'>
@@ -64,6 +64,7 @@ $contents_sub_category_error = "*";
 $contents_og_image_title_error = '*';
 $contents_og_image_what_to_do_error = '*';
 $contents_og_image_how_to_solve_error = '*';
+$contents_affiliate_link_error = "*";
 $contents_github_link_error = '*';
 $contents_preview_link_error = '*';
 $contents_video_link_error = '*';
@@ -174,6 +175,22 @@ else
 $contents_og_image_how_to_solve = $sanitization -> testArea($_POST['contents_og_image_how_to_solve']);
 }
 
+/* contents_affiliate_link */ 
+if (!empty($_REQUEST['contents_affiliate_link']))
+{
+/* valitation contents_affiliate_link  */
+if (!preg_match('/^([a-zA-Z0-9\,\.\/\+\?\-\=\_\-]{3,255})$/',$contents_affiliate_link))
+{
+$contents_affiliate_link_error = "<b class='text-warning'>Error on affiliate link</b>";
+$error =1;
+}
+
+else 
+{
+$contents_affiliate_link = $sanitization -> test_input($_POST['contents_affiliate_link']);
+}
+}
+
 /* contents_github_link */ 
 if (!empty($_REQUEST['contents_github_link']))
 {
@@ -240,7 +257,7 @@ $sanitization->test_input($_POST['answer']);
 /* Submition form */
 if($error == 0){
 extract($_REQUEST);
-$merchant->edit_update_contents_item($contents_id,$username_contents,$contents_approved,$contents_category,$contents_sub_category,$contents_og_image_title,$contents_og_image_what_to_do,$contents_og_image_how_to_solve,$contents_github_link,$contents_preview_link,$contents_video_link);
+$merchant->edit_update_contents_item($contents_id,$username_contents,$contents_approved,$contents_category,$contents_sub_category,$contents_og_image_title,$contents_og_image_what_to_do,$contents_og_image_how_to_solve, $contents_affiliate_link, $contents_github_link,$contents_preview_link,$contents_video_link);
 }
 //
 }
@@ -283,6 +300,8 @@ $updatecontents .="<li>What to do? $contents_og_image_what_to_do_error</li>";
 $updatecontents .="<textarea class='form-control' name='contents_og_image_what_to_do' required id='WhatToDo'>$contents_og_image_what_to_do</textarea>";
 $updatecontents .="<li>How to do?: $contents_og_image_how_to_solve_error</li>";
 $updatecontents .="<textarea class='form-control' name='contents_og_image_how_to_solve' required id='HowToDo'>$contents_og_image_how_to_solve</textarea>";
+$updatecontents .="<li>Affiliate link whthout https://www: $contents_affiliate_link_error</li>";
+$updatecontents .="<li><input class='form-control' type='text' name='contents_affiliate_link' value='$contents_affiliate_link' /></li>";	
 $updatecontents .="<li>Download link whthout https://www: $contents_github_link_error</li>";
 $updatecontents .="<li><input class='form-control' type='text' name='contents_github_link' value='$contents_github_link' /></li>";
 $updatecontents .="<li>Preview link whthout https://www: $contents_preview_link_error</li>";
@@ -298,7 +317,7 @@ $cap = new ebapps\captcha\captchaClass();
 $captcha = $cap -> captchaFun();
 $updatecontents .="<b class='btn btn-Captcha btn-sm gradient'>$captcha</b>";
 $updatecontents .="</li>";
-$updatecontents .="<li><input type='text' name='answer' placeholder='Enter captcha' /></li>"; 
+$updatecontents .="<li><input class='form-control' type='text' name='answer' placeholder='Enter captcha' /></li>"; 
 $updatecontents .="<li><input type='hidden' name='contents_approved' value='$contents_approved' /></li>";
 $updatecontents .="<div class='buttons-set'><button type='submit' name='contents_edit' title='Submit' class='button submit'> <span> Submit </span> </button></div>";
 $updatecontents .="</ul>";

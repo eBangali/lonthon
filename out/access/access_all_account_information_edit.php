@@ -14,7 +14,7 @@
 <div class="well">
 <h2 title='Edit Power'>Edit Power</h2>
 </div> 
-<div class="well">
+
 <?php 
 include_once (eblogin.'/registration_page.php'); 
 ?>
@@ -32,7 +32,9 @@ $obj->edit_view_user_power($username);
 /* Initialize valitation */
 $error = 0;
 $formKey_error = "";
-$member_level_error = '*';
+$userpower_level_names_error = '*';
+$userpower_level_power_error = '*';
+$userpower_position_error = '*';
 ?>
 <?php
 /* Data Sanitization */
@@ -58,27 +60,58 @@ $formKey_error = "<b class='text-warning'>Sorry the server is currently too busy
 $error = 1;
 }
 }
-
-/* valitation member_level */
-if (! preg_match('/^([0-8])$/',$member_level))
+/* userpower_position */
+if (empty($_REQUEST['userpower_position']))
 {
-$member_level_error = "<b class='text-warning'>0 to 8?</b>";
+$userpower_position_error = "<b class='text-warning'>Position name required.</b>";
 $error =1;
 }
-else 
+else
 {
-$member_level = $sanitization -> test_input($_POST['member_level']);
+$userpower_position = $sanitization->test_input($_POST['userpower_position']);
 }
+//
+if (isset($_REQUEST['userpower_position']))
+{
+$userpower_position = $_POST['userpower_position'];
+$levelNames = new ebapps\login\registration_page();
+$levelNames->selectedUserPositionToLevelName($userpower_position);
+if($levelNames->data)
+{
+foreach($levelNames->data as $vallevelNames)
+{
+extract($vallevelNames);
+$userpower_level_names = $userpower_level_names;
+}
+}
+}
+//
+if (isset($_REQUEST['userpower_position']))
+{
+$userpower_position = $_POST['userpower_position'];
+$levelPower = new ebapps\login\registration_page();
+$levelPower->selectedUserPositionToPower($userpower_position);
+if($levelPower->data)
+{
+foreach($levelPower->data as $vallevelPower)
+{
+extract($vallevelPower);
+$userpower_level_power = $userpower_level_power;
+}
+}
+}
+
 /* Submition form */
 if($error == 0)
 {
 $user = new ebapps\login\registration_page();
 extract($_REQUEST);
-$user->submit_user_power($username, $member_level,$position_names);
+$user->submit_user_power($username, $userpower_level_names, $userpower_level_power, $userpower_position);
 }
 //
 }
 ?>
+<div class="well">
 <?php
 $obj = new ebapps\login\registration_page();
 $obj->edit_view_user_power($username);
@@ -87,69 +120,43 @@ if($obj->data >= 1)
 foreach($obj->data as $val)
 {
 extract($val);
-$updateBusinessInfo ="<form method='post'>"; 
-$updateBusinessInfo .="<fieldset class='group-select'>";
-$updateBusinessInfo .="<ul>";
-$updateBusinessInfo .="<input type='hidden' name='form_key' value='";
-$updateBusinessInfo .= $formKey->outputKey(); 
-$updateBusinessInfo .="'>"; 
-$updateBusinessInfo .="$formKey_error";
-$updateBusinessInfo .="<li>Username: $username</li>"; 
-$updateBusinessInfo .="<input type='hidden' name='username' value='$username' />";
-$updateBusinessInfo .="<li>Account Type : $account_type </li>"; 
-$updateBusinessInfo .="<li>Member Level : $member_level $member_level_error</li>";
-$updateBusinessInfo .="<li>
-<select class='form-control' name='member_level' placeholder='' required autofocus>
-<option value='8'>Merchant (Power 8)</option>
-<option value='7'>Premier Member (Power 7)</option>
-<option value='6'>Plus Member (Power 6)</option>
-<option value='5'>Basic Member (Power 5)</option>
-<option value='4'>Intro Member (Power 4)</option>
-<option value='3'>Manager (Power 3)</option>
-<option value='2'>CMO (Power 2)</option>
-<option value='2'>CTO (Power 2)</option>
-<option value='2'>Salseman (Power 2)</option>
-<option value='2'>OMR (Power 2)</option>
-<option value='2'>Team Leader (Power 2)</option>
-<option value='2'>Senior Software Engineer (Power 2)</option>
-<option value='1'>UI UX Designer (Power 1)</option>
-<option value='1'>Graphic Designer (Power 1)</option>
-<option value='1'>Online (Power 1)</option>
-<option value='0'>Blocked (Power 0)</option>
-</select> </li>";
-$updateBusinessInfo .="<li>Position : $position_names</li>"; 
-$updateBusinessInfo .="<li><select class='form-control' name='position_names' placeholder='' required autofocus>
-<option value='Merchant'>Merchant (Power 8)</option>
-<option value='Premier Member'>Premier Member (Power 7)</option>
-<option value='Plus Member'>Plus Member (Power 6)</option>
-<option value='Basic Member'>Basic Member (Power 5)</option>
-<option value='Intro Member'>Intro Member (Power 4)</option>
-<option value='Manager'>Manager (Power 3)</option>
-<option value='CMO'>CMO (Power 2)</option>
-<option value='CTO'>CTO (Power 2)</option>
-<option value='Salseman'>Salseman (Power 2)</option>
-<option value='OMR'>OMR (Power 2)</option>
-<option value='Team Leader'>Team Leader (Power 2)</option>
-<option value='Senior Software Engineer'>Senior Software Engineer (Power 2)</option>
-<option value='UI UX Designer'>UI UX Designer (Power 1)</option>
-<option value='Graphic Designer'>Graphic Designer (Power 1)</option>
-<option value='Online'>Online (Power 1)</option>
-<option value='Blocked'>Blocked (Power 0)</option>
-</select> </li>"; 
-$updateBusinessInfo .="<div class='buttons-set'>";
-$updateBusinessInfo .="<button type='submit' name='UpdateMember' title='Update' class='button submit'>Update</button>";
-$updateBusinessInfo .="</div>";
-$updateBusinessInfo .="</ul>";
-$updateBusinessInfo .="</fieldset>";
-$updateBusinessInfo .="</form>";
-echo $updateBusinessInfo;  
+$updateAccountInfo ="<form method='post'>"; 
+$updateAccountInfo .="<fieldset class='group-select'>";
+$updateAccountInfo .="<ul>";
+$updateAccountInfo .="<input type='hidden' name='form_key' value='";
+$updateAccountInfo .= $formKey->outputKey(); 
+$updateAccountInfo .="'>"; 
+$updateAccountInfo .="$formKey_error";
+$updateAccountInfo .="<li>Username: $username</li>"; 
+$updateAccountInfo .="<input type='hidden' name='username' value='$username' />";
+$updateAccountInfo .="<li>Power : $member_level $userpower_level_power_error</li>";
+$updateAccountInfo .="<li>Position : $position_names $userpower_position_error</li>";
+$updateAccountInfo .="<select class='form-control' name='userpower_position'>";
+$objCountry = new ebapps\login\registration_page();
+$objCountry->select_userpower();
+if($objCountry->data)
+{
+foreach($objCountry->data as $val)
+{
+extract($val);
+$updateAccountInfo .="<option value='$userpower_position'>".ucfirst($userpower_position)." (Power $userpower_level_power) "."</option>";
+}
+}
+$updateAccountInfo .="</select>";
+$updateAccountInfo .="<div class='buttons-set'>";
+$updateAccountInfo .="<button type='submit' name='UpdateMember' title='Update' class='button submit'>Update</button>";
+$updateAccountInfo .="</div>";
+$updateAccountInfo .="</ul>";
+$updateAccountInfo .="</fieldset>";
+$updateAccountInfo .="</form>";
+echo $updateAccountInfo;  
 }
 }
 ?>
 </div>
 </div>
 <div class='col-xs-12 col-md-3 sidebar-offcanvas'>
-<?php include_once (eblayout."/a-common-ad-right.php"); ?>
+<?php include_once ("access-my-account.php"); ?>
 </div>
 </div>
 </div>
