@@ -5,16 +5,6 @@
 <?php include_once (eblayout."/a-common-share-button-for-blog.php"); ?>
 <section class='contentIndex'>
 <?php include_once('search.php'); ?>
-<?php
-$objPost = new ebapps\blog\blog(); $objPost -> contents_detail_all_part($contentsid);
-if($objPost->data){foreach($objPost->data as $valPost): extract($valPost);
-$postTitle ="<h1 class='text-uppercase text-center' title='".$objPost->visulString($contents_og_image_title)."'>";
-$postTitle .=ucfirst($contents_og_image_title);
-$postTitle .="</h1>";
-echo $postTitle;
-endforeach;
-}
-?>
 <div class='container'>
 <div class='row row-offcanvas row-offcanvas-right'>
 <div class='col-xs-12 col-md-2'>

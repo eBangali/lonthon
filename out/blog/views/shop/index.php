@@ -4,7 +4,6 @@
 <?php include_once('search.php'); ?>
 <?php include_once ('carousel.php'); ?>
 <section class='contentIndex'>
-<h2 class='text-uppercase text-center'>Blog Posts</h2>
 <div class='container'>
 <div class='row row-offcanvas row-offcanvas-right'>
 <div class='col-xs-12 col-md-2'>
