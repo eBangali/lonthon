@@ -8,6 +8,7 @@
 <meta property='og:description' content='Convert your Idea into Code. Turn your Dreams comes True' />
 <title>Idea | PSD | RWD | Apps</title>
 <meta name='description' content='Convert your Idea into Code. Turn your Dreams comes True' />
+<?php include_once (eblayout.'/a-common-header-meta-noindex.php'); ?>
 <?php include_once (eblayout.'/a-common-header-meta-scripts.php'); ?>
 <?php include_once (eblayout.'/a-common-header.php'); ?>
 <?php include_once (eblayout.'/a-common-navebar.php'); ?>

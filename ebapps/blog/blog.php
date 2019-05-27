@@ -1398,7 +1398,9 @@ include (ebcontents.'/views/layouts/'.$controller.'.php');
 /*** ***/
 public function contents_carousel_all()
 {
-$query = "select * from blog_contents where contents_approved=1 GROUP BY contents_category ORDER BY contents_id DESC LIMIT 15";
+//$query = "select * from blog_contents where contents_approved=1 GROUP BY blog_contents.contents_category ORDER BY blog_contents.contents_id DESC LIMIT 15";
+$query = "select * from blog_contents where contents_approved=1 ORDER BY blog_contents.contents_id DESC LIMIT 15";
+
 $result = eBConDb::eBgetInstance()->eBgetConection()->query($query);
 $num_result = $result->num_rows;
 if($num_result)
@@ -1814,6 +1816,22 @@ public function content_item_details_seo($contentsid)
 {
 $contentsid = intval($contentsid);
 $query = "select * from blog_contents where contents_approved=1 and contents_id=$contentsid";
+$result = eBConDb::eBgetInstance()->eBgetConection()->query($query);
+$num_result = $result->num_rows;
+if($num_result == 1)
+{
+while($rows=$result->fetch_array())
+{
+$this->data[]=$rows;
+}
+}
+return $this->data;
+}
+/*** ***/
+public function content_item_details_seo_last()
+{
+$contentsid = intval($contentsid);
+$query = "select * from blog_contents where contents_approved=1 order by contents_id DESC limit 1";
 $result = eBConDb::eBgetInstance()->eBgetConection()->query($query);
 $num_result = $result->num_rows;
 if($num_result == 1)

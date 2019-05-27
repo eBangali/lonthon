@@ -7,6 +7,7 @@ unset($_SESSION['password']);
 <?php include_once (eblayout.'/a-common-header-icon.php'); ?>
 <title>Sign Out</title>
 <meta name='description' content='Frequently asked questions' />
+<?php include_once (eblayout.'/a-common-header-meta-noindex.php'); ?>
 <?php include_once (eblayout.'/a-common-header-meta-scripts.php'); ?>
 <?php include_once (eblayout.'/a-common-header.php'); ?>
 <?php include_once (eblayout.'/a-common-navebar.php'); ?>

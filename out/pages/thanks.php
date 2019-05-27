@@ -8,6 +8,7 @@
 <meta property='og:description' content='Thanks' />
 <title>Thanks</title>
 <meta name='description' content='Thanks' />
+<?php include_once (eblayout.'/a-common-header-meta-noindex.php'); ?>
 <?php include_once (eblayout.'/a-common-header-meta-scripts.php'); ?>
 <?php include_once (eblayout.'/a-common-header.php'); ?>
 <?php include_once (eblayout.'/a-common-navebar.php'); ?>

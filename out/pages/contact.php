@@ -4,6 +4,7 @@
 <meta property='og:description' content='Contact us' />
 <title>Contact us</title>
 <meta name='description' content='Contact us' />
+<?php include_once (eblayout.'/a-common-header-meta-noindex.php'); ?>
 <?php include_once (eblayout.'/a-common-header-meta-scripts.php'); ?>
 <?php include_once (eblayout.'/a-common-header.php'); ?>
 <?php include_once (eblayout.'/a-common-navebar.php'); ?>

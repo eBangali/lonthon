@@ -1,11 +1,6 @@
 <?php include_once (dirname(dirname(dirname(__FILE__))).'/initialize.php'); ?>
 <?php include_once (eblayout.'/a-common-header-icon.php'); ?>
-<meta property='og:image:url' content='<?php echo themeResource; ?>/images/Advertisement.jpg' />
-<meta property='og:image:type' content='image/jpeg' />
-<meta property='og:image:width' content='1366' />
-<meta property='og:image:height' content='768' />
-<meta property='og:title' content='Sign up' />
-<meta property='og:description' content='Convert your Idea into Code. Turn your Dreams comes True' />
+<?php include_once (eblayout.'/a-common-header-meta-noindex.php'); ?>
 <title>Sign up</title>
 <meta name='description' content='Convert your Idea into Code. Turn your Dreams comes True' />
 <?php include_once (eblayout.'/a-common-header-meta-scripts.php'); ?>

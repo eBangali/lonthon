@@ -18,7 +18,7 @@ const CCEmail = "cc@domain.com";
 /* Mobile Settings */
 const adminMobile = "0000000000000";
 /* Version */
-const version = 9.38;
+const version = "9.38.01";
 /*Salt User Password Hash*/
 const salt_1= "}#f4ga~g%$%#$@!@-wi=6^7-$^R9F|GK5J#~||\E6WT;IO[JN";
 const salt_2= "#$%^&*&*^%^&%$^&*:?#<--!<>";

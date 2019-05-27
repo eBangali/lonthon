@@ -1,6 +1,7 @@
 <?php include_once (dirname(dirname(dirname(__FILE__))).'/initialize.php'); ?>
 <?php include_once (eblogin.'/session_access_retrive.inc.php'); ?>
 <?php include_once (eblayout.'/a-common-header-icon.php'); ?>
+<?php include_once (eblayout.'/a-common-header-meta-noindex.php'); ?>
 <meta property='og:image:url' content='<?php echo themeResource; ?>/images/Advertisement.jpg' />
 <meta property='og:image:type' content='image/jpeg' />
 <meta property='og:image:width' content='1366' />

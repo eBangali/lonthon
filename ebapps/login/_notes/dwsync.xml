@@ -6,10 +6,10 @@
 <file name="session.inc.php" server="ebangali.com" local="131761729040000000" remote="131835829800000000" Dst="0" />
 <file name="session_access_retrive.inc.php" server="ebangali.com" local="131761729060000000" remote="131835829800000000" Dst="0" />
 <file name="session.inc_verify.php" server="ebangali.com" local="131761729040000000" remote="131835829800000000" Dst="0" />
-<file name="index.php" server="ebangali.com/public_html/" local="131761729020000000" remote="132030319200000000" Dst="0" />
-<file name="login.php" server="ebangali.com/public_html/" local="132028908070388166" remote="132030319200000000" Dst="0" />
-<file name="registration_page.php" server="ebangali.com/public_html/" local="132024978091220431" remote="132030319200000000" Dst="0" />
-<file name="session.inc.php" server="ebangali.com/public_html/" local="131761729040000000" remote="132030319200000000" Dst="0" />
-<file name="session.inc_verify.php" server="ebangali.com/public_html/" local="131761729040000000" remote="132030319200000000" Dst="0" />
-<file name="session_access_retrive.inc.php" server="ebangali.com/public_html/" local="131761729060000000" remote="132030319200000000" Dst="0" />
+<file name="index.php" server="ebangali.com/public_html/" local="131761729020000000" remote="132032055600000000" Dst="0" />
+<file name="login.php" server="ebangali.com/public_html/" local="132028908070388166" remote="132032055600000000" Dst="0" />
+<file name="registration_page.php" server="ebangali.com/public_html/" local="132024978091220431" remote="132032055600000000" Dst="0" />
+<file name="session.inc.php" server="ebangali.com/public_html/" local="131761729040000000" remote="132032055600000000" Dst="0" />
+<file name="session.inc_verify.php" server="ebangali.com/public_html/" local="131761729040000000" remote="132032055600000000" Dst="0" />
+<file name="session_access_retrive.inc.php" server="ebangali.com/public_html/" local="131761729060000000" remote="132032055600000000" Dst="0" />
 </dwsync>

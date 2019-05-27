@@ -1,6 +1,7 @@
 <?php include_once (dirname(dirname(dirname(__FILE__))).'/initialize.php'); ?>
 <?php include_once (eblogin.'/session.inc.php'); ?>
 <?php include_once (eblayout.'/a-common-header-icon.php'); ?>
+<?php include_once (eblayout.'/a-common-header-meta-noindex.php'); ?>
 <?php include_once (eblayout.'/a-common-header-meta-scripts.php'); ?>
 <?php include_once (eblayout.'/a-common-header.php'); ?>
 <?php include_once (eblayout.'/a-common-navebar.php'); ?>
@@ -38,6 +39,48 @@ $xml_output .= "\t<link>".outContentsLink."/contents/details/$contents_id/$conte
 $xml_output .= "\t<description><![CDATA[$contents_og_image_title<br /><a href='".outContentsLink."/contents/details/$contents_id/$contents_category/$contents_sub_category/'><img src='".hypertextWithOrWithoutWww."$contents_og_image_url' width='300px' alt='$contents_og_image_title' title='$contents_og_image_title'  /></a>]]></description>\n";
 $xml_output .= "\t<category>$contents_category</category>\n";
 $xml_output .= "\t<pubDate>$contents_date</pubDate>\n";
+$xml_output .= "</item>\n";
+?>
+<?php endforeach; ?>
+<?php } ?>
+<?php include_once (ebbay.'/ebcart.php'); ?>
+<?php $obj= new ebapps\bay\ebcart(); $obj ->mrss_bay(); ?>
+<?php if($obj->data >=1){foreach($obj->data as $val): extract($val); ?> 
+<?php
+$xml_output .= "<item>\n";
+$xml_output .= "\t<title>$s_og_image_title</title>\n";
+$xml_output .= "\t<link>".outBayLink."/product/item-details/$bay_showroom_approved_items_id/</link>\n";
+$xml_output .= "\t<description><![CDATA[$s_og_image_title<br /><a href='".outBayLink."/product/item-details/$bay_showroom_approved_items_id/'><img src='".hypertextWithOrWithoutWww."$s_og_image_url' width='300px' alt='$s_og_image_title' title='$s_og_image_title' /></a>]]></description>\n";
+$xml_output .= "\t<category>$s_category_c</category>\n";
+$xml_output .= "\t<pubDate>$s_date</pubDate>\n";
+$xml_output .= "</item>\n";
+?>
+<?php endforeach; ?>
+<?php } ?>
+<?php include_once (ebSoft.'/soft.php'); ?>
+<?php $obj= new ebapps\soft\soft(); $obj ->soft_mrss(); ?>
+<?php if($obj->data >=1){ foreach($obj->data as $val): extract($val); ?> 
+<?php
+$xml_output .= "<item>\n";
+$xml_output .= "\t<title>$soft_appro_og_image_title</title>\n";
+$xml_output .= "\t<link>".outSoftLink."/copy/details/$soft_appro_add_items_id/$soft_appro_category/$soft_appro_subcategory/</link>\n";
+$xml_output .= "\t<description><![CDATA[$soft_appro_og_image_title<br /><a href='".outSoftLink."/copy/details/$soft_appro_add_items_id/$soft_appro_category/$soft_appro_subcategory/'><img src='".hypertextWithOrWithoutWww."$soft_appro_og_image_url' width='300px' alt='$soft_appro_og_image_title' title='$soft_appro_og_image_title'  /></a>]]></description>\n";
+$xml_output .= "\t<category>$soft_appro_category $soft_appro_subcategory</category>\n";
+$xml_output .= "\t<pubDate>$soft_appro_upload_date</pubDate>\n";
+$xml_output .= "</item>\n";
+?>
+<?php endforeach; ?>
+<?php } ?>
+<?php include_once (ebEvent.'/event.php'); ?>
+<?php $obj= new ebapps\event\eBevent(); $obj ->event_mrss(); ?>
+<?php if($obj->data){ foreach($obj->data as $val): extract($val); ?> 
+<?php
+$xml_output .= "<item>\n";
+$xml_output .= "\t<title>$event_appro_og_image_title</title>\n";
+$xml_output .= "\t<link>".outEventLink."/manager/details/$event_appro_add_items_id/$event_appro_category/$event_appro_subcategory/</link>\n";
+$xml_output .= "\t<description><![CDATA[$event_appro_og_image_title<br /><a href='".outEventLink."/manager/details/$event_appro_add_items_id/$event_appro_category/$event_appro_subcategory/'><img src='".hypertext."$event_appro_og_small_image_url' width='300px' alt='$event_appro_og_image_title' title='$event_appro_og_image_title'  /></a>]]></description>\n";
+$xml_output .= "\t<category>$event_appro_category</category>\n";
+$xml_output .= "\t<pubDate>$event_appro_upload_date</pubDate>\n";
 $xml_output .= "</item>\n";
 ?>
 <?php endforeach; ?>
