@@ -90,6 +90,7 @@ if(empty($_SESSION['username']))
 <meta property='og:description' content='Convert your Idea into Code. Turn your Dreams comes True' />
 <title>Sign in</title>
 <meta name='description' content='Convert your Idea into Code. Turn your Dreams comes True' />
+<?php include_once (eblayout.'/a-common-header-meta-noindex.php'); ?>
 <?php include_once (eblayout.'/a-common-header-meta-scripts.php'); ?>
 <?php include_once (eblayout.'/a-common-header.php'); ?>
 <?php include_once (eblayout.'/a-common-navebar.php'); ?>
