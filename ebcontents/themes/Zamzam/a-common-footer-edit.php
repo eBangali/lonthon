@@ -1,5 +1,6 @@
 <!-- Footer -->
 <footer class='footer'>
+<?php include (eblayout.'/a-common-footer-newsletter.php'); ?>
   <div class='footer-middle'>
     <div class='container'>
       <div class='row'>
