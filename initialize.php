@@ -1,4 +1,4 @@
-<?php
+<?PHP
 session_start();
 //error_reporting(E_ALL);
 //ini_set("display_errors", 1);
@@ -7,27 +7,36 @@ session_start();
 ****************************************************************************************************************************/
 /* Database Settings */
 const EB_HOSTNAME = "localhost";
-const EB_DB_USERNAME = "username";
-const EB_DB_PASSWORD = "password";
-const EB_DATABASE = "database";
-/* eMails Settings */
-const adminEmail = "admin@domain.com";
-const contactEmail = "info@domain.com";
-const billEmail = "bill@domain.com";
-const CCEmail = "cc@domain.com";
+const EB_DB_USERNAME = "Database_Username";
+const EB_DB_PASSWORD = "Database_Password";
+const EB_DATABASE = "Database_Name";
+//Must be from your domain
+const smtpHost = "";
+const smtpPort = 465;
+const smtpUsername = "";
+const smtpPassword = "";
+const adminEmail = "";
+const contactEmail = "";
+// alert email can be gmail, yahoo etc
+const alertToAdmin = "";
 /* Mobile Settings */
-const adminMobile = "0000000000000";
+const adminMobile = "";
 /* Version */
-const version = "9.38.01";
+const version = "20.08";
 /*Salt User Password Hash*/
-const salt_1= "}#f4ga~g%$%#$@!@-wi=6^7-$^R9F|GK5J#~||\E6WT;IO[JN";
-const salt_2= "#$%^&*&*^%^&%$^&*:?#<--!<>";
+const salt_1= "}#f4ga~g%$%#$@!@-6589-$^R9F|GK5J#~||\E6WT;IO[JN";
+const salt_2= "#$%^&*$@!@-w*^%^&%$^&*:?#<--!<>";
 //
-
-/* Currency Setings */
-define("usd",1);
-define("bdt",83.40);
-define("usd2bdtconverter",usd*bdt);
+/* Never Change Currency Setings */
+define("primaryCurrency","USD");
+define("secondaryCurrency","BDT");
+//
+define("primaryCurrencySign","$");
+define("secondaryCurrencySign","Tk");
+//
+define("convertPrimary",1);
+define("convertSecondary","82.00");
+define("primaryTosecondary",floatval(convertPrimary)*floatval(convertSecondary));
 /* License */
 define("license", "YourLicense");
 /***************************************************************************************************************************
@@ -36,7 +45,7 @@ define("license", "YourLicense");
 /* The BackEnd System */
 define("eb", dirname(__FILE__));
 define("docRoot", $_SERVER['DOCUMENT_ROOT']);
-$eBscema = (isset($_SERVER['HTTPS']) ? "http" : "http") . "://";
+$eBscema = (isset($_SERVER['HTTPS']) ? "https" : "http") . "://";
 define("hypertext", "$eBscema");
 define("domain", "$_SERVER[HTTP_HOST]");
 define("hostingName", hypertext."$_SERVER[HTTP_HOST]");
@@ -50,6 +59,7 @@ define("hypertextWithOrWithoutWww", str_replace(domainForImagStore, "", hostingN
 //
 define("ebfromcap", hostingAndRoot."/ebapps/captcha");
 define("ebbd", eb."/ebapps/dbconnection");
+define("ebphpmailer", eb."/ebapps/PHPMailer");
 define("ebformkeys", eb."/ebapps/formkeys");
 define("ebformmail", eb."/ebapps/formmail");
 define("ebHashKey", eb."/ebapps/hashpassword");
@@ -57,6 +67,10 @@ define("eblogin", eb."/ebapps/login");
 define("ebsanitization", eb."/ebapps/sanitization");
 define("themeSetting", eb."/ebapps/themeSetting");
 define("ebimageupload", eb."/ebapps/upload");
+//
+define("ebfileupload", eb."/ebapps/upload");
+define("ebfpdf", eb."/ebapps/fpdf");
+define("ebqrcode", eb."/ebapps/qrcode");
 
 /*################################# Default Settings ###############################################*/
 /* FrontEnd */

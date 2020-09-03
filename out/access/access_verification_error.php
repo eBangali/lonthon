@@ -1,1 +1,1 @@
-<?php echo "<pre><b>Sorry can't verify!</b></pre>"; ?>
+<?php echo "<div class='well'><b>Sorry can't verify!</b></div>"; ?>

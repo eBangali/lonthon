@@ -74,7 +74,7 @@ $queryMe .= $formKey->outputKey();
 $queryMe .=">";
 $queryMe .="$formKey_error"; 
 $queryMe .="<input type='hidden' name='blogs_id_in_comments' value=".$blogs_id_in_comments." />"; 
-$queryMe .="Query Description: $blogs_comment_details_error <textarea class='form-control' name='blogs_comment_details' rows='6' required autofocus placeholder='Please use  Google Drive, WeTransfer, Dropbox to link a file. Certain special characters are not allowed.' id='HowToDo'></textarea>";
+$queryMe .="Query Description: $blogs_comment_details_error <textarea class='form-control' name='blogs_comment_details' rows='6' required  placeholder='Please use  Google Drive, WeTransfer, Dropbox to link a file. Certain special characters are not allowed.' id='HowToDo'></textarea>";
 $queryMe .="<div class='buttons-set'><button type='submit' name='contents_submit_query' title='Reply' class='button submit'><span> Reply </span> </button></div>"; 
 $queryMe .="</fieldset>";
 $queryMe .="</form>";

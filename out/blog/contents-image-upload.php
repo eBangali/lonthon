@@ -1,8 +1,10 @@
 <?php include_once (dirname(dirname(dirname(__FILE__))).'/initialize.php'); ?>
 <?php include_once (eblogin.'/session.inc.php'); ?>
 <?php include_once (eblayout.'/a-common-header-icon.php'); ?>
+<?php include_once (eblayout.'/a-common-header-title-one.php'); ?>
 <?php include_once (eblayout.'/a-common-header-meta-noindex.php'); ?>
 <?php include_once (eblayout.'/a-common-header-meta-scripts-text-editor.php'); ?>
+<?php include_once (eblayout.'/a-common-page-id-start.php'); ?>
 <?php include_once (eblayout.'/a-common-header.php'); ?>
 <?php include_once (eblayout.'/a-common-navebar.php'); ?>
 <?php include_once (ebaccess."/access_permission_online_minimum.php"); ?>
@@ -45,15 +47,13 @@ $merchant->updates_contents_image_url($contents_id,$contents_og_image_url);
 <div class="well">
 <form method='post' enctype='multipart/form-data'>
 <fieldset class='group-select'>
-<ul>
-<li>Profile Image: .jpg</li>
-<li>NB: Image dimensions must be 1366x956 in pixels</li>
-<li><input type='hidden' name='contents_id' value='<?php echo $contents_id; ?>'></li>
-<li><input type='file' required autofocus name='item_picture' /></li>
+Profile Image: .jpg
+NB: Image dimensions must be 1024x717 in pixels
+<input type='hidden' name='contents_id' value='<?php echo $contents_id; ?>'>
+<input type='file' required autofocus name='item_picture' />
 <div class='buttons-set'>
 <button type='submit' name='submit' title='Submit' class='button submit'> <span> Submit </span> </button>
 </div>
-</ul>
 </fieldset>
 </form>
 </div>

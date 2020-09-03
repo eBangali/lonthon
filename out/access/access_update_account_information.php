@@ -2,7 +2,9 @@
 <?php include_once (eblogin.'/session.inc.php'); ?>
 <?php include_once (eblayout.'/a-common-header-icon.php'); ?>
 <?php include_once (eblayout.'/a-common-header-meta-noindex.php'); ?>
+<?php include_once (eblayout.'/a-common-header-title-one.php'); ?>
 <?php include_once (eblayout.'/a-common-header-meta-scripts.php'); ?>
+<?php include_once (eblayout.'/a-common-page-id-start.php'); ?>
 <?php include_once (eblayout.'/a-common-header.php'); ?>
 <?php include_once (eblayout.'/a-common-navebar.php'); ?>
 <?php include_once (ebaccess."/access_permission_online_minimum.php"); ?>
@@ -12,7 +14,7 @@
 </div>
 <div class='col-xs-12 col-md-7 sidebar-offcanvas'>
 <div class='well'>
-<h2 title='Settings'>Settings</h2>
+<h2 title='Account Settings'>Account Settings</h2>
 </div>
 <?php include_once (ebHashKey.'/hashPassword.php'); ?>
 <?php include_once (eblogin.'/registration_page.php'); ?>
@@ -23,6 +25,7 @@
 $error = 0;
 $formKey_error = "";
 $full_name_error = "*";
+$gender_error = "*";
 $mobile_error = "*";
 $email_error = "*";
 $position_names_error ="*";
@@ -32,6 +35,8 @@ $city_town_error = "*";
 $state_province_region_error = "*";
 $postal_code_error = "*";
 $country_error = "*";
+$paypalid_error = "*";
+$bkashid_error = "*";
 $facebook_link_error = "*";
 $twitter_link_error = "*";
 $github_link_error = "*";
@@ -79,6 +84,21 @@ $error =1;
 else 
 {
 $full_name = $sanitization -> test_input($_POST["full_name"]);
+}
+/* Gender */
+if (empty($_REQUEST["gender"]))
+{
+$gender_error = "<b class='text-warning'>Gender required</b>";
+$error =1;
+} 
+elseif (! preg_match("/^([A-Za-z]+)$/",$gender))
+{
+$gender_error = "<b class='text-warning'>Gender?</b>";
+$error =1;
+}
+else 
+{
+$gender = $sanitization -> test_input($_POST["gender"]);
 }
 /* Mobile */
 if (empty($_REQUEST["mobile"]))
@@ -216,27 +236,59 @@ $postal_code = $sanitization -> test_input($_POST["postal_code"]);
 /* country */
 if (empty($_REQUEST["country"]))
 {
-
+$country_error = "<b class='text-warning'>Please Select Country</b>";
 } 
 /* valitation country  */
 elseif (!preg_match("/^([a-zA-Z\.\-\)\(\ ]+)$/",$country))
 {
 $country_error = "<b class='text-warning'>Error on Country</b>";
-$error =1;
 }
 else
 {
 $country = $sanitization -> test_input($_POST["country"]);
 }
+
+/* paypalid */
+if (empty($_REQUEST["paypalid"]))
+{
+$paypalid_error = "<b class='text-warning'>PayPal ID</b>";
+} 
+/* valitation paypalid  */
+elseif (!preg_match("/^[a-z0-9._]+@[a-z0-9.\-]{1,16}[a-z]{2,4}$/",$paypalid))
+{
+$paypalid_error = "<b class='text-warning'>Error on PayPal ID</b>";
+$error =1;
+}
+else 
+{
+$paypalid = $sanitization -> test_input($_POST["paypalid"]);
+}
+
+/* bkashid */
+if (empty($_REQUEST["bkashid"]))
+{
+$bkashid_error = "<b class='text-warning'>bKash ID</b>";
+} 
+/* valitation bkashid  */
+elseif (!preg_match("/^[0-9]{11,11}$/",$bkashid))
+{
+$bkashid_error = "<b class='text-warning'>Error on bKash ID</b>";
+$error =1;
+}
+else 
+{
+$bkashid = $sanitization -> test_input($_POST["bkashid"]);
+}
+
 /* facebook_link */
 if (empty($_REQUEST["facebook_link"]))
 {
-
+$facebook_link_error = "<b class='text-warning'>Facebook Link</b>";
 } 
 /* valitation facebook_link  */
 elseif (!preg_match("/^([a-zA-Z0-9\,\.\/\+\?\-\=\_\-]{3,255})$/",$facebook_link))
 {
-$facebook_link_error = "<b class='text-warning'>Error on FaceBook link</b>";
+$facebook_link_error = "<b class='text-warning'>Without https:// and some characters</b>";
 $error =1;
 }
 
@@ -247,12 +299,12 @@ $facebook_link = $sanitization -> test_input($_POST["facebook_link"]);
 /* twitter_link */
 if (empty($_REQUEST["twitter_link"]))
 {
-
+$twitter_link_error = "<b class='text-warning'>Twitter Link</b>";
 } 
 /* valitation twitter_link  */
 elseif (!preg_match("/^([a-zA-Z0-9\,\.\/\+\?\-\=\_\-]{3,255})$/",$twitter_link))
 {
-$twitter_link_error = "<b class='text-warning'>Error on Twitter link</b>";
+$twitter_link_error = "<b class='text-warning'>Without https:// and some characters</b>";
 $error =1;
 }
 
@@ -264,12 +316,12 @@ $twitter_link = $sanitization -> test_input($_POST["twitter_link"]);
 /* github_link */
 if (empty($_REQUEST["github_link"]))
 {
-
+$github_link_error = "<b class='text-warning'>Github Link</b>";
 } 
 /* valitation github_link  */
 elseif (!preg_match("/^([a-zA-Z0-9\,\.\/\+\?\-\=\_\-]{3,255})$/",$github_link))
 {
-$github_link_error = "<b class='text-warning'>Error on GitHub link</b>";
+$github_link_error = "<b class='text-warning'>Without https:// and some characters</b>";
 $error =1;
 }
 
@@ -280,12 +332,12 @@ $github_link = $sanitization -> test_input($_POST["github_link"]);
 /* linkedin_link */
 if (empty($_REQUEST["linkedin_link"]))
 {
-
+$linkedin_link_error = "<b class='text-warning'>Linkedin Link</b>";
 } 
 /* valitation linkedin_link  */
 elseif (!preg_match("/^([a-zA-Z0-9\,\.\/\+\?\-\=\_\-]{3,255})$/",$linkedin_link))
 {
-$linkedin_link_error = "<b class='text-warning'>Error on Linked link</b>";
+$linkedin_link_error = "<b class='text-warning'>Without https:// and some characters</b>";
 $error =1;
 }
 
@@ -296,12 +348,12 @@ $linkedin_link = $sanitization -> test_input($_POST["linkedin_link"]);
 /* pinterest_link */
 if (empty($_REQUEST["pinterest_link"]))
 {
-
+$pinterest_link_error = "<b class='text-warning'>Pinterest Link</b>";
 } 
 /* valitation pinterest_link  */
 elseif (!preg_match("/^([a-zA-Z0-9\,\.\/\+\?\-\=\_\-]{3,255})$/",$pinterest_link))
 {
-$pinterest_link_error = "<b class='text-warning'>Error on Pinterest link</b>";
+$pinterest_link_error = "<b class='text-warning'>Without https:// and some characters</b>";
 $error =1;
 }
 else 
@@ -311,12 +363,12 @@ $pinterest_link = $sanitization -> test_input($_POST["pinterest_link"]);
 /* youtube_link */
 if (empty($_REQUEST["youtube_link"]))
 {
-
+$youtube_link_error = "<b class='text-warning'>Youtube Link</b>";
 } 
 /* valitation youtube_link  */
 elseif (!preg_match("/^([a-zA-Z0-9\,\.\/\+\?\-\=\_\-]{3,255})$/",$youtube_link))
 {
-$youtube_link_error = "<b class='text-warning'>Error on Youtube link</b>";
+$youtube_link_error = "<b class='text-warning'>Without https:// and some characters</b>";
 $error =1;
 }
 else 
@@ -327,12 +379,12 @@ $youtube_link = $sanitization -> test_input($_POST["youtube_link"]);
 /* instagram_link */
 if (empty($_REQUEST["instagram_link"]))
 {
-
+$instagram_link_error = "<b class='text-warning'>Instagram Link</b>";
 } 
 /* valitation instagram_link  */
 elseif (!preg_match("/^([a-zA-Z0-9\,\.\/\+\?\-\=\_\-]{3,255})$/",$instagram_link))
 {
-$instagram_link_error = "<b class='text-warning'>Error on Instagram link</b>";
+$instagram_link_error = "<b class='text-warning'>Without https:// and some characters</b>";
 $error =1;
 }
 else 
@@ -346,7 +398,7 @@ if($error == 0)
 extract($_REQUEST);
 //
 $update = new ebapps\login\registration_page();
-$update ->update_account_information($email, $full_name, $mobile, $position_names, $state_province_region, $address_line_1, $address_line_2, $city_town, $postal_code, $country, $facebook_link, $twitter_link, $github_link, $linkedin_link, $pinterest_link, $youtube_link, $instagram_link);
+$update ->update_account_information($email, $full_name, $gender, $mobile, $position_names, $address_line_1, $address_line_2, $city_town, $state_province_region, $postal_code, $country, $paypalid, $bkashid, $facebook_link, $twitter_link, $github_link, $linkedin_link, $pinterest_link, $youtube_link, $instagram_link);
 }
 }
 ?>
@@ -359,66 +411,88 @@ if($obj->data)
 foreach($obj->data as $val)
 {
 extract($val);
-$updateAccount ="<form method='post'>"; 
-$updateAccount .="<fieldset class='group-select'>";
-$updateAccount .="<ul>";
-$updateAccount .="<li><input type='hidden' name='form_key' value='";
-$updateAccount .= $formKey->outputKey(); 
-$updateAccount .="'>"; 
-$updateAccount .="</li>"; 
-$updateAccount .="<li>$formKey_error</li>";
-$updateAccount .="<li>Username: $username</li>";
-$updateAccount .="<li>Position: ".ucfirst($position_names)."</li>";  
-$updateAccount .="<li>Member Level: $member_level</li>"; 
-$updateAccount .="<li>Account Type: ".ucfirst($account_type)."</li>"; 
-$updateAccount .="<li>Full name: $full_name_error <input class='form-control' type='text' name='full_name' value='$full_name' /></li>"; 
-$updateAccount .="<li>Mobile number: $mobile_error <input class='form-control' type='text' name='mobile' value='$mobile' />";
-if($mobileactive == 0)
-{
-$updateAccount .= "<b>Mobile Number Not verified. <a href='/out/access/access_verify_mobile_number.php'><button type='button' class='button submit' title='Please Verify.'><span> Please Verify. </span></button></a></b>";
+$editAcc ="<form method='post'>"; 
+$editAcc .="<fieldset class='group-select'>";
+$editAcc .="<input type='hidden' name='form_key' value='";
+$editAcc .= $formKey->outputKey(); 
+$editAcc .="'>"; 
+ 
+$editAcc .="$formKey_error";
+//
+$editAcc .="<div class='input-group'><span class='input-group-addon' id='sizing-addon2'>Username: </span><span class='form-control' aria-describedby='sizing-addon2'>$ebusername</span></div>";
+//
+if(!empty($position_names)){
+$editAcc .="<div class='input-group'><span class='input-group-addon' id='sizing-addon2'>Level: </span><span class='form-control' aria-describedby='sizing-addon2'>".ucfirst($position_names)."</span></div>";
 }
-if($mobileactive == 1)
+//
+$editAcc .="<div class='input-group'><span class='input-group-addon' id='sizing-addon2'>Power: </span><span class='form-control' aria-describedby='sizing-addon2'>$member_level</span></div>";
+//
+$editAcc .="<div class='input-group'><span class='input-group-addon' id='sizing-addon2'>Type: </span><span class='form-control' aria-describedby='sizing-addon2'>".ucfirst($account_type)."</span></div>";
+//
+$editAcc .="<div class='input-group'><span class='input-group-addon' id='sizing-addon2'>Full Name: $full_name_error</span><input type='text' name='full_name' value='$full_name' placeholder='Full name' class='form-control' aria-describedby='sizing-addon2' required  autofocus></div>";
+//
+$editAcc .="<div class='input-group'>";
+$editAcc .="<span class='input-group-addon' id='sizing-addon2'>Gender: $gender_error</span>";
+$editAcc .="<select class='form-control' name='gender'>";
+if(isset($gender))
 {
-$updateAccount .= "<b>Verified Mobile Number.</b>";
+$editAcc .="<option selected value='$gender'>".ucfirst($gender)."</option>";
 }
-$updateAccount .="</li>";  
-$updateAccount .="<li>eMail ID: $email_error <input class='form-control' type='text' name='email' value='$email' />";
+$editAcc .="<option>Please Select</option>";
+$editAcc .="<option value='Male'>Male</option>";
+$editAcc .="<option value='Female'>Female</option>";
+$editAcc .="</select>";
+$editAcc .="</div>";
+//
+$editAcc .="<div class='input-group'><span class='input-group-addon' id='sizing-addon2'>eMail ID: $email_error</span><input type='email' name='email' value='$email' placeholder='eMail' class='form-control' aria-describedby='sizing-addon2' required  autofocus></div>";
+
 if($active == 0)
 {
-$updateAccount .= "<b>eMail ID Not verified.</b>";
-$updateAccount .= "<a href='/out/access/access_verify_re_send.php'><button type='button' class='button submit' title='Send eMail verification'><span> Send eMail verification </span></button></a>";
+$editAcc .= "<b>eMail Not Verified</b>";
+$editAcc .= "<a href='/out/access/access_verify_re_send.php'><button type='button' class='button submit' title='Send eMail Verification'><span> Send eMail Verification </span></button></a>";
 }
 if($active == 1)
 {
-$updateAccount .= "<b>Verified eMail.</b>";
+$editAcc .= "<b>Verified eMail</b>";
 }
-$updateAccount ."</li>"; 
-$updateAccount .="<li>Position: $position_names_error <input class='form-control' type='text' name='position_names' value='$position_names' /></li>";
-$updateAccount .="<li>";
+
+if($active ==1 and $mobileactive == 1 and !empty($full_name) and $member_level <=3)
+{
+$editAcc .= "<a href='/out/access/upgrade-your-access-levels-for-pos.php'><button type='button' class='button submit' title='Request for Free POS'><span>Request for Free POS</span></button></a>";
+}
+$editAcc .="<div class='input-group'><span class='input-group-addon' id='sizing-addon2'>Mobile Number: $mobile_error</span><input type='text' name='mobile' value='$mobile' placeholder='Mobile No' class='form-control' aria-describedby='sizing-addon2' required  autofocus></div>";
+if($mobileactive == 0)
+{
+$editAcc .= "<b>Mobile Number Not Verified <a href='/out/access/access_verify_mobile_number.php'><button type='button' class='button submit' title='Please Verify Mobile.'><span> Please Verify Mobile </span></button></a></b>";
+}
+if($mobileactive == 1)
+{
+$editAcc .= "<b>Verified Mobile Number</b>";
+}
+$editAcc .="<div class='input-group'><span class='input-group-addon' id='sizing-addon2'>Level: $position_names_error</span><input type='text' name='position_names' value='$position_names' class='form-control' aria-describedby='sizing-addon2'></div>";
+
 if($address_verified == 0)
 {
-$updateAccount .= "<b>This Address is Not verified. <a href='/out/access/access_verify_address.php'><button type='button' class='button submit' title='Send eMail verification'><span> Please Verify. </span></button></a></b>";
+$editAcc .= "<b>This Address is Not Verified <a href='/out/access/access_verify_address.php'><button type='button' class='button submit' title='Send Address Verification'><span> Please Verify Address</span></button></a></b>";
 }
 if($address_verified == 1)
 {
-$updateAccount .= "<b>Verified Address.</b>";
+$editAcc .= "<b>Verified Address</b>";
 }
-$updateAccount .="</li>";
-$updateAccount .="<li>Address 1: $address_line_1_error <input class='form-control' type='text' name='address_line_1' value='$address_line_1' /></li>";
-$updateAccount .="<li>Address 2: $address_line_2_error <input class='form-control' type='text' name='address_line_2' value='$address_line_2' /></li>";
-$updateAccount .="<li>City Or Town: $city_town_error <input class='form-control' type='text' name='city_town' value='$city_town' /></li>";
-$updateAccount .="<li>State Or Province Or Region: $state_province_region_error <input class='form-control' type='text' name='state_province_region' value='$state_province_region' /></li>";
-$updateAccount .="<li>Postal Code: $postal_code_error <input class='form-control' type='text' name='postal_code' value='$postal_code' /></li>";
-if(!empty($country))
-{
-$updateAccount .="<li>Country: $country_error <input class='form-control' type='text' name='country' value='$country' /></li>";
-}
-else
-{
-$updateAccount .="<li>";
-$updateAccount .="Country: $country_error";
-$updateAccount .="<select class='form-control' name='country'>";
 
+$editAcc .="<div class='input-group'><span class='input-group-addon' id='sizing-addon2'>Address 1: $address_line_1_error</span><input type='text' name='address_line_1' value='$address_line_1' placeholder='Address' class='form-control' aria-describedby='sizing-addon2'></div>";
+$editAcc .="<div class='input-group'><span class='input-group-addon' id='sizing-addon2'>Address 2: $address_line_2_error</span><input type='text' name='address_line_2' value='$address_line_2' placeholder='Address' class='form-control' aria-describedby='sizing-addon2'></div>";
+$editAcc .="<div class='input-group'><span class='input-group-addon' id='sizing-addon2'>City Or Town: $city_town_error</span><input type='text' name='city_town' value='$city_town' placeholder='City/Town' class='form-control' aria-describedby='sizing-addon2'></div>";
+$editAcc .="<div class='input-group'><span class='input-group-addon' id='sizing-addon2'>State Or Province Or Region: $state_province_region_error</span><input type='text' name='state_province_region' value='$state_province_region' placeholder='State/Province/Region' class='form-control' aria-describedby='sizing-addon2'></div>";
+$editAcc .="<div class='input-group'><span class='input-group-addon' id='sizing-addon2'>Postal Code: $postal_code_error</span><input type='text' name='postal_code' value='$postal_code' placeholder='Postal code' class='form-control' aria-describedby='sizing-addon2'></div>";
+//
+$editAcc .="<div class='input-group'>";
+$editAcc .="<span class='input-group-addon' id='sizing-addon2'>Country: $country_error</span>";
+$editAcc .="<select class='form-control' name='country'>";
+if(isset($country))
+{
+$editAcc .="<option selected value='$country'>".ucfirst($country)."</option>";
+}
 $objCountry = new ebapps\login\registration_page();
 $objCountry->select_user_country();
 if($objCountry->data)
@@ -426,33 +500,29 @@ if($objCountry->data)
 foreach($objCountry->data as $val)
 {
 extract($val);
-$updateAccount .="<option value='$country_name'>".ucfirst($country_name)."</option>";
+$editAcc .="<option value='$country_name'>".ucfirst($country_name)."</option>";
 }
 }
-$updateAccount .="</select>";
-$updateAccount .="</li>";
-}
-
-if($mobileactive ==1 and $active ==1 and $member_level < 4 and $_SESSION['addressverified']==1)
-{
-$updateAccount .= "<li><a href='/out/access/upgrade-your-membership.php'><b> Upgrade your membership</b></a></li>";
-}
-$updateAccount .="<li>OMR (Online Marketing Representative): ".$_SESSION['omrusername']."</li>";
-$updateAccount .="<li>FaceBook url without http://: $facebook_link_error <input class='form-control' type='text' name='facebook_link' placeholder='facebook.com' value='$facebook_link' /></li>";
-$updateAccount .="<li>Twitter url without http://: $twitter_link_error <input class='form-control' type='text' name='twitter_link' placeholder='twitter.com' value='$twitter_link' /></li>";
-$updateAccount .="<li>GitHub url without http://: $github_link_error <input class='form-control' type='text' name='github_link' placeholder='github.com' value='$github_link' /></li>";
-$updateAccount .="<li>Linkedin url without http://: $linkedin_link_error <input class='form-control' type='text' name='linkedin_link' placeholder='linkedin.com' value='$linkedin_link' /></li>";
-$updateAccount .="<li>Pinterest url without http://: $pinterest_link_error <input class='form-control' type='text' name='pinterest_link' placeholder='pinterest.com' value='$pinterest_link' /></li>";
-$updateAccount .="<li>Youtube url without http://: $youtube_link_error <input class='form-control' type='text' name='youtube_link' placeholder='youtube.com' value='$youtube_link' /></li>";
-$updateAccount .="<li>Instagram url without http://: $instagram_link_error <input class='form-control' type='text' name='instagram_link' placeholder='instagram.com' value='$instagram_link' /></li>";
-$updateAccount .="<div class='buttons-set'>";
-$updateAccount .="<button type='submit' name='updateregister' title='Update' class='button submit'>Update</button>";
-$updateAccount .="</div>"; 
-$updateAccount .="<div class='buttons-set'><a href='/out/access/access_change_passsword.php'><button type='button' class='button submit' title='Change Password'><span> Change Password </span></button></a></div>";  
-$updateAccount .="</ul>";
-$updateAccount .="</fieldset>";
-$updateAccount .="</form>";
-echo $updateAccount;  
+$editAcc .="</select>";
+$editAcc .="</div>";
+//
+$editAcc .="OMR: $omrusername ";
+$editAcc .="<div class='input-group'><span class='input-group-addon' id='sizing-addon2'>PayPal ID : $paypalid_error</span><input type='email' name='paypalid' value='$paypalid' placeholder='PayPal ID' class='form-control' aria-describedby='sizing-addon2'></div>";
+$editAcc .="<div class='input-group'><span class='input-group-addon' id='sizing-addon2'>bKash ID : $bkashid_error</span><input type='text' name='bkashid' value='$bkashid' placeholder='bKash ID' class='form-control' aria-describedby='sizing-addon2'></div>";
+$editAcc .="<div class='input-group'><span class='input-group-addon' id='sizing-addon2'>FaceBook URL: $facebook_link_error</span><input type='text' name='facebook_link' value='$facebook_link' placeholder='facebook.com/username/' class='form-control' aria-describedby='sizing-addon2'></div>";
+$editAcc .="<div class='input-group'><span class='input-group-addon' id='sizing-addon2'>Twitter URL: $twitter_link_error</span><input type='text' name='twitter_link' value='$twitter_link' placeholder='twitter.com/username/' class='form-control' aria-describedby='sizing-addon2'></div>";
+$editAcc .="<div class='input-group'><span class='input-group-addon' id='sizing-addon2'>GitHub URL: $github_link_error</span><input type='text' name='github_link' value='$github_link' placeholder='github.com/username/' class='form-control' aria-describedby='sizing-addon2'></div>";
+$editAcc .="<div class='input-group'><span class='input-group-addon' id='sizing-addon2'>Linkedin URL: $linkedin_link_error</span><input type='text' name='linkedin_link' value='$linkedin_link' placeholder='linkedin.com/username/' class='form-control' aria-describedby='sizing-addon2'></div>";
+$editAcc .="<div class='input-group'><span class='input-group-addon' id='sizing-addon2'>Pinterest URL: $pinterest_link_error</span><input type='text' name='pinterest_link' value='$pinterest_link' placeholder='pinterest.com/username/' class='form-control' aria-describedby='sizing-addon2'></div>";
+$editAcc .="<div class='input-group'><span class='input-group-addon' id='sizing-addon2'>Youtube URL: $youtube_link_error</span><input type='text' name='youtube_link' value='$youtube_link' placeholder='youtube.com/username/' class='form-control' aria-describedby='sizing-addon2'></div>";
+$editAcc .="<div class='input-group'><span class='input-group-addon' id='sizing-addon2'>Instagram URL: $instagram_link_error</span><input type='text' name='instagram_link' value='$instagram_link' placeholder='instagram.com/username/' class='form-control' aria-describedby='sizing-addon2'></div>";
+$editAcc .="<div class='buttons-set'>";
+$editAcc .="<button type='submit' name='updateregister' title='Update' class='button submit'>Update</button>";
+$editAcc .="</div>"; 
+$editAcc .="<div class='buttons-set'><a href='/out/access/access_change_passsword.php'><button type='button' class='button submit' title='Change Password'><span> Change Password </span></button></a></div>";  
+$editAcc .="</fieldset>";
+$editAcc .="</form>";
+echo $editAcc;  
 }
 }
 ?>

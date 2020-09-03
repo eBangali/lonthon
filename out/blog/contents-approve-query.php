@@ -1,8 +1,10 @@
 <?php include_once (dirname(dirname(dirname(__FILE__))).'/initialize.php'); ?>
 <?php include_once (eblogin.'/session.inc.php'); ?>
 <?php include_once (eblayout.'/a-common-header-icon.php'); ?>
+<?php include_once (eblayout.'/a-common-header-title-one.php'); ?>
 <?php include_once (eblayout.'/a-common-header-meta-noindex.php'); ?>
 <?php include_once (eblayout.'/a-common-header-meta-scripts-text-editor.php'); ?>
+<?php include_once (eblayout.'/a-common-page-id-start.php'); ?>
 <?php include_once (eblayout.'/a-common-header.php'); ?>
 <?php include_once (eblayout.'/a-common-navebar.php'); ?>
 <?php include_once (ebaccess.'/access_permission_admin_minimum.php'); ?>
@@ -60,10 +62,6 @@ $queryMe .="</pre>";
 $queryMe .="</div>"; 
 echo $queryMe;  
 }
-}
-else
-{
-echo "<pre>No Entry Found</pre>";
 }
 ?>
 </div>

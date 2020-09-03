@@ -1,4 +1,3 @@
-<li><a href='<?php echo outContentsLink; ?>/contents/' title='Blog'><i class='fa fa-pencil-square-o fa-lg' aria-hidden='true'></i> Blog</a></li>
 <?php include_once (ebblog.'/blog.php'); ?>
 <?php
 $category = new ebapps\blog\blog();

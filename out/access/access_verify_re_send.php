@@ -2,7 +2,9 @@
 <?php include_once (eblogin.'/session.inc.php'); ?>
 <?php include_once (eblayout.'/a-common-header-icon.php'); ?>
 <?php include_once (eblayout.'/a-common-header-meta-noindex.php'); ?>
+<?php include_once (eblayout.'/a-common-header-title-one.php'); ?>
 <?php include_once (eblayout.'/a-common-header-meta-scripts.php'); ?>
+<?php include_once (eblayout.'/a-common-page-id-start.php'); ?>
 <?php include_once (eblayout.'/a-common-header.php'); ?>
 <?php include_once (eblayout.'/a-common-navebar.php'); ?>
 <div class='container'>
@@ -78,15 +80,12 @@ $user -> varify_email_re_sent($usernameemail);
 ?>
 <form method='post'>
 <fieldset class='group-select'>
-<ul><p>eMail verification required to access your account</p>
 <input type='hidden' name='form_key' value='<?php echo $formKey->outputKey(); ?>'>
 <?php echo $formKey_error; ?>
-<li>Username or eMail: <?php echo $usernameemail_error;  ?></li>
-<li><input class='form-control' type='text' name='usernameemail' placeholder="username or eMail" required autofocus></li>
+<div class='input-group'><span class='input-group-addon' id='sizing-addon2'>Username or eMail: <?php echo $usernameemail_error;  ?></span><input type='text' name='usernameemail' placeholder='username or eMail' class='form-control' aria-describedby='sizing-addon2' required  autofocus></div>
 <div class='buttons-set'>
 <button type='submit' name='send_verification' title='Send eMail Verification' class='button submit'> <span> Send eMail Verification </span> </button>
 </div>
-</ul>
 </fieldset>
 </form>
 </div>

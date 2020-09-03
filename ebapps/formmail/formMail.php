@@ -1,10 +1,21 @@
 <?php
 namespace ebapps\formmail;
-/************************************************************
-#############################################################
-################## eBangali.com Apps ########################
-#############################################################
-*************************************************************/
+/*****************************************************************************
+############################### GNU General Public License ###################
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see <https://www.gnu.org/licenses/>.
+#############################################################################
+*****************************************************************************/
 include_once(ebbd.'/dbconfig.php');
 use ebapps\dbconnection\dbconfig;
 /*** ***/
@@ -13,7 +24,7 @@ class formMail extends dbconfig
 public function ebMail($fullname,$email_address,$subjectfor,$messagepre)
 {	
 /*** eMail to Administration ***/
-$to = contactEmail;
+$to = alertToAdmin;
 $from = $email_address;
 /*** ***/
 $subject = domain." ".$subjectfor;
@@ -22,7 +33,6 @@ $headers  = "MIME-Version: 1.0" . "\r\n";
 $headers .= "Content-type: text/html; charset=iso-8859-1" . "\r\n";
 /*** $headers .= "From: $from \r\n"; ***/
 $headers .= "Reply-To: $from \r\n";
-$headers .= "Cc: ".CCEmail." \r\n";
 /*** ***/
 $message ="<html>";
 $message .="<head>";

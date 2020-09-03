@@ -1,8 +1,10 @@
 <?php include_once (dirname(dirname(dirname(__FILE__))).'/initialize.php'); ?>
 <?php include_once (eblogin.'/session.inc.php'); ?>
 <?php include_once (eblayout.'/a-common-header-icon.php'); ?>
+<?php include_once (eblayout.'/a-common-header-title-one.php'); ?>
 <?php include_once (eblayout.'/a-common-header-meta-noindex.php'); ?>
 <?php include_once (eblayout.'/a-common-header-meta-scripts-text-editor.php'); ?>
+<?php include_once (eblayout.'/a-common-page-id-start.php'); ?>
 <?php include_once (eblayout.'/a-common-header.php'); ?>
 <?php include_once (eblayout.'/a-common-navebar.php'); ?>
 <?php include_once (ebaccess."/access_permission_online_minimum.php"); ?>
@@ -13,7 +15,7 @@
 </div>
 <div class='col-xs-12 col-md-7 sidebar-offcanvas'>
 <div class="well">
-<h2 title='Write for us'>Write for us</h2>
+<h2 title='Add Post'>Add Post</h2>
 </div>
 <?php include_once (ebformkeys.'/valideForm.php'); ?>
 <?php $formKey = new ebapps\formkeys\valideForm(); ?>
@@ -34,13 +36,13 @@ url: "contents_select_b_from_b.php",
 data: "pic_name="+ pic_name,
 success: function(option)
 {
-$("#contents_sub_category").html(option);
+$("#contents_sub_category").html("<option value=''>Please Select</option>"+option);
 }
 });
 }
 else
 {
-$("#contents_sub_category").html("<option value=''>-- No Sub Category Selected --</option>");
+$("#contents_sub_category").html("<option value=''>Please Select</option>");
 }
 return false;
 });
@@ -126,9 +128,16 @@ $contents_og_image_title_error = "<b class='text-warning'>Title required</b>";
 $error =1;
 } 
 /* valitation contents_og_image_title  Tested allow (productname-productname-product-name)*/
-elseif (!preg_match("/^([A-Za-z0-9\?\.\,\-\ ]+)$/",$contents_og_image_title))
+elseif (!preg_match("/^([A-Za-z0-9\?\.\,\-\ ]{19,55})$/",$contents_og_image_title))
 {
-$contents_og_image_title_error = "<b class='text-warning'>Single or double quotes, certain special characters are not allowed.</b>";
+$contents_og_image_title_error = "<b class='text-warning'>Single or double quotes, certain special characters are not allowed. Minimum characters 19 maximum characters 55</b>";
+$error =1;
+}
+/* SEO valitation contents_og_image_title */
+elseif (strpos($contents_og_image_title, $merchant->visulString($contents_sub_category)) === false)
+{
+$keyWord = $merchant->visulString($contents_sub_category);
+$contents_og_image_title_error = "<b class='text-warning'>Use mimimum one keyword as '$keyWord' required</b>";
 $error =1;
 }
 else 
@@ -138,14 +147,20 @@ $contents_og_image_title = $sanitization -> test_input($_POST["contents_og_image
 /* contents_og_image_what_to_do */
 if (empty($_REQUEST["contents_og_image_what_to_do"]))
 {
-$contents_og_image_what_to_do_error = "<b class='text-warning'>What to do description required</b>";
-$error =1;
+
 } 
 /* valitation contents_og_image_what_to_do Tested*/
 /* VVI Please Never Allow ~!@#$%^&*(){}[]-+=:;'?/\| */
-elseif (!preg_match("/^([a-zA-Z0-9\<\,\>\.\?\/\|\'\"\!\@\#\(\)\-\_\=\+\ ]{3,5000})/",$contents_og_image_what_to_do))
+elseif (!preg_match("/^([a-zA-Z0-9\,\.\?\!\#\-\_\<\>\/\'\"\ ]{3,3000})/",$contents_og_image_what_to_do))
 {
 $contents_og_image_what_to_do_error = "<b class='text-warning'>Certain special characters are not allowed.</b>";
+$error =1;
+}
+/* SEO valitation contents_og_image_what_to_do */
+elseif (strpos($contents_og_image_what_to_do, $merchant->visulString($contents_sub_category)) === false)
+{
+$keyWord = $merchant->visulString($contents_sub_category);
+$contents_og_image_what_to_do_error = "<b class='text-warning'>Use mimimum one keyword as '$keyWord' required</b>";
 $error =1;
 }
 else 
@@ -155,14 +170,19 @@ $contents_og_image_what_to_do = $sanitization -> testArea($_POST["contents_og_im
 /* contents_og_image_how_to_solve */
 if (empty($_REQUEST["contents_og_image_how_to_solve"]))
 {
-$contents_og_image_how_to_solve_error = "<b class='text-warning'>How to solve description required</b>";
-$error =1;
 } 
 /* valitation contents_og_image_how_to_solve Tested*/
 /* VVI Please Never Allow ~!@#$%^&*(){}[]-+=:;'?/\| */
-elseif (!preg_match("/^([a-zA-Z0-9\<\,\>\.\?\/\|\'\"\!\@\#\(\)\-\_\=\+\ ]{3,5000})/",$contents_og_image_how_to_solve))
+elseif (!preg_match("/^([a-zA-Z0-9\,\.\?\!\#\-\_\<\>\/\'\"\ ]{3,3000})/",$contents_og_image_how_to_solve))
 {
 $contents_og_image_how_to_solve_error = "<b class='text-warning'>Certain special characters are not allowed.</b>";
+$error =1;
+}
+/* SEO valitation contents_og_image_how_to_solve */
+elseif (strpos($contents_og_image_how_to_solve, $merchant->visulString($contents_sub_category)) === false)
+{
+$keyWord = $merchant->visulString($contents_sub_category);
+$contents_og_image_how_to_solve_error = "<b class='text-warning'>Use mimimum one keyword as '$keyWord' required</b>";
 $error =1;
 }
 else 
@@ -176,7 +196,7 @@ if (!empty($_REQUEST['contents_affiliate_link']))
 /* valitation contents_affiliate_link  */
 if (!preg_match('/^([a-zA-Z0-9\,\.\/\+\?\-\=\_\-]{3,255})$/',$contents_affiliate_link))
 {
-$contents_affiliate_link_error = "<b class='text-warning'>Error on affiliate link</b>";
+$contents_affiliate_link_error = "<b class='text-warning'>Without https:// and some characters</b>";
 $error =1;
 }
 
@@ -192,7 +212,7 @@ if (!empty($_REQUEST['contents_github_link']))
 /* valitation contents_github_link  */
 if (!preg_match('/^([a-zA-Z0-9\,\.\/\+\?\-\=\_\-]{3,255})$/',$contents_github_link))
 {
-$contents_github_link_error = "<b class='text-warning'>Error on download link</b>";
+$contents_github_link_error = "<b class='text-warning'>Without https:// and some characters</b>";
 $error =1;
 }
 
@@ -208,7 +228,7 @@ if (!empty($_REQUEST['contents_preview_link']))
 /* valitation contents_preview_link  */
 if (!preg_match('/^([a-zA-Z0-9\,\.\/\+\?\-\=\_\-]{3,255})$/',$contents_preview_link))
 {
-$contents_preview_link_error = "<b class='text-warning'>Error on preview link</b>";
+$contents_preview_link_error = "<b class='text-warning'>Without https:// and some characters</b>";
 $error =1;
 }
 else 
@@ -223,7 +243,7 @@ if (!empty($_REQUEST['contents_video_link']))
 /* valitation contents_video_link  */
 if (!preg_match('/^([a-zA-Z0-9\,\.\/\+\?\-\=\_\-]{3,255})$/',$contents_video_link))
 {
-$contents_video_link_error = "<b class='text-warning'>Error on video link</b>";
+$contents_video_link_error = "<b class='text-warning'>Without https:// and some characters</b>";
 $error =1;
 }
 else 
@@ -243,29 +263,27 @@ $merchant->submit_new_contents_item($contents_category, $contents_sub_category, 
 <div class="well">
 <form method="post" enctype="multipart/form-data">
 <fieldset class='group-select'>
-<ul>
 <input type='hidden' name='form_key' value='<?php echo $formKey->outputKey(); ?>'>
 <?php echo $formKey_error; ?>
-<li>Select Category: <?php echo $contents_category_error;  ?></li>
-<li><select class='form-control' id='contents_category' name='contents_category' required><option value=''>-- No Category Selected --</option><?php $merchant->select_contents_category(); ?></select></li>
-<li>Select Sub Category: <?php echo $contents_sub_category_error;  ?></li>
-<li><select class='form-control' id='contents_sub_category' name='contents_sub_category' required><option value=''>-- No Category Selected --</option></select></li>
-<li>Title/ Item Name: <?php echo $contents_og_image_title_error;  ?></li>
-<li><input class='form-control' type="text" name="contents_og_image_title" placeholder="Single or double quotes, certain special characters are not allowed." required autofocus /></li>
-<li>What to do? <?php echo $contents_og_image_what_to_do_error;  ?></li>
-<li><textarea class='form-control' name='contents_og_image_what_to_do' rows='6' placeholder="Certain special characters are not allowed." id="WhatToDo"></textarea></li>
-<li>How to do?: <?php echo $contents_og_image_how_to_solve_error;  ?></li>
+Select Category: <?php echo $contents_category_error;  ?>
+<select class='form-control' id='contents_category' name='contents_category' required><option value=''>Please Select</option><?php $merchant->select_contents_category(); ?></select>
+Select Sub Category: <?php echo $contents_sub_category_error;  ?>
+<select class='form-control' id='contents_sub_category' name='contents_sub_category' required><option value=''>Please Select</option></select>
+Title/ Item Name: <?php echo $contents_og_image_title_error;  ?>
+<input class='form-control' type="text" name="contents_og_image_title" placeholder="Single or double quotes, certain special characters are not allowed." required autofocus />
+What to do? <?php echo $contents_og_image_what_to_do_error;  ?>
+<textarea class='form-control' name='contents_og_image_what_to_do' placeholder='Certain special characters are not allowed.' id="WhatToDo"></textarea>
+How to do?: <?php echo $contents_og_image_how_to_solve_error;  ?>
 <textarea class="form-control" name="contents_og_image_how_to_solve" placeholder="Certain special characters are not allowed." id="HowToDo"></textarea>
-<li>Affiliate link whthout https://www: <?php echo $contents_affiliate_link_error;  ?></li>
-<li><input class='form-control' placeholder="amazon.com/abc/" type="text" name="contents_affiliate_link" /></li>
-<li>Download link whthout https://www: <?php echo $contents_github_link_error;  ?></li>
-<li><input class='form-control' placeholder="github.com/abc/" type="text" name="contents_github_link" /></li>
-<li>Preview link whthout https://www: <?php echo $contents_preview_link_error;  ?></li>
-<li><input class='form-control'  placeholder="domain.com/abc/" type="text" name="contents_preview_link" /></li>
-<li>Video link whthout https://www: <?php echo $contents_video_link_error;  ?></li>
-<li><input class='form-control'  placeholder="youtube.com/abc/" type="text" name="contents_video_link" /></li>
+Affiliate Link: <?php echo $contents_affiliate_link_error;  ?>
+<input class='form-control' placeholder="amazon.com/abc/" type="text" name="contents_affiliate_link" />
+Download Link: <?php echo $contents_github_link_error;  ?>
+<input class='form-control' placeholder="github.com/abc/" type="text" name="contents_github_link" />
+Preview Link: <?php echo $contents_preview_link_error;  ?>
+<input class='form-control'  placeholder="domain.com/abc/" type="text" name="contents_preview_link" />
+Video Link: <?php echo $contents_video_link_error;  ?>
+<input class='form-control'  placeholder="youtube.com/abc/" type="text" name="contents_video_link" />
 <div class='buttons-set'><button type='submit' name='contents_add_items' title='Submit' class='button submit'> <span> Submit </span> </button></div>
-</ul>
 </fieldset>
 </form>
 </div>

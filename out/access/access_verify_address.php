@@ -2,7 +2,9 @@
 <?php include_once (eblogin.'/session.inc_verify.php'); ?>
 <?php include_once (eblayout.'/a-common-header-icon.php'); ?>
 <?php include_once (eblayout.'/a-common-header-meta-noindex.php'); ?>
+<?php include_once (eblayout.'/a-common-header-title-one.php'); ?>
 <?php include_once (eblayout.'/a-common-header-meta-scripts.php'); ?>
+<?php include_once (eblayout.'/a-common-page-id-start.php'); ?>
 <?php include_once (eblayout.'/a-common-header.php'); ?>
 <?php include_once (eblayout.'/a-common-navebar.php'); ?>
 <div class='container'>
@@ -77,21 +79,18 @@ $user -> varify_address($addressCode);
 <div class='well'>
 <form method='post'>
 <fieldset class='group-select'>
-<ul>
 <input type='hidden' name='form_key' value='<?php echo $formKey->outputKey(); ?>'>
 <?php echo $formKey_error; ?>
-<li>Address Verified Code: <?php echo $addressCode_error;  ?></li>
-<li><input class='form-control' type='text' name='addressCode' value=''></li>
+<div class='input-group'><span class='input-group-addon' id='sizing-addon2'>Address Verified Code: <?php echo $addressCode_error;  ?></span><input type='text' name='addressCode' placeholder='Code' class='form-control' aria-describedby='sizing-addon2' required  autofocus></div>
 <div class='buttons-set'>
 <button type='submit' name='submit_address_verification_code' title='Verify Address' class='button submit'>Verify Address</button>
 </div>
-</ul>
 </fieldset>
 </form>
 </div>
 </div>
 <div class='col-xs-12 col-md-3 sidebar-offcanvas'>
-<?php include_once (eblayout.'/a-common-ad-right.php'); ?>
+<?php include_once ("access-my-account.php"); ?>
 </div>
 </div>
 </div>

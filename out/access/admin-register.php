@@ -1,7 +1,9 @@
 <?php include_once (dirname(dirname(dirname(__FILE__))).'/initialize.php'); ?>
 <?php include_once (eblayout.'/a-common-header-icon.php'); ?>
 <?php include_once (eblayout.'/a-common-header-meta-noindex.php'); ?>
+<?php include_once (eblayout.'/a-common-header-title-one.php'); ?>
 <?php include_once (eblayout.'/a-common-header-meta-scripts-text-editor.php'); ?>
+<?php include_once (eblayout.'/a-common-page-id-start.php'); ?>
 <?php include_once (eblayout.'/a-common-header-for-admin.php'); ?>
 <?php include_once (eblayout.'/a-common-navebar-admin.php'); ?>
 <div class='container'>
@@ -50,12 +52,12 @@ $email_error = "*";
 $username_error = "*";
 $password_error = "*";
 ?>
-      <?php
+<?php
 /* Data Sanitization */
 include_once(ebsanitization.'/sanitization.php'); 
 $sanitization = new ebapps\sanitization\formSanitization();
 ?>
-      <?php
+<?php
 if (isset($_REQUEST['register']))
 {
 extract($_REQUEST);
@@ -91,6 +93,23 @@ else
 {
 $full_name = $sanitization->test_input($_POST["full_name"]);
 }
+/* selectCountryVal */
+if (isset($_REQUEST['selectCountryVal']))
+{
+$selectCountryVal = $_POST['selectCountryVal'];
+$countryOfSignup = new ebapps\login\registration_page();
+$countryOfSignup->selectedCountryAndCodeWhenSignup($selectCountryVal);
+if($countryOfSignup->data)
+{
+foreach($countryOfSignup->data as $valcountryOfSignup)
+{
+extract($valcountryOfSignup);
+$countryNameWhenSignup = $country_name;
+$countryCode = intval(substr($country_code, 0, 1)); 
+}
+}
+}
+$codeCheckInMobile = intval(substr($_POST["code_mobile"], 0, 1));
 /* Mobile */
 if (empty($_REQUEST["code_mobile"]))
 {
@@ -101,6 +120,11 @@ $error =1;
 elseif (!preg_match("/^[0-9]{8,16}$/",$code_mobile))
 {
 $code_mobile_error = "<b class='text-warning'>Mobile Number?</b>";
+$error =1;
+}
+elseif ($codeCheckInMobile != $countryCode)
+{
+$code_mobile_error = "<b class='text-warning'>Country Code?</b>";
 $error =1;
 }
 else 
@@ -130,7 +154,7 @@ $username_error = "<b class='text-warning'>Username required</b>";
 $error =1;
 }
 /* valitation username Tested allow (zakir)(zakir333)(zakir_9us2)*/
-elseif(!preg_match("/^[a-z0-9]{2,32}$/",$username))
+elseif(!preg_match("/^[a-z0-9]{3,32}$/",$username))
 {
 $username_error = "<b class='text-warning'>Username?</b>";
 $error =1;
@@ -155,22 +179,6 @@ else
 {
 $password = $sanitization->test_input($_POST["password"]);
 }
-/* selectCountryVal */
-
-if (isset($_REQUEST['selectCountryVal']))
-{
-$selectCountryVal = $_POST['selectCountryVal'];
-$countryOfSignup = new ebapps\login\registration_page();
-$countryOfSignup->selectedCountryWhenSignup($selectCountryVal);
-if($countryOfSignup->data)
-{
-foreach($countryOfSignup->data as $valcountryOfSignup)
-{
-extract($valcountryOfSignup);
-$counTry = $country_name;
-}
-}
-}
 
 /* Submition form */
 if($error ==0)
@@ -187,10 +195,10 @@ for ($i = 0; $i < 40; $i++)
 {
 $generated_new_email_hash .= $generate_email_hash_formate[rand(0, strlen($generate_email_hash_formate)-1)];
 }
-$hash = $generated_new_email_hash;
+$emailhash = $generated_new_email_hash;
 /*** ***/
 $user = new ebapps\login\registration_page();
-$user->registration_admin_once_and_only($username, $password, $email, $hash, $full_name, $signup_date, $user_ip_address, $counTry, $code_mobile);
+$user->registration_admin_once_and_only($username, $password, $email, $emailhash, $full_name, $signup_date, $user_ip_address, $countryNameWhenSignup, $code_mobile, $countryNameWhenSignup);
 }
 }
 ?>
@@ -211,31 +219,46 @@ $ip_user=$_SERVER['REMOTE_ADDR'];
             <?php echo $formKey_error; ?>
             <input type='hidden' name='signup_date' value='<?php echo date('r'); ?>'>
             <input type='hidden' name='user_ip_address' value='<?php echo $ip_user ?>'>
-            <label>Your full name <span class='required'><?php echo $full_name_error;  ?></span></label>
-            <br>
-            <input class='form-control' type='text' name='full_name' placeholder='Your name' required  autofocus>
-            <label>eMail <span class='required'><?php echo $email_error;  ?></span></label>
-            <br>
-            <input class='form-control' type='text' name='email' placeholder='username@gmail.com' required>
-            <label>Username <span class='required'><?php echo $username_error;  ?></span></label>
-            <br>
-            <input class='form-control' type='text' name='username' placeholder='username' required>
-            <label>Password <span class='required'><?php echo $password_error;  ?></span></label>
-            <br>
-            <input class='form-control' type='password' name='password' placeholder='password' required>
-            <label>Your mobile number with country code <span class='required'><?php echo $code_mobile_error;  ?></span></label>
-            <div class='form-group'>
-            <span class='input-group-addon'>
-              <select class='col-xs-12' id='selectCountry' name='selectCountryVal'>
-                <option>Please Select Country</option>
-                <?php
-                $country = new ebapps\login\registration_page();
-	            $country->select_country_code();
-	            ?>
-              </select>
-              </span>
-            <span><input class='form-control' id='selectedCountry' type='text' name='code_mobile' /></span>
+            
+            <div class='input-group'>
+            <span class='input-group-addon' id='sizing-addon2'>Full Name <?php echo $full_name_error;  ?></span>
+            <input type='text' name='full_name' placeholder='Your name' class='form-control' aria-describedby='sizing-addon2' required  autofocus>
             </div>
+            
+            
+            <div class='input-group'>
+            <span class='input-group-addon' id='sizing-addon2'>eMail <?php echo $email_error;  ?></span>
+            <input type='text' name='email' placeholder='username@gmail.com' class='form-control' aria-describedby='sizing-addon2' required  autofocus>
+            </div>
+            
+            
+            <div class='input-group'>
+            <span class='input-group-addon' id='sizing-addon2'>Username <?php echo $username_error;  ?></span>
+            <input type='text' name='username' placeholder='username' class='form-control' aria-describedby='sizing-addon2' required  autofocus>
+            </div>
+            
+            
+            <div class='input-group'>
+            <span class='input-group-addon' id='sizing-addon2'>Password <?php echo $password_error;  ?></span>
+            <input type='password' name='password' placeholder='password' class='form-control' aria-describedby='sizing-addon2' required  autofocus>
+            </div>
+            
+            <div class='input-group'>
+            <span class='input-group-addon' id='sizing-addon2'>Country: </span>
+            <select id='selectCountry' class='form-control' name='selectCountryVal'>
+            <option>Select Country</option>
+            <?php
+            $country = new ebapps\login\registration_page();
+            $country->select_country_id();
+            ?>
+            </select>
+            </div>
+             
+            <div class='input-group'>
+            <span class='input-group-addon' id='sizing-addon2'>Mobile <?php echo $code_mobile_error;  ?></span>
+            <input class='form-control' id='selectedCountry' type='text' name='code_mobile' required  autofocus />
+            </div>
+                       
             <div class='buttons-set'>
               <button type='submit' name='register' title='Signup' class='button submit'> <span> Signup </span> </button>
             </div>

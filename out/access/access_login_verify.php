@@ -78,11 +78,13 @@ $user -> login2system($username, $password);
 }
 ?>
 <?php
-if(empty($_SESSION['username']))
+if(empty($_SESSION['ebusername']))
 {
 ?>
 <?php include_once (eblayout.'/a-common-header-icon.php'); ?>
+<?php include_once (eblayout.'/a-common-header-title-one.php'); ?>
 <?php include_once (eblayout.'/a-common-header-meta-scripts.php'); ?>
+<?php include_once (eblayout.'/a-common-page-id-start.php'); ?>
 <?php include_once (eblayout.'/a-common-header.php'); ?>
 <?php include_once (eblayout.'/a-common-navebar.php'); ?>
 <div class='container'>
@@ -98,26 +100,28 @@ if(empty($_SESSION['username']))
 <!-- main-container -->
 <form method='post'>
 <fieldset class='group-select'>
-<ul>
 <input type='hidden' name='form_key' value='<?php echo $formKey->outputKey(); ?>'>
 <?php echo $formKey_error; ?>
-<li>
-<label>Username <span class='required'><?php echo $username_error; ?></span></label>
-<input class='form-control' type='text' name='username' placeholder='username' required autofocus />
-</li>
-<li>
-<label>Password <span class='required'><?php echo $password_error; ?></span></label>
-<input class='form-control' type='password' name='password' placeholder='password' required autofocus />
-</li>
+
+<div class='input-group'>
+<span class='input-group-addon' id='sizing-addon2'>Username: <?php echo $username_error; ?></span>
+<input type='text' name='username' placeholder='username' class='form-control' aria-describedby='sizing-addon2' required  autofocus>
+</div>
+
+
+<div class='input-group'>
+<span class='input-group-addon' id='sizing-addon2'>Password: <?php echo $username_error; ?></span>
+<input type='password' name='password' placeholder='Password' class='form-control' aria-describedby='sizing-addon2' required  autofocus>
+</div>
+
 <div class='buttons-set'>
 <button type='submit' name='login' title='Login' class='button submit'> <span> Login </span> </button>
 </div>
-</ul>
 </fieldset>
 </form>
-<a href='<?php echo outAccessLink; ?>/access_frogetlogin.php'>Forget username or password?</a>
-<hr />
-<a href='<?php echo outAccessLink; ?>/signup.php' title='New User Signup'>New User Signup</a> 
+<a href='<?php echo outAccessLink; ?>/access_frogetlogin.php'><button type='button' class='button submit' title='FORGET USERNAME OR PASSWORD?'><b>FORGET USERNAME OR PASSWORD?</b></button></a>
+<br />
+<a href='<?php echo outAccessLink; ?>/signup.php'><button type='button' class='button submit' title='NEW USER SIGN UP'><b>NEW USER SIGN UP</b></button></a>
 <!--End main-container --> 
 </div>
 </div>

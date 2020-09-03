@@ -5,11 +5,11 @@
         <div class='mega-container visible-lg visible-md visible-sm'>
           <div class='navleft-container'>
             <div class='mega-menu-title'>
-              <h3><i class='fa fa-navicon'></i>All</h3>
+              <h3><i class='fa fa-navicon fa-lg'></i>All</h3>
             </div>
             <div class='mega-menu-category'>
               <ul class='nav'>
-                <?php if (isset($_SESSION['username'])){ ?>
+                <?php if (isset($_SESSION['ebusername'])){ ?>
                 <!--Blog-->
                 <li> <a href='<?php echo outContentsLink; ?>/contents/'><i class='fa fa-pencil-square-o fa-lg' aria-hidden='true'></i> Blog</a>
                   <div class='wrap-popup'>
@@ -19,18 +19,21 @@
                           <ul class='nav'>
                             <?php if ($_SESSION['memberlevel'] >= 1) { ?>
                             <li><a href='<?php echo outContentsLink; ?>/contents/' title='Blog'><i class='fa fa-pencil-square-o fa-lg' aria-hidden='true'></i> Blog</a></li>
+                            <li><a href='<?php echo outContentsLink; ?>/contents-referral.php' title='Refer Friends'><i class='fa fa-user-plus fa-lg' aria-hidden='true'></i> Refer Friends</a></li>
                             <?php } ?>
-                            <?php if ($_SESSION['memberlevel'] >= 1) { ?>
-                            <li><a href='<?php echo outContentsLink; ?>/contents-items-status.php' title='Post Status'><i class='fa fa-tasks fa-lg' aria-hidden='true'></i> Post Status</a></li>
-                            <li><a href='<?php echo outContentsLink; ?>/contents-add-items.php' title='Write for us'><i class='fa fa-plus fa-lg' aria-hidden='true'></i> Write for us</a></li>
+                            <?php if ($_SESSION['memberlevel'] >= 9) { ?>
+                            <li><a href='<?php echo outContentsLink; ?>/contents-approve-query.php' title='Comments'><i class='fa fa-comment fa-lg' aria-hidden='true'></i> Comments</a></li>
+                            <li><a href='<?php echo outContentsLink; ?>/contents-admin-view-items.php' title='Approval'><i class='fa fa-refresh fa-lg' aria-hidden='true'></i> Approval</a></li>
                             <?php } ?>
                           </ul>
                         </div>
                         <div class='col-sm-6 has-sep'>
                           <ul class='nav'>
+                            <?php if ($_SESSION['memberlevel'] >= 1) { ?>
+                            <li><a href='<?php echo outContentsLink; ?>/contents-items-status.php' title='Post Status'><i class='fa fa-tasks fa-lg' aria-hidden='true'></i> Post Status</a></li>
+                            <li><a href='<?php echo outContentsLink; ?>/contents-add-items.php' title='Free Guest Post'><i class='fa fa-plus fa-lg' aria-hidden='true'></i> Free Guest Post</a></li>
+                            <?php } ?>
                             <?php if ($_SESSION['memberlevel'] >= 9) { ?>
-                            <li><a href='<?php echo outContentsLink; ?>/contents-admin-view-items.php' title='Approval'><i class='fa fa-refresh fa-lg' aria-hidden='true'></i> Approval</a></li>
-                            <li><a href='<?php echo outContentsLink; ?>/contents-approve-query.php' title='Comments'><i class='fa fa-comment fa-lg' aria-hidden='true'></i> Comments</a></li>
                             <li><a href='<?php echo outContentsLink; ?>/contents-add-sub-category.php' title='Add Sub Category'><i class='fa fa-sort-amount-asc fa-lg' aria-hidden='true'></i> Add Sub Category</a></li>
                             <li><a href='<?php echo outContentsLink; ?>/contents-add-category.php' title='Add Category'><i class='fa fa-database fa-lg' aria-hidden='true'></i> Add Category</a></li>
                             <?php } ?>
@@ -63,27 +66,33 @@
                   </div>
                 </li>
                 <!--SATTINGS-->
-                <li> <a href='<?php echo outAccessLink; ?>/home.php'><i class='fa fa-cogs fa-lg' aria-hidden='true'></i> </a>
+                <li> <a href='<?php echo outAccessLink; ?>/home.php'><i class='fa fa-cogs fa-lg' aria-hidden='true'></i> <?php echo $_SESSION['ebusername']; ?> </a>
                   <div class='wrap-popup column1'>
                     <div class='popup'>
                       <ul class='nav'>
                         <?php if ($_SESSION['memberlevel'] >= 9) { ?>
-                        <li><a href='<?php echo outAccessLink; ?>/sendMassMail.php' title='Send Mass eMail'><i class='fa fa-envelope fa-lg' aria-hidden='true'></i> Send Mass eMail</a></li>
+                        <li><a href='<?php echo outAccessLink; ?>/sendMail.php' title='Mass eMail'><i class='fa fa-envelope fa-lg' aria-hidden='true'></i> Send eMail</a></li>
                         <li><a href='<?php echo outAccessLink; ?>/access_all_account_information.php' title='User Info'><i class='fa fa-users fa-lg' aria-hidden='true'></i> User Info</a></li>
                         <li><a href='<?php echo outAccessLink; ?>/mrss.php' title='All mRSS'><i class='fa fa-rss fa-lg' aria-hidden='true'></i> All mRSS</a></li>
+                        <li><a href='<?php echo outAccessLink; ?>/sitemap.php' title='Sitemap'><i class='fa fa-sitemap fa-lg' aria-hidden='true'></i> Sitemap</a></li>
                         <li><a href='<?php echo outAccessLink; ?>/access-admin-merchant-profile.php' title='Business Info'><i class='fa fa-briefcase fa-lg' aria-hidden='true'></i> Business Info</a></li>
+                        <li><a href='<?php echo outAccessLink; ?>/access-invite-result.php' title='Refer Friends'><i class='fa fa-bar-chart fa-lg' aria-hidden='true'></i> Refer Friends </a></li>
+                        <li><a href='<?php echo outAccessLink; ?>/access-invite.php' title='Invite Your Friends'><i class='fa fa-user-plus fa-lg' aria-hidden='true'></i> Invite Your Friends</a></li>
                         <?php } ?>
                         <?php if ($_SESSION['memberlevel'] >= 1) { ?>
-                        <li><a href='<?php echo outAccessLink; ?>/access_update_account_information.php' title='Settings'><i class='fa fa-cog fa-lg' aria-hidden='true'></i> Settings </a></li>
+                        <li><a href='<?php echo outAccessLink; ?>/access_update_account_information.php' title='Account Settings'><i class='fa fa-cog fa-lg' aria-hidden='true'></i> Account Settings </a></li>
                         <?php } ?>
-                        <li><a href='<?php echo outPagesLink; ?>/logout.php' title='Sign Out'><i class='fa fa-sign-out fa-lg' aria-hidden='true'></i> Sign Out</a></li>
+                        <li class='last'><a href='<?php echo outPagesLink; ?>/logout.php' title='Sign Out'><i class='fa fa-sign-out fa-lg' aria-hidden='true'></i> Sign Out</a></li>
                       </ul>
                     </div>
                   </div>
                 </li>
                 <?php } else { ?>
                 <?php if(!mysqli_connect_errno()){ ?>
+                <?php if (empty($_SESSION['ebusername'])){ ?>
                 <li class='nosub'><a href='<?php echo outAccessLink; ?>/home.php' title='Sign In'><i class='fa fa-sign-in fa-lg' aria-hidden='true'></i> Sign In</a></li>
+                <li class='nosub'><a href='<?php echo outAccessLink; ?>/signup.php' title='Sign Up'><i class='fa fa-user-plus fa-lg' aria-hidden='true'></i> Sign Up</a></li>
+                <?php } ?>
                 <!--Start Blog Dextop Menue-->
                 <?php include_once (ebblog.'/blog.php'); ?>
                 <li><a href='<?php echo outContentsLink; ?>/contents/' title='Blog'><i class='fa fa-pencil-square-o fa-lg' aria-hidden='true'></i> Blog</a>
@@ -121,8 +130,9 @@
 <?php
 $path = $_SERVER['REQUEST_URI'];
 $folders = explode('/', $path);
-if(isset($folders[2])){ $eBcms = $folders[2]; 
-switch ($eBcms){
+if(isset($folders[2])){ $eBcms = $folders[2];
+switch ($eBcms)
+{
 default:
 include_once (ebcontents.'/views/shop/cart-wish-search-menu.php');
 }

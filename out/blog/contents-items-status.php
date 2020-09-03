@@ -1,12 +1,13 @@
 <?php include_once (dirname(dirname(dirname(__FILE__))).'/initialize.php'); ?>
 <?php include_once (eblogin.'/session.inc.php'); ?>
 <?php include_once (eblayout.'/a-common-header-icon.php'); ?>
+<?php include_once (eblayout.'/a-common-header-title-one.php'); ?>
 <?php include_once (eblayout.'/a-common-header-meta-noindex.php'); ?>
 <?php include_once (eblayout.'/a-common-header-meta-scripts-text-editor.php'); ?>
+<?php include_once (eblayout.'/a-common-page-id-start.php'); ?>
 <?php include_once (eblayout.'/a-common-header.php'); ?>
 <?php include_once (eblayout.'/a-common-navebar.php'); ?>
 <?php include_once (ebaccess."/access_permission_online_minimum.php"); ?>
-
 <div class='container'>
   <div class='row row-offcanvas row-offcanvas-right'>
     <div class='col-xs-12 col-md-2'>
@@ -18,7 +19,6 @@
       </div>
       <?php include_once (ebblog.'/blog.php'); ?>
       <?php
-
 if(isset($_REQUEST['delete_contents_items']))
 {
 extract($_REQUEST);
@@ -43,19 +43,17 @@ $solutionStatus .= "<h3 class='panel-title'> <a class='collapsed' data-toggle='c
 //
 $solutionStatus .= "<div class='row'>";
 $solutionStatus .= "<div class='col-xs-12 col-md-12'>";
-$solutionStatus .= "<div class='table-responsive'>";
-$solutionStatus .= "<table class='table table-bordered'>";
-$solutionStatus .= "<tbody>";
-$solutionStatus .= "<tr>";
+//
+$solutionStatus .= "<div class='row'>";
 if(file_exists(str_replace(hostingName, docRoot, hypertextWithOrWithoutWww.$contents_og_image_url)))
 {
-$solutionStatus .= "<td width='30%'><img class='img-responsive' src='".hypertextWithOrWithoutWww."$contents_og_image_url' /></td>";
+$solutionStatus .= "<div class='col-xs-12 col-md-3'><img src='".hypertextWithOrWithoutWww."$contents_og_image_url' class='img-responsive' /></div>";
 }
 else
 {
-$solutionStatus .= "<td width='30%'><img class='img-responsive' src='".themeResource."/images/blankImage.jpg' /></td>";
+$solutionStatus .= "<div class='col-xs-12 col-md-3'><img src='".themeResource."/images/blankImage.jpg' class='img-responsive' /></div>";
 }
-$solutionStatus .= "<td>";
+$solutionStatus .= "<div class='col-xs-12 col-md-9'>";
 if($contents_approved==0){
 $solutionStatus .= "<i class='fa fa-times-circle fa-lg' aria-hidden='true'></i> REVIEWING <br>";
 }
@@ -63,94 +61,75 @@ if($contents_approved==1){
 $solutionStatus .= "<i class='fa fa-check-circle fa-lg' aria-hidden='true'></i> PUBLISHED <br>";
 }
 $solutionStatus .= "<b>Title: ".ucfirst($contents_og_image_title)."</b><br>";
-//$solutionStatus .= "<b>".$this->visulString($contents_category)." <i class='fa fa-angle-double-right' aria-hidden='true'></i>".$this->visulString($contents_sub_category)."</b><br>";
 $solutionStatus .= "<b>".$obj->visulString($contents_category)." <i class='fa fa-angle-double-right' aria-hidden='true'></i> ".$obj->visulString($contents_sub_category)."</b><br>";
 $solutionStatus .= "<b>ID: $contents_id</b>";
-$solutionStatus .= "</td>"; 
-$solutionStatus .= "</tr>";
-$solutionStatus .= "</tbody>";
-$solutionStatus .= "</table>";
+$solutionStatus .= "</div>"; 
 $solutionStatus .= "</div>";
+//
 $solutionStatus .= "</div>";
 $solutionStatus .= "</div>";
 //
-$solutionStatus .= "</a>";
-$solutionStatus .= "</h3>";
+$solutionStatus .= "</a></h3>";
 $solutionStatus .= "</div>";
 $solutionStatus .= "<div id='collapse".$contents_id."' class='panel-collapse collapse' role='tabpanel' aria-labelledby='heading".$contents_id."'>";
-$solutionStatus .= "<div class='table-responsive panel-body'>";
-$solutionStatus .= "<table class='table'>";
-$solutionStatus .= "<tbody>";
-$solutionStatus .= "<tr><td>Title:</td><td>".ucfirst($contents_og_image_title)."</td></tr>";
-$solutionStatus .= "<tr><td>Category:</td><td>".$obj->visulString($contents_category)."</td></tr>";
-$solutionStatus .= "<tr><td>Sub Category:</td><td>".$obj->visulString($contents_sub_category)."</td></tr>";
+//
+$solutionStatus .= "<div class='row'><div class='col-xs-12 col-md-3'>Title:</div><div class='col-xs-12 col-md-9'>".ucfirst($contents_og_image_title)."</div></div>";
+$solutionStatus .= "<div class='row'><div class='col-xs-12 col-md-3'>Category:</div><div class='col-xs-12 col-md-9'>".$obj->visulString($contents_category)."</div></div>";
+$solutionStatus .= "<div class='row'><div class='col-xs-12 col-md-3'>Sub Category:</div><div class='col-xs-12 col-md-9'>".$obj->visulString($contents_sub_category)."</div></div>";
 if(file_exists(str_replace(hostingName, docRoot, hypertextWithOrWithoutWww.$contents_og_image_url)))
 {
-$solutionStatus .= "<tr><td>Profile Image:</td><td>";
+$solutionStatus .= "<div class='row'><div class='col-xs-12 col-md-3'>Profile Image:</div><div class='col-xs-12 col-md-9'>";
 $solutionStatus .= "<img src='".hypertextWithOrWithoutWww."$contents_og_image_url' class='img-responsive' />";
-$solutionStatus .= "</td></tr>";
+$solutionStatus .= "</div></div>";
 }
 else
 {
 /* Do not use, it will not remove the image */
-$solutionStatus .= "<tr><td>Profile Image:</td><td><form action='contents-image-upload.php' method='post'><input type='hidden' name='contents_id' value='$contents_id' /><div class='buttons-set'>
+$solutionStatus .= "<div class='row'><div class='col-xs-12 col-md-3'>Profile Image:</div><div class='col-xs-12 col-md-9'><form action='contents-image-upload.php' method='post'><input type='hidden' name='contents_id' value='$contents_id' /><div class='buttons-set'>
 <button type='submit' name='upload_image' title='Upload Profile Image' class='button submit'> <span> Upload Profile Image </span> </button>
-</div></form></td></tr>";
+</div></form></div></div>";
 }
-$solutionStatus .= "<tr><td>What to do:</td><td class='well'>".ucfirst($contents_og_image_what_to_do)."</td></tr>";
-$solutionStatus .= "<tr><td>How to do:</td><td class='well'>".ucfirst($contents_og_image_how_to_solve)."</td></tr>";
+$solutionStatus .= "<div class='row'><div class='col-xs-12 col-md-3'>What to do:</div><div class='col-xs-12 col-md-9'>".ucfirst($contents_og_image_what_to_do)."</div></div>";
+$solutionStatus .= "<div class='row'><div class='col-xs-12 col-md-3'>How to do:</div><div class='col-xs-12 col-md-9'>".ucfirst($contents_og_image_how_to_solve)."</div></div>";
 
-
-if(!empty($contents_affiliate_link)){
-$solutionStatus .= "<tr><td>Affiliate Link:</td><td>";
-$solutionStatus .= "<p><a rel='nofollow' href='".hypertextWithOrWithoutWww."$contents_affiliate_link' target='_blank'><button type='button' class='button submit' title='Affiliate Link'><span> Visit </span></button></a></p>";
+if(!empty($contents_affiliate_link))
+{
+$solutionStatus .= "<div class='row'><div class='col-xs-12 col-md-3'>Affiliate Link:</div><div class='col-xs-12 col-md-9'><p><a rel='nofollow' href='".hypertextWithOrWithoutWww."$contents_affiliate_link' target='_blank'><button type='button' class='button submit' title='Affiliate Link'><span> Visit </span></button></a></p></div></div>";
 }
-
-if(!empty($contents_github_link)){
-$solutionStatus .= "<tr><td>Download:</td><td>";
-$solutionStatus .= "<p><a rel='nofollow' href='".hypertextWithOrWithoutWww."$contents_github_link' target='_blank'><button type='button' class='button submit' title='Download'><span> Download </span></button></a></p>";
+if(!empty($contents_github_link))
+{
+$solutionStatus .= "<div class='row'><div class='col-xs-12 col-md-3'>Download Link:</div><div class='col-xs-12 col-md-9'><p><a rel='nofollow' href='".hypertextWithOrWithoutWww."$contents_github_link' target='_blank'><button type='button' class='button submit' title='Download'><span> Download </span></button></a></p></div></div>";
 }
-
-$solutionStatus .= "</td></tr>";
-if(!empty($contents_preview_link)){
-$solutionStatus .= "<tr><td>Preview:</td><td>";
-$solutionStatus .= "<p><a rel='nofollow' href='".hypertextWithOrWithoutWww."$contents_preview_link' target='_blank'><button type='button' class='button submit' title='Preview'><span> Preview </span></button></a></p>";
+if(!empty($contents_preview_link))
+{
+$solutionStatus .= "<div class='row'><div class='col-xs-12 col-md-3'>Preview Link:</div><div class='col-xs-12 col-md-9'><p><a rel='nofollow' href='".hypertextWithOrWithoutWww."$contents_preview_link' target='_blank'><button type='button' class='button submit' title='Preview'><span> Preview </span></button></a></p></div></div>";
 }
-
-$solutionStatus .= "</td></tr>";
-if(!empty($contents_video_link)){
-$solutionStatus .= "<tr><td>Video:</td><td>";
+if(!empty($contents_video_link))
+{
+$solutionStatus .="<div class='row'><div class='col-xs-12 col-md-3'>Video:</div><div class='col-xs-12 col-md-9'>";
 $solutionStatus .="<div class='bs-example' data-example-id='responsive-embed-16by9-iframe-youtube'>";
 $solutionStatus .="<div class='embed-responsive embed-responsive-16by9'>";
 $solutionStatus .="<iframe class='embed-responsive-item' src='".hypertextWithOrWithoutWww."$contents_video_link' allowfullscreen=''>";
 $solutionStatus .="</iframe>";
 $solutionStatus .="</div>";
 $solutionStatus .="</div>";
+$solutionStatus .= "</div></div>";
 }
-$solutionStatus .= "</td></tr>";
-$solutionStatus .= "<tr><td>Upload Date:</td><td>$contents_date</td></tr>";
-$solutionStatus .= "<tr><td>OPTION:</td><td>";
+$solutionStatus .= "<div class='row'><div class='col-xs-12 col-md-3'>Upload Date:</div><div class='col-xs-12 col-md-9'>$contents_date</div></div>";
+$solutionStatus .= "<div class='row'><div class='col-xs-12 col-md-3'>OPTION:</div><div class='col-xs-12 col-md-9'>";
 $solutionStatus .= "<form action='contents-add-items_edit.php' method='get'><input type='hidden' name='username_contents' value='$username_contents' /><input type='hidden' name='contents_id' value='$contents_id' /><div class='buttons-set'>
-<button type='submit' name='option_contents_edit' title='EDIT' class='button submit'> <span> EDIT </span> </button>
+<button type='submit' title='EDIT' class='button submit'> <span> EDIT </span> </button>
 </div></form>";
-$solutionStatus .= "</td></tr>";
-if(empty($contents_approved)){
-$solutionStatus .= "<tr><td>Delete:</td><td><form method='post'><input type='hidden' name='contents_id' value='$contents_id' /><input type='hidden' name='contents_og_image_url' value='$contents_og_image_url' /><input type='hidden' name='contents_og_small_image_url' value='$contents_og_small_image_url' /><div class='buttons-set'>
+$solutionStatus .= "<form method='post'><input type='hidden' name='contents_id' value='$contents_id' /><input type='hidden' name='contents_og_image_url' value='$contents_og_image_url' /><input type='hidden' name='contents_og_small_image_url' value='$contents_og_small_image_url' /><div class='buttons-set'>
 <button type='submit' name='delete_contents_items' title='Delete' class='button submit'> <span> Delete </span> </button>
-</div></form></td></tr>";
-}
-$solutionStatus .= "</tbody>";
-$solutionStatus .= "</table>";
-$solutionStatus .= "</div>";
+</div></form>";
+$solutionStatus .= "</div></div>";
+//
 $solutionStatus .= "</div>";
 $solutionStatus .= "</div>";
 }
 $solutionStatus .= "</div>";
 echo $solutionStatus;
-}
-else
-{
-echo "<pre>No Entry Found</pre>";
 }
 ?>
     </div>

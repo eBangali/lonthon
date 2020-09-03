@@ -1,15 +1,9 @@
 <?php include_once (dirname(dirname(dirname(__FILE__))).'/initialize.php'); ?>
 <?php include_once (eblayout.'/a-common-header-icon.php'); ?>
-<meta property='og:image:url' content='<?php echo themeResource; ?>/images/Advertisement.jpg' />
-<meta property='og:image:type' content='image/jpeg' />
-<meta property='og:image:width' content='1366' />
-<meta property='og:image:height' content='768' />
-<meta property='og:title' content='Idea PSD RWD Apps' />
-<meta property='og:description' content='Convert your Idea into Code. Turn your Dreams comes True' />
-<title>Idea | PSD | RWD | Apps</title>
-<meta name='description' content='Convert your Idea into Code. Turn your Dreams comes True' />
+<?php include_once (eblayout.'/a-common-header-title-two.php'); ?>
 <?php include_once (eblayout.'/a-common-header-meta-noindex.php'); ?>
 <?php include_once (eblayout.'/a-common-header-meta-scripts.php'); ?>
+<?php include_once (eblayout.'/a-common-page-id-start.php'); ?>
 <?php include_once (eblayout.'/a-common-header.php'); ?>
 <?php include_once (eblayout.'/a-common-navebar.php'); ?>
 <section id='title' class='title'>
@@ -18,20 +12,20 @@
 <div class='col-xs-12'>
 <div class='well'>
 <h2 title='About us'>About us</h2>
-<p>eBangali has earned vast popularity having the focus on <b>Interrelated Web Application Services</b>, has 11 years of experience, has gathered stability with proven success in delivering cost-effective but quality services to our clients in Canada, USA, Netherlands, UK, Germany, Denmark, Australia, Italy, France and Japan.</p>
+<p>We are creating open source projects and develop modern AI SaaS, eCommerce, and POS.</p>
 </div>
 </div>
 
 <div class='col-xs-12 col-sm-4'>
 <div class='well'>
 <h2 title='Our Products'>Our Products</h2>
-<p>Merketing Blog, Portfolio Website, Custom CMS, eCommerce and POS based on CRM</p>
+<p>Marketing Blog, Portfolio Website, Custom CMS, eCommerce and POS based on CRM</p>
 </div>
 </div>
 <div class='col-xs-12 col-sm-4'>
 <div class='well'>
 <h2 title='Solution'>Solutions we provide on</h2>
-<p>SQA, Java, Android, Laravel, PHP Apps Development.</p>
+<p>SQA, C#, Python AI, Java, Android, Laravel, PHP Apps Development.</p>
 </div>
 </div>
 <div class='col-xs-12 col-sm-4'>
@@ -198,6 +192,7 @@
 </div>
 </div>
 </section>
+
 <section id='technology' class='technology'>
 <h2 class='text-uppercase text-center'>Technology we use</h2>
 <div class='container'>
@@ -209,58 +204,118 @@
 </div>
 <div class='col-sm-4 col-sm-pull-8'>
 <div class='technologyCircle animationOne'>
-<div> <i class='fa fa-check-square-o'></i> </div>
+<div> <i class='fa fa-check'></i> </div>
 </div>
 </div>
 </div>
+
 <div class='technologyItem row'>
 <div class='technologyContent col-sm-8 text-left col-sm-push-4'>
-<h4>PHP Custom CMS</h4>
+<h4>Node.js</h4>
 </div>
 <div class='col-sm-4 col-sm-pull-8'>
-<div class='technologyCircle animationOne'>
-<div> <i class='fa fa-check-square-o'></i> </div>
+<div class='technologyCircle animationTwo'>
+<div> <i class='fa fa-check'></i> </div>
+</div>
+</div>
+</div>
+
+<div class='technologyItem row'>
+<div class='technologyContent col-sm-8 text-left col-sm-push-4'>
+<h4>PHP</h4>
+</div>
+<div class='col-sm-4 col-sm-pull-8'>
+<div class='technologyCircle animationThree'>
+<div> <i class='fa fa-check'></i> </div>
 </div>
 </div>
 </div>
 </div>
+
 <div class='col-sm-4'>
 <div class='technologyItem row'>
 <div class='technologyContent col-sm-8 text-left col-sm-push-4'>
 <h4>Android</h4>
 </div>
 <div class='col-sm-4 col-sm-pull-8'>
+<div class='technologyCircle animationOne'>
+<div> <i class='fa fa-check'></i> </div>
+</div>
+</div>
+</div>
+
+<div class='technologyItem row'>
+<div class='technologyContent col-sm-8 text-left col-sm-push-4'>
+<h4>SQL</h4>
+</div>
+<div class='col-sm-4 col-sm-pull-8'>
 <div class='technologyCircle animationTwo'>
-<div> <i class='fa fa-check-square-o'></i> </div>
+<div> <i class='fa fa-check'></i> </div>
 </div>
 </div>
 </div>
+
 <div class='technologyItem row'>
 <div class='technologyContent col-sm-8 text-left col-sm-push-4'>
 <h4>Laravel</h4>
 </div>
 <div class='col-sm-4 col-sm-pull-8'>
-<div class='technologyCircle animationTwo'>
-<div> <i class='fa fa-check-square-o'></i> </div>
+<div class='technologyCircle animationThree'>
+<div> <i class='fa fa-check'></i> </div>
 </div>
 </div>
 </div>
 </div>
+
 <div class='col-sm-4'>
 <div class='technologyItem row'>
-<div class='technologyContent col-sm-8 text-right col-sm-push-4'>
-<h4>WordPress</h4>
+<div class='technologyContent col-sm-8 text-left col-sm-push-4'>
+<h4>Python</h4>
+</div>
+<div class='col-sm-4 col-sm-pull-8'>
+<div class='technologyCircle animationOne'>
+<div> <i class='fa fa-check'></i> </div>
+</div>
+</div>
+</div>
+
+<div class='technologyItem row'>
+<div class='technologyContent col-sm-8 text-left col-sm-push-4'>
+<h4>C#.NET</h4>
+</div>
+<div class='col-sm-4 col-sm-pull-8'>
+<div class='technologyCircle animationTwo'>
+<div> <i class='fa fa-check'></i> </div>
+</div>
+</div>
+</div>
+
+<div class='technologyItem row'>
+<div class='technologyContent col-sm-8 text-left col-sm-push-4'>
+<h4>WordPress, WooCommerce</h4>
 </div>
 <div class='col-sm-4 col-sm-pull-8'>
 <div class='technologyCircle animationThree'>
-<div> <i class='fa fa-check-square-o'></i> </div>
+<div> <i class='fa fa-check'></i> </div>
 </div>
 </div>
 </div>
 
 </div>
+<div class='col-sm-4'>
+<div class='technologyItem row'>
+<div class='technologyContent col-sm-8 text-left col-sm-push-4'>
+<h4>SCSS Bootstrap</h4>
+</div>
+<div class='col-sm-4 col-sm-pull-8'>
+<div class='technologyCircle animationThree'>
+<div> <i class='fa fa-check'></i> </div>
+</div>
+</div>
+</div>
+</div>
 </div>
 </div>
 </section>
-<?php include_once (eblayout.'/a-common-supportteam.php'); ?>
+
 <?php include_once (eblayout.'/a-common-footer.php'); ?>

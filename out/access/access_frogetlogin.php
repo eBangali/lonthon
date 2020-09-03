@@ -1,15 +1,9 @@
 <?php include_once (dirname(dirname(dirname(__FILE__))).'/initialize.php'); ?>
 <?php include_once (eblayout.'/a-common-header-icon.php'); ?>
 <?php include_once (eblayout.'/a-common-header-meta-noindex.php'); ?>
-<meta property='og:image:url' content='<?php echo themeResource; ?>/images/Advertisement.jpg' />
-<meta property='og:image:type' content='image/jpeg' />
-<meta property='og:image:width' content='1366' />
-<meta property='og:image:height' content='768' />
-<meta property='og:title' content='Forget username or password?' />
-<meta property='og:description' content='Convert your Idea into Code. Turn your Dreams comes True' />
-<title>Forget username or password?</title>
-<meta name='description' content='Convert your Idea into Code. Turn your Dreams comes True' />
+<?php include_once (eblayout.'/a-common-header-title-one.php'); ?>
 <?php include_once (eblayout.'/a-common-header-meta-scripts.php'); ?>
+<?php include_once (eblayout.'/a-common-page-id-start.php'); ?>
 <?php include_once (eblayout.'/a-common-header.php'); ?>
 <?php include_once (eblayout.'/a-common-navebar.php'); ?>
 <div class='container'>
@@ -61,7 +55,7 @@ $usernameemail_error = "<b class='text-warning'>Username or eMail or Mobile Numb
 $error =1;
 } 
 /* valitation fullname  */
-elseif (! preg_match("/^[a-z0-9\@\.\_]{2,64}$/",$usernameemail))
+elseif (! preg_match("/^[a-z0-9\@\.\_]{3,32}$/",$usernameemail))
 {
 $usernameemail_error = "<b class='text-warning'>Username or eMail or Mobile Number?</b>";
 $error =1;
@@ -82,18 +76,20 @@ $user -> retrieve($usernameemail);
 <div class='well'>
 <form method='post'>
 <fieldset class='group-select'>
-<ul>
 <input type='hidden' name='form_key' value='<?php echo $formKey->outputKey(); ?>'>
 <?php echo $formKey_error; ?>
-<li>Username or Email or Mobile: <?php echo $usernameemail_error;  ?></li>
-<li><input class='form-control' type='text' name='usernameemail' placeholder='Username or Email or Mobile' required autofocus /></li>
+
+<div class='input-group'>
+<span class='input-group-addon' id='sizing-addon2'>eMail or Mobile: <?php echo $usernameemail_error;  ?></span>
+<input type='text' name='usernameemail' placeholder='Username or Email or Mobile' class='form-control' aria-describedby='sizing-addon2' required  autofocus>
+</div>
+
 <div class='buttons-set'>
 <button type='submit' name='retrieve' title='Submit' class='button submit'> <span> Submit </span> </button>
 </div>
-</ul>
+<a href='<?php echo outAccessLink; ?>/signup.php'><button type='button' class='button submit' title='Register New User'><b>Register New User</b></button></a>
 </fieldset>
 </form>
-<a href='<?php echo outAccessLink; ?>/signup.php'>Register new user</a>
 </div>
 </div>
 

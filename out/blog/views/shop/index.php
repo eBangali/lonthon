@@ -1,4 +1,3 @@
-<?php include_once (eblayout.'/a-common-header-meta-scripts.php'); ?>
 <?php include_once (eblayout.'/a-common-header.php'); ?>
 <?php include_once (eblayout.'/a-common-navebar.php'); ?>
 <?php include_once('search.php'); ?>
@@ -15,8 +14,7 @@
 <div class='col-right sidebar col-md-3 col-xs-12'>
 <?php include_once ('rightWidgetForPost.php'); ?>
 </div>
-</div
-><?php include_once ('video.php'); ?>
+</div>
+<?php include_once ('video.php'); ?>
 </div>
 </section>
-<?php include_once (eblayout.'/a-common-footer.php'); ?>

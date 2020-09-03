@@ -76,11 +76,13 @@ $user -> login2system($username, $password);
 }
 ?>
 <?php
-if(empty($_SESSION['username']))
+if(empty($_SESSION['ebusername']))
 {
 ?>
 <?php include_once (eblayout.'/a-common-header-icon.php'); ?>
+<?php include_once (eblayout.'/a-common-header-title-one.php'); ?>
 <?php include_once (eblayout.'/a-common-header-meta-scripts.php'); ?>
+<?php include_once (eblayout.'/a-common-page-id-start.php'); ?>
 <?php include_once (eblayout.'/a-common-header.php'); ?>
 <?php include_once (eblayout.'/a-common-navebar.php'); ?>
 <div class='container'>
@@ -95,17 +97,23 @@ if(empty($_SESSION['username']))
 <div class='well'>
 <form method='post'>
 <fieldset class='group-select'>
-<ul>
 <input type='hidden' name='form_key' value='<?php echo $formKey->outputKey(); ?>'>
 <?php echo $formKey_error; ?>
-<li>Username: <?php echo $username_error; ?></li>
-<li><input class='form-control' type='text' name='username' placeholder='username' required autofocus /></li>
-<li>Temporary Password: <?php echo $password_error; ?></li>
-<li><input class='form-control' type='password' name='password' placeholder='password' required autofocus /></li>
+
+<div class='input-group'>
+<span class='input-group-addon' id='sizing-addon2'>Username: <?php echo $username_error; ?></span>
+<input type='text' name='username' placeholder='username' class='form-control' aria-describedby='sizing-addon2' required  autofocus>
+</div>
+
+
+<div class='input-group'>
+<span class='input-group-addon' id='sizing-addon2'>Temporary Password: <?php echo $password_error; ?></span>
+<input type='password' name='password' placeholder='Temporary Password' class='form-control' aria-describedby='sizing-addon2' required  autofocus>
+</div>
+
 <div class='buttons-set'>
 <button type='submit' name='login' title='Login' class='button submit'> <span> Login </span> </button>
 </div>
-</ul>
 </fieldset>
 </form>
 </div>

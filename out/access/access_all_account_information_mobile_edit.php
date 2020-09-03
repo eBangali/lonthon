@@ -2,7 +2,9 @@
 <?php include_once (eblogin.'/session.inc.php'); ?>
 <?php include_once (eblayout.'/a-common-header-icon.php'); ?>
 <?php include_once (eblayout.'/a-common-header-meta-noindex.php'); ?>
+<?php include_once (eblayout.'/a-common-header-title-one.php'); ?>
 <?php include_once (eblayout.'/a-common-header-meta-scripts.php'); ?>
+<?php include_once (eblayout.'/a-common-page-id-start.php'); ?>
 <?php include_once (eblayout.'/a-common-header.php'); ?>
 <?php include_once (eblayout.'/a-common-navebar.php'); ?>
 <?php include_once (ebaccess.'/access_permission_admin_minimum.php'); ?>	
@@ -79,19 +81,17 @@ foreach($obj->data as $val)
 extract($val);
 $updateBusinessInfo ="<form method='post'>"; 
 $updateBusinessInfo .="<fieldset class='group-select'>";
-$updateBusinessInfo .="<ul>"; 
 $updateBusinessInfo .="<input type='hidden' name='form_key' value='";
 $updateBusinessInfo .= $formKey->outputKey(); 
 $updateBusinessInfo .="'>"; 
 $updateBusinessInfo .="$formKey_error";
-$updateBusinessInfo .="<li>Username: $username</li>"; 
-$updateBusinessInfo .="<input type='hidden' name='username' value='$username' />";
-$updateBusinessInfo .="<li>Mobile Number : $mobile</li>";
-$updateBusinessInfo .="<li>Mobile verified : $mobileactive</li>";
+$updateBusinessInfo .="Username: $ebusername"; 
+$updateBusinessInfo .="<input type='hidden' name='username' value='$ebusername' />";
+$updateBusinessInfo .="Mobile Number : $mobile";
+$updateBusinessInfo .="Mobile verified : $mobileactive";
 $updateBusinessInfo .="<div class='buttons-set'>";
 $updateBusinessInfo .="<button type='submit' name='UpdateMemberMobile' title='Update' class='button submit'>Update</button>";
 $updateBusinessInfo .="</div>";
-$updateBusinessInfo .="</ul>";
 $updateBusinessInfo .="</fieldset>";
 $updateBusinessInfo .="</form>";
 echo $updateBusinessInfo;  

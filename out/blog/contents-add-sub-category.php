@@ -1,8 +1,10 @@
 <?php include_once (dirname(dirname(dirname(__FILE__))).'/initialize.php'); ?>
 <?php include_once (eblogin.'/session.inc.php'); ?>
 <?php include_once (eblayout.'/a-common-header-icon.php'); ?>
+<?php include_once (eblayout.'/a-common-header-title-one.php'); ?>
 <?php include_once (eblayout.'/a-common-header-meta-noindex.php'); ?>
 <?php include_once (eblayout.'/a-common-header-meta-scripts-text-editor.php'); ?>
+<?php include_once (eblayout.'/a-common-page-id-start.php'); ?>
 <?php include_once (eblayout.'/a-common-header.php'); ?>
 <?php include_once (eblayout.'/a-common-navebar.php'); ?>
 <?php include_once (ebaccess.'/access_permission_admin_minimum.php'); ?>
@@ -96,15 +98,13 @@ $user->submit_contents_sub_category($contentCategory, $contentsSub_category);
 <div class='well'>
 <form method='post'>
 <fieldset class='group-select'>
-<ul>
 <input type='hidden' name='form_key' value='<?php echo $formKey->outputKey(); ?>'>
 <?php echo $formKey_error; ?>
-<li>Select Category: <?php echo $contentCategory_error;  ?></li>
-<li><select class='form-control' name='contentCategory'><option selected='selected'>Please Select</option><?php $user->select_contents_category(); ?></select></li>
-<li>Sub Category: <?php echo $contentsSub_category_error;  ?></li>
-<li><input class='form-control' type='text' name='contentsSub_category' placeholder="Men-s-T-shirts will be shown as Men's T-shirts" required autofocus /></li>
+Select Category: <?php echo $contentCategory_error;  ?>
+<select class='form-control' name='contentCategory'><option selected='selected'>Please Select</option><?php $user->select_contents_category(); ?></select>
+Sub Category: <?php echo $contentsSub_category_error;  ?>
+<input class='form-control' type='text' name='contentsSub_category' placeholder="Men-s-T-shirts will be shown as Men's T-shirts" required autofocus />
 <div class='buttons-set'><button type='submit' name='submit_contents_sub_category' title='Submit' class='button submit'> <span> Submit </span> </button></div>
-</ul>
 </fieldset>
 </form>
 </div>

@@ -2,7 +2,9 @@
 <?php include_once (eblogin.'/session.inc_verify.php'); ?>
 <?php include_once (eblayout.'/a-common-header-icon.php'); ?>
 <?php include_once (eblayout.'/a-common-header-meta-noindex.php'); ?>
+<?php include_once (eblayout.'/a-common-header-title-one.php'); ?>
 <?php include_once (eblayout.'/a-common-header-meta-scripts.php'); ?>
+<?php include_once (eblayout.'/a-common-page-id-start.php'); ?>
 <?php include_once (eblayout.'/a-common-header.php'); ?>
 <?php include_once (eblayout.'/a-common-navebar.php'); ?>
 <div class='container'>
@@ -16,18 +18,18 @@
 </div>
 <?php include_once (eblogin.'/registration_page.php'); ?>
 <?php
-if(isset($_GET['email']) && !empty($_GET['email']) && isset($_GET['hash']) && !empty($_GET['hash'])){
+if(isset($_GET['email']) && !empty($_GET['email']) && isset($_GET['emailhash']) && !empty($_GET['emailhash'])){
 /* Data Sanitization */
 include_once(ebsanitization.'/sanitization.php'); 
 $sanitization = new ebapps\sanitization\formSanitization();
 /* valitation eMail  */
 $email = $sanitization->test_input($_GET['email']);
 /* valitation hash  */
-$hash = $sanitization->test_input($_GET['hash']);
+$emailhash = $sanitization->test_input($_GET['emailhash']);
 /* Updating varification */
 $user = new ebapps\login\registration_page();
 extract($_REQUEST);
-$user -> varify_email($email, $hash);
+$user -> varify_email($email, $emailhash);
 }
 ?>
 </div>

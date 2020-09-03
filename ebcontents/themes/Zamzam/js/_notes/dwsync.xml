@@ -1,29 +1,17 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <dwsync>
-<file name="bootstrap.min.js" server="ebangali.com" local="131761734480000000" remote="131835832800000000" Dst="0" />
-<file name="cloud-zoom.js" server="ebangali.com" local="131761734500000000" remote="131835832800000000" Dst="0" />
-<file name="common.js" server="ebangali.com" local="131761734500000000" remote="131835832800000000" Dst="0" />
-<file name="countdown.js" server="ebangali.com" local="131761734500000000" remote="131835832800000000" Dst="0" />
-<file name="filter.bootstrap.7.10.js" server="ebangali.com" local="131761734540000000" remote="131835832800000000" Dst="0" />
-<file name="jquery.flexslider.js" server="ebangali.com" local="131761734540000000" remote="131835832800000000" Dst="0" />
-<file name="jquery.mobile-menu.min.js" server="ebangali.com" local="131761734540000000" remote="131835832800000000" Dst="0" />
-<file name="jquery.waypoints.min.7.10.js" server="ebangali.com" local="131761734560000000" remote="131835832800000000" Dst="0" />
-<file name="jquery.min.js" server="ebangali.com" local="131761734560000000" remote="131835832800000000" Dst="0" />
-<file name="main.eb.7.10.js" server="ebangali.com" local="131761734560000000" remote="131835832800000000" Dst="0" />
-<file name="owl.carousel.min.js" server="ebangali.com" local="131761734600000000" remote="131835832800000000" Dst="0" />
-<file name="revslider.js" server="ebangali.com" local="131761734620000000" remote="131835832800000000" Dst="0" />
-<file name="bootstrap.min.js" server="ebangali.com/public_html/" local="131761734480000000" remote="132032058600000000" Dst="0" />
-<file name="cloud-zoom.js" server="ebangali.com/public_html/" local="131974687760000000" remote="132032058600000000" Dst="0" />
-<file name="common.js" server="ebangali.com/public_html/" local="131761734500000000" remote="132032058600000000" Dst="0" />
-<file name="countdown.js" server="ebangali.com/public_html/" local="131761734500000000" remote="132032058600000000" Dst="0" />
-<file name="filter.bootstrap.7.10.js" server="ebangali.com/public_html/" local="131761734540000000" remote="132032058600000000" Dst="0" />
-<file name="jquery.mobile-menu.min.js" server="ebangali.com/public_html/" local="131761734540000000" remote="132032058600000000" Dst="0" />
-<file name="jquery.flexslider.js" server="ebangali.com/public_html/" local="131761734540000000" remote="132032058600000000" Dst="0" />
-<file name="jquery.min.js" server="ebangali.com/public_html/" local="131761734560000000" remote="132032058600000000" Dst="0" />
-<file name="jquery.waypoints.min.7.10.js" server="ebangali.com/public_html/" local="131761734560000000" remote="132032058600000000" Dst="0" />
-<file name="main.eb.7.10.js" server="ebangali.com/public_html/" local="131761734560000000" remote="132032058600000000" Dst="0" />
-<file name="owl.carousel.min.js" server="ebangali.com/public_html/" local="131761734600000000" remote="132032058600000000" Dst="0" />
-<file name="revslider.js" server="ebangali.com/public_html/" local="131761734620000000" remote="132032058600000000" Dst="0" />
-<file name="intlTelInput.min.js" server="ebangali.com/public_html/" local="131942274560000000" remote="132032058600000000" Dst="0" />
-<file name="cloud-zoom-one.js" server="ebangali.com/public_html/" local="131974687640000000" remote="132032058600000000" Dst="0" />
+<file name="bootstrap.min.js" server="ebangali.com" local="131157550740000000" remote="132357798000000000" Dst="0" />
+<file name="common.js" server="ebangali.com" local="132328735620000000" remote="132357798000000000" Dst="0" />
+<file name="cloud-zoom.js" server="ebangali.com" local="131974687760000000" remote="132357798000000000" Dst="0" />
+<file name="countdown.js" server="ebangali.com" local="131157550740000000" remote="132357798000000000" Dst="0" />
+<file name="jquery.mobile-menu.min.js" server="ebangali.com" local="131157550740000000" remote="132357798000000000" Dst="0" />
+<file name="jquery.flexslider.js" server="ebangali.com" local="131157550740000000" remote="132357798000000000" Dst="0" />
+<file name="jquery.min.js" server="ebangali.com" local="131157550740000000" remote="132357798000000000" Dst="0" />
+<file name="masonry.js" server="ebangali.com" local="132175202600000000" remote="132357798000000000" Dst="0" />
+<file name="masonryAfterCall.js" server="ebangali.com" local="132175216640000000" remote="132357798000000000" Dst="0" />
+<file name="owl.carousel.min.js" server="ebangali.com" local="131157550740000000" remote="132357798000000000" Dst="0" />
+<file name="revslider.js" server="ebangali.com" local="131157550740000000" remote="132357798000000000" Dst="0" />
+<file name="filter.bootstrap.20.05.23.js" server="ebangali.com" local="132346740820000000" remote="132357798000000000" Dst="0" />
+<file name="jquery.waypoints.min.20.05.23.js" server="ebangali.com" local="132346741000000000" remote="132357798000000000" Dst="0" />
+<file name="main.eb.20.05.23.js" server="ebangali.com" local="132346741160000000" remote="132357798000000000" Dst="0" />
 </dwsync>

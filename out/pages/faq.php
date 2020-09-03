@@ -1,15 +1,9 @@
 <?php include_once (dirname(dirname(dirname(__FILE__))).'/initialize.php'); ?>
 <?php include_once (eblayout.'/a-common-header-icon.php'); ?>
-<meta property='og:image:url' content='<?php echo themeResource; ?>/images/Profile.jpg' />
-<meta property='og:image:type' content='image/jpeg' />
-<meta property='og:image:width' content='1366' />
-<meta property='og:image:height' content='768' />
-<meta property='og:title' content='Frequently asked questions' />
-<meta property='og:description' content='Frequently asked questions' />
-<title>Frequently asked questions</title>
-<meta name='description' content='Frequently asked questions' />
+<?php include_once (eblayout.'/a-common-header-title-one.php'); ?>
 <?php include_once (eblayout.'/a-common-header-meta-noindex.php'); ?>
 <?php include_once (eblayout.'/a-common-header-meta-scripts.php'); ?>
+<?php include_once (eblayout.'/a-common-page-id-start.php'); ?>
 <?php include_once (eblayout.'/a-common-header.php'); ?>
 <?php include_once (eblayout.'/a-common-navebar.php'); ?>
 <div class='container'>
@@ -48,57 +42,16 @@ Of course you can apply for the free trial, but before sending your product to b
 </div>
 <div id="collapse2" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading2">
 <div class="panel-body">
-No please use WeTransfer, Drop Box or Google Drive.
+Yes
 </div>
 </div>
 </div>
-<div class="panel panel-default">
-<div class="panel-heading" role="tab" id="heading3">
-<h4 class="panel-title">
-<a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapse3" aria-expanded="false" aria-controls="collapse3">
-#3. Should I consider my project safe and sound at <?php echo domain; ?>?
-</a>
-</h4>
-</div>
-<div id="collapse3" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading3">
-<div class="panel-body">
-Yes, without any doubts. Every team member has signed a non-disclosure agreement and they know the business ethics. They have committed themselves  to not take any product out of the house. Our PCs are also adequately secured for inbound and outbound protection and we protect all our PCs using up-to-date antivirus security.
-</div>
-</div>
-</div>
-<div class="panel panel-default">
-<div class="panel-heading" role="tab" id="heading4">
-<h4 class="panel-title">
-<a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapse4" aria-expanded="false" aria-controls="collapse4">
-#4. Would you be using my project for commercial purposes?
-</a>
-</h4>
-</div>
-<div id="collapse4" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading4">
-<div class="panel-body">
-No, your entire project will be preserved after submitting the project with us for future reference and we will not exploit, sell or distribute any of them to third parties.
-</div>
-</div>
-</div>
-<div class="panel panel-default">
-<div class="panel-heading" role="tab" id="heading5">
-<h4 class="panel-title">
-<a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapse5" aria-expanded="false" aria-controls="collapse5">
-#5. What would be the format of images?
-</a>
-</h4>
-</div>
-<div id="collapse5" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading5">
-<div class="panel-body">
-As per your requirement, if you already have something in mind. For clipping path we will apply JPG but for masking we will drive them in PNG, PSD or TIFF. We can provide any kind of file format as per your wish.
-</div>
-</div>
-</div>
+
 <div class="panel panel-default">
 <div class="panel-heading" role="tab" id="heading6">
 <h4 class="panel-title">
 <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapse6" aria-expanded="false" aria-controls="collapse6">
-#6. Are there any limitations on the types of file formats?
+#3. Are there any limitations on the types of file formats?
 </a>
 </h4>
 </div>
@@ -112,7 +65,7 @@ Yes, we accept only .zip files. Please feel free to send us any file types such 
 <div class="panel-heading" role="tab" id="heading7">
 <h4 class="panel-title">
 <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapse7" aria-expanded="false" aria-controls="collapse7">
-#7. What are the working hours?
+#4. What are the working hours?
 </a>
 </h4>
 </div>
@@ -126,7 +79,7 @@ We are open 24/7/365 for smooth operation.
 <div class="panel-heading" role="tab" id="heading8">
 <h4 class="panel-title">
 <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapse8" aria-expanded="false" aria-controls="collapse8">
-#8. What happens if i am not satisfied with your service?
+#5. What happens if i am not satisfied with your service?
 </a>
 </h4>
 </div>
@@ -140,20 +93,20 @@ Our team consists of skilled and professional members. If this happens, please s
 <div class="panel-heading" role="tab" id="heading9">
 <h4 class="panel-title">
 <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapse9" aria-expanded="false" aria-controls="collapse9">
-#9. How do i pay <?php echo domain; ?>?
+#6. How do i pay <?php echo domain; ?>?
 </a>
 </h4>
 </div>
 <div id="collapse9" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading9">
 <div class="panel-body">
-We accept payment through Stripe, PayPal, MasterCard, Visa, American Express Card and also Alipay, bKash.
+We accept payment through Stripe, PayPal, MasterCard, Visa, American Express Card and also bKash.
 </div>
 </div>
 <div class="panel panel-default">
 <div class="panel-heading" role="tab" id="heading10">
 <h4 class="panel-title">
 <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapse10" aria-expanded="false" aria-controls="collapse10">
-#10. Need more help?
+#7. Need more help?
 </a>
 </h4>
 </div>

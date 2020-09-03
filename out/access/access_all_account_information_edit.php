@@ -2,7 +2,9 @@
 <?php include_once (eblogin.'/session.inc.php'); ?>
 <?php include_once (eblayout.'/a-common-header-icon.php'); ?>
 <?php include_once (eblayout.'/a-common-header-meta-noindex.php'); ?>
+<?php include_once (eblayout.'/a-common-header-title-one.php'); ?>
 <?php include_once (eblayout.'/a-common-header-meta-scripts.php'); ?>
+<?php include_once (eblayout.'/a-common-page-id-start.php'); ?>
 <?php include_once (eblayout.'/a-common-header.php'); ?>
 <?php include_once (eblayout.'/a-common-navebar.php'); ?>
 <?php include_once (ebaccess.'/access_permission_admin_minimum.php'); ?>
@@ -13,7 +15,7 @@
 </div>
 <div class='col-xs-12 col-md-7 sidebar-offcanvas'>
 <div class="well">
-<h2 title='Edit Power'>Edit Power</h2>
+<h2 title='Edit Access Level Power'>Edit Access Level Power</h2>
 </div> 
 
 <?php 
@@ -107,7 +109,7 @@ if($error == 0)
 {
 $user = new ebapps\login\registration_page();
 extract($_REQUEST);
-$user->submit_user_power($username, $userpower_level_names, $userpower_level_power, $userpower_position);
+$user->submit_user_power($email, $username, $userpower_level_names, $userpower_level_power, $userpower_position);
 }
 //
 }
@@ -123,15 +125,15 @@ foreach($obj->data as $val)
 extract($val);
 $updateAccountInfo ="<form method='post'>"; 
 $updateAccountInfo .="<fieldset class='group-select'>";
-$updateAccountInfo .="<ul>";
 $updateAccountInfo .="<input type='hidden' name='form_key' value='";
 $updateAccountInfo .= $formKey->outputKey(); 
 $updateAccountInfo .="'>"; 
 $updateAccountInfo .="$formKey_error";
-$updateAccountInfo .="<li>Username: $username</li>"; 
-$updateAccountInfo .="<input type='hidden' name='username' value='$username' />";
-$updateAccountInfo .="<li>Power : $member_level $userpower_level_power_error</li>";
-$updateAccountInfo .="<li>Position : $position_names $userpower_position_error</li>";
+$updateAccountInfo .="Username: $ebusername";
+$updateAccountInfo .="<input type='hidden' name='email' value='$email' />";
+$updateAccountInfo .="<input type='hidden' name='username' value='$ebusername' />";
+$updateAccountInfo .="Level Power: $member_level $userpower_level_power_error";
+$updateAccountInfo .="Level Name: $position_names $userpower_position_error";
 $updateAccountInfo .="<select class='form-control' name='userpower_position'>";
 $objCountry = new ebapps\login\registration_page();
 $objCountry->select_userpower();
@@ -147,7 +149,6 @@ $updateAccountInfo .="</select>";
 $updateAccountInfo .="<div class='buttons-set'>";
 $updateAccountInfo .="<button type='submit' name='UpdateMember' title='Update' class='button submit'>Update</button>";
 $updateAccountInfo .="</div>";
-$updateAccountInfo .="</ul>";
 $updateAccountInfo .="</fieldset>";
 $updateAccountInfo .="</form>";
 echo $updateAccountInfo;  

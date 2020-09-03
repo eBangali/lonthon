@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <dwsync>
-<file name="connection.inc.php" server="ebangali.com" local="131761728920000000" remote="131835829800000000" Dst="0" />
-<file name="htaccessGenerator.php" server="ebangali.com" local="131761728940000000" remote="131835829800000000" Dst="0" />
-<file name="dbconfig.php" server="ebangali.com" local="131822370983479249" remote="131835829800000000" Dst="0" />
-<file name="index.php" server="ebangali.com" local="131761728940000000" remote="131835829800000000" Dst="0" />
-<file name="connection.inc.php" server="ebangali.com/public_html/" local="131761728920000000" remote="132032055600000000" Dst="0" />
-<file name="htaccessGenerator.php" server="ebangali.com/public_html/" local="131761728940000000" remote="132032055600000000" Dst="0" />
-<file name="dbconfig.php" server="ebangali.com/public_html/" local="132027975023247249" remote="132032055600000000" Dst="0" />
-<file name="index.php" server="ebangali.com/public_html/" local="131761728940000000" remote="132032055600000000" Dst="0" />
-<file name="eBConDb.php" server="ebangali.com/public_html/" local="132017669091491165" remote="132032055600000000" Dst="0" />
+<file name="connection.inc.php" server="ebangali.com" local="131761728920000000" remote="132357793200000000" Dst="0" />
+<file name="htaccessGenerator.php" server="ebangali.com" local="131761728940000000" remote="132357793200000000" Dst="0" />
+<file name="dbconfig.php" server="ebangali.com" local="132358139002530185" remote="132357793200000000" Dst="0" />
+<file name="index.php" server="ebangali.com" local="131761728940000000" remote="132357793200000000" Dst="0" />
+<file name="connection.inc.php" server="ebangali.com/public_html/" local="131761728920000000" remote="132046840200000000" Dst="0" />
+<file name="htaccessGenerator.php" server="ebangali.com/public_html/" local="131761728940000000" remote="132046840200000000" Dst="0" />
+<file name="dbconfig.php" server="ebangali.com/public_html/" local="132047127238385535" remote="132046840200000000" Dst="0" />
+<file name="index.php" server="ebangali.com/public_html/" local="131761728940000000" remote="132046840200000000" Dst="0" />
+<file name="eBConDb.php" server="ebangali.com/public_html/" local="132017669091491165" remote="132046840200000000" Dst="0" />
+<file name="eBConDb.php" server="ebangali.com" local="132354264660000000" remote="132357793200000000" Dst="0" />
 </dwsync>

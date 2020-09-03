@@ -102,7 +102,6 @@ you can use the generic selector below, but it's slower:
 .icon-social-twitter:before {
 	content: "\e009";
 }
-
 .icon-social-tumblr:before {
 	content: "\e00a";
 }

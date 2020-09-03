@@ -1,2 +1,7 @@
 User-agent: *
-Disallow: /
+Disallow: /rnd
+Disallow: /bay
+Disallow: /corporate
+Disallow: /event
+Disallow: /service
+Disallow: /sys

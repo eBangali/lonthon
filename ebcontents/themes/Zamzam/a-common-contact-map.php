@@ -83,7 +83,7 @@ $subjectfor_error = "<b class='text-warning'>Subject required.</b>";
 $error =1;
 }
 /* valitation subjectfor*/
-elseif(! preg_match("/^([A-Za-z.,0-9\'\-\ ]+){4,180}$/",$subjectfor))
+elseif(! preg_match("/^([A-Za-z.,0-9\'\-\?\ ]+){4,180}$/",$subjectfor))
 {
 $subjectfor_error = "<b class='text-warning'>Use A-Za-z0-9., mini 4 max 180.</b>";
 $error =1;
@@ -134,34 +134,48 @@ exit();
 }
 }
 ?>
-<section id='contact' class='contact'>
+<section id='contact'>
 <div class='container'>
     <div class='row'>
       <div class='col-xs-12 col-sm-6'>
+      <div class='well'>
         <h2>E-MAIL US</h2>
-        <form method='post' name='eBformName'>
-          <fieldset>
-                <input type='hidden' name='form_key' value='<?php echo $formKey->outputKey(); ?>' />
-				<?php echo $formKey_error; ?>
-                <?php echo $full_name_error;  ?>
-                <input class='form-control' type='text' name='fullname' placeholder='Full Name' required />
-                <?php echo $email_error;  ?>
-                <input class='form-control' name='email_address' type='email' placeholder='example@domain.com' required />
-                <?php echo $subjectfor_error;  ?>
-                <input class='form-control' type='text' name='subjectfor' placeholder='Subject' required />
-                <?php echo $messagepre_error;  ?>
-                <textarea class="form-control" name="messagepre" placeholder='Your message'></textarea>
-                <?php echo $captcha_error;  ?>
-				<?php
-                include_once(ebfromeb.'/captcha.php');
-                $cap = new ebapps\captcha\captchaClass();	
-                $captcha = $cap -> captchaFun();
-                echo "<b class='btn btn-Captcha btn-sm gradient'>$captcha</b>";
-                ?>
-                <input class='form-control' type='text' name='answer' placeholder='Enter captcha here' required />
-                <div class='buttons-set'><button type='submit' name='contact_button' title='Submit' class='button submit'> <span> Submit </span> </button></div>
-          </fieldset>
-        </form>
+<form method='post' name='eBformName'>
+<fieldset>
+<input type='hidden' name='form_key' value='<?php echo $formKey->outputKey(); ?>' />
+<?php echo $formKey_error; ?>
+<div class='input-group'>
+<span class='input-group-addon' id='sizing-addon2'>Full Name <?php echo $full_name_error;  ?></span>
+<input type='text' name='fullname' placeholder='Full Name' class='form-control' aria-describedby='sizing-addon2' required  autofocus>
+</div>
+<div class='input-group'>
+<span class='input-group-addon' id='sizing-addon2'>Your eMail <?php echo $email_error;  ?></span>
+<input type='email' name='email_address' placeholder='example@domain.com' class='form-control' aria-describedby='sizing-addon2' required  autofocus>
+</div>
+<div class='input-group'>
+<span class='input-group-addon' id='sizing-addon2'>Subject <?php echo $subjectfor_error;  ?></span>
+<input type='text' name='subjectfor' placeholder='Subject' class='form-control' aria-describedby='sizing-addon2' required  autofocus>
+</div>
+<div class='form-group'>
+<label>Your Message <?php echo $messagepre_error;  ?></label>
+<textarea class='form-control' name='messagepre' placeholder='Your Message'></textarea>
+</div>
+<div class='form-group'>
+<label>Type Captcha <?php echo $captcha_error;  ?></label>
+<?php
+include_once(ebfromeb.'/captcha.php');
+$cap = new ebapps\captcha\captchaClass();	
+$captcha = $cap -> captchaFun();
+echo "<b class='btn btn-Captcha btn-sm gradient'>$captcha</b>";
+?>
+</div>             
+
+
+<input class='form-control' type='text' name='answer' placeholder='Enter captcha here' required />
+<div class='buttons-set'><button type='submit' name='contact_button' title='Submit' class='button submit'> <span> Submit </span> </button></div>
+</fieldset>
+</form>
+</div>
       </div>
       <div class='col-xs-12 col-sm-6'>
         <h2>SITE LOCATION</h2>

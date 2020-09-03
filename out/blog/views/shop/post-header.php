@@ -6,16 +6,18 @@ if($objPost->data){foreach($objPost->data as $valPost): extract($valPost);
 $postArticle .="<article class='blog_entry clearfix wow bounceInUp animated' id='post-$contents_id'>";
 $postArticle .="<header class='blog_entry-header clearfix'>";
 $postArticle .="<div class='blog_entry-header-inner'>";
-$postArticle .="<h1 class='blog_entry-title'>";
+$postArticle .="<h1 title='".ucfirst($contents_og_image_title)."' class='blog_entry-title'>";
 $postArticle .=strtoupper($contents_og_image_title);
 $postArticle .="</h1>";
 $postArticle .="</div>";
 $postArticle .="</header>";
 $postArticle .="<div class='entry-content'>";
 $postArticle .="<div class='featured-thumb'>";
-$postArticle .="<img class='img-responsive' alt='".ucfirst($contents_og_image_title)."' src='";
+if(!empty($contents_og_image_url)){
+$postArticle .="<img class='img-responsive' title='".ucfirst($contents_og_image_title)."' alt='".ucfirst($contents_og_image_title)."' src='";
 $postArticle .=hypertextWithOrWithoutWww."$contents_og_image_url";
 $postArticle .="' />";
+}
 $postArticle .="</div>";
 
 $postArticle .="<div class='entry-content'>";
@@ -30,7 +32,7 @@ $countLikeNow ->count_like_now($contents_id);
 if($countLikeNow->data)
 {
 foreach($countLikeNow->data as $valcountLikeNow): extract($valcountLikeNow);	
-if(isset($_SESSION['username']) and $likeNow == 0)
+if(isset($_SESSION['ebusername']) and $likeNow == 0)
 {
 /*Logined True with hober effect */
 /*Like Now*/
@@ -40,18 +42,18 @@ extract($_REQUEST);
 $countLike = new ebapps\blog\blog();
 $countLike ->add_for_like($contents_id_for_like);
 }
-$postArticle .="<form method='post' class='toLike'><input type='hidden' name='contents_id_for_like' value='$contents_id' /><button type='submit' name='add_for_like'><i class='fa fa-heart'></i></button></form>";
+$postArticle .="<li><form method='post' class='toLike'><input type='hidden' name='contents_id_for_like' value='$contents_id' /><button type='submit' name='add_for_like'><i class='fa fa-heart'></i></button></form></li>";
 }
 else 
 {
 /*Logined False with hober effect */
 /* Login to like */
-$postArticle .="<i class='fa fa-heart'></i>";
+$postArticle .="<li><i class='fa fa-heart'></i></li>";
 /** **/
 }
 endforeach;
 } 		   				   
-$postArticle .="<a href='";
+$postArticle .="<li><a href='";
 $postArticle .=outContentsLink."/contents/solve/$contents_id/".$objPost->seoUrl($contents_og_image_title)."/";			   
 $postArticle .="'>";
 $countComment = new ebapps\blog\blog();

@@ -1,15 +1,9 @@
 <?php include_once (dirname(dirname(dirname(__FILE__))).'/initialize.php'); ?>
 <?php include_once (eblayout.'/a-common-header-icon.php'); ?>
-<meta property='og:image:url' content='<?php echo themeResource; ?>/images/Profile.jpg' />
-<meta property='og:image:type' content='image/jpeg' />
-<meta property='og:image:width' content='1366' />
-<meta property='og:image:height' content='768' />
-<meta property='og:title' content='Thanks' />
-<meta property='og:description' content='Thanks' />
-<title>Thanks</title>
-<meta name='description' content='Thanks' />
+<?php include_once (eblayout.'/a-common-header-title-one.php'); ?>
 <?php include_once (eblayout.'/a-common-header-meta-noindex.php'); ?>
 <?php include_once (eblayout.'/a-common-header-meta-scripts.php'); ?>
+<?php include_once (eblayout.'/a-common-page-id-start.php'); ?>
 <?php include_once (eblayout.'/a-common-header.php'); ?>
 <?php include_once (eblayout.'/a-common-navebar.php'); ?>
 <div class='container'>

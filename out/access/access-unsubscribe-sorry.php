@@ -1,0 +1,1 @@
+<?php echo "<b class='eb-backend'>Sorry can't unsubscribe!</b>"; ?>

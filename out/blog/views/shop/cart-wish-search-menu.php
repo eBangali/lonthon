@@ -1,3 +1,36 @@
+<script>
+$(document).ready(function(){
+$("#search").keyup(function(){
+var searchQuery = $(this).val();
+if(searchQuery != '')  
+{
+$.ajax
+({
+type: "POST",
+url: "<?php echo outContentsLink; ?>/autosuggestion_blog.php",
+data: "searchQuery="+ searchQuery,
+success: function(data)
+{
+$('#match-list').fadeIn();
+$('#match-list').html(data);
+}
+});
+}
+else
+{
+$('#match-list').fadeOut();
+$('#match-list').html('');
+}
+});
+
+$(document).on('click','li',function()
+{
+$('#search').val($(this).text());
+$('#match-list').fadeOut();
+});
+
+});
+</script>
 <?php include_once (ebblog.'/blog.php'); ?>
 <?php include_once (ebformkeys.'/valideForm.php'); ?>
 <?php $formKey = new ebapps\formkeys\valideForm(); ?>
@@ -67,12 +100,12 @@ $category ->menu_category_contents();
 <?php } ?>
 <?php endforeach; } ?>
 </select>
-
 <!-- Autocomplete End code -->
 <input id='search' type='text' name='search_contents' value='' class='searchbox' required />
 <input type='hidden' name='form_key' value='<?php echo $formKey->outputKey(); ?>'>
 <button type='submit' name='submit_search_contents' title='Search' class='search-btn-bg' id='submit-button'><span>Search</span></button>
 </form>
+<div id='match-list'></div>
 </div>
 </div>
 <div class='col-lg-3 col-md-4 col-sm-4 col-xs-12 card_wishlist_area'>

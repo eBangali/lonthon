@@ -1,13 +1,13 @@
 <section class='supportteam'>
-  <h3 class='text-center text-uppercase'>Support Team</h3>
+  <h3 class='text-center text-uppercase'>Contact Our Support Team</h3>
   <div class='container'>
     <div class='row'>
     <?php include_once(eblogin.'/registration_page.php');
     $social = new ebapps\login\registration_page();
-    $social -> support_staff_social_info();
+    $social -> omr_support_social_info();
     ?>
     <?php if($social->data >= 1) { foreach($social->data as $val){ extract($val); ?>
-      <div class='col-xs-12 col-sm-4'>
+      <div class='col-xs-12 col-sm-3'>
         <div class='thumbnail'><img alt='<?php echo $full_name; ?>' title='<?php echo $full_name; ?>' src='<?php echo themeResource; ?>/images/person.jpg' />
           <div class='staff'>
             <?php if(!empty($full_name)){echo "<p>$full_name</p>";} ?>

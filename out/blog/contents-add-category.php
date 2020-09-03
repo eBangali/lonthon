@@ -1,8 +1,10 @@
 <?php include_once (dirname(dirname(dirname(__FILE__))).'/initialize.php'); ?>
 <?php include_once (eblogin.'/session.inc.php'); ?>
 <?php include_once (eblayout.'/a-common-header-icon.php'); ?>
+<?php include_once (eblayout.'/a-common-header-title-one.php'); ?>
 <?php include_once (eblayout.'/a-common-header-meta-noindex.php'); ?>
 <?php include_once (eblayout.'/a-common-header-meta-scripts-text-editor.php'); ?>
+<?php include_once (eblayout.'/a-common-page-id-start.php'); ?>
 <?php include_once (eblayout.'/a-common-header.php'); ?>
 <?php include_once (eblayout.'/a-common-navebar.php'); ?>
 <?php include_once (ebaccess.'/access_permission_admin_minimum.php'); ?>	
@@ -80,13 +82,11 @@ $user->submit_contents_category($contents_category);
 <div class='well'>
 <form method='post'>
 <fieldset class='group-select'>
-<ul>
 <input type='hidden' name='form_key' value='<?php echo $formKey->outputKey(); ?>'>
 <?php echo $formKey_error; ?>
-<li>Category: <?php echo $contents_category_error;  ?></li>
-<li><input class='form-control' type='text' name='contents_category' placeholder="Men-s-T-shirts will be shown as Men's T-shirts" required autofocus /></li>
+Category: <?php echo $contents_category_error;  ?>
+<input class='form-control' type='text' name='contents_category' placeholder="Men-s-T-shirts will be shown as Men's T-shirts" required autofocus />
 <div class='buttons-set'><button type='submit' name='contents_category_submit' title='Submit' class='button submit'> <span> Submit </span> </button></div>
-</ul>
 </fieldset>
 </form>
 </div>

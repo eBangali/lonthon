@@ -1,4 +1,4 @@
-<?php if (empty($_SESSION['username'])){ ?>
+<?php if (empty($_SESSION['ebusername'])){ ?>
 <div class='eb-center'>
 
 </div>

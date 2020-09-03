@@ -1,8 +1,10 @@
 <?php include_once (dirname(dirname(dirname(__FILE__))).'/initialize.php'); ?>
 <?php include_once (eblogin.'/session.inc.php'); ?>
 <?php include_once (eblayout.'/a-common-header-icon.php'); ?>
+<?php include_once (eblayout.'/a-common-header-title-one.php'); ?>
 <?php include_once (eblayout.'/a-common-header-meta-noindex.php'); ?>
 <?php include_once (eblayout.'/a-common-header-meta-scripts-text-editor.php'); ?>
+<?php include_once (eblayout.'/a-common-page-id-start.php'); ?>
 <?php include_once (eblayout.'/a-common-header.php'); ?>
 <?php include_once (eblayout.'/a-common-navebar.php'); ?>
 <?php include_once (ebaccess.'/access_permission_admin_minimum.php'); ?>
@@ -12,12 +14,11 @@
       <?php include_once (eblayout.'/a-common-ad.php'); ?>
     </div>
     <div class='col-xs-12 col-md-7 sidebar-offcanvas'>
-     <div class='well'>
+      <div class='well'>
         <h2 title='Approval'>Approval</h2>
       </div>
       <?php include_once (ebblog.'/blog.php'); ?>
       <?php
-
 if(isset($_REQUEST['approve_contents_items']))
 {
 extract($_REQUEST);
@@ -36,7 +37,6 @@ $obj->notSercicesApproved_small($contents_id, $contents_og_small_image_url);
 }
 ?>
 <?php
-
 if(isset($_REQUEST['reject_blogs_item']))
 {
 extract($_REQUEST);
@@ -57,23 +57,21 @@ foreach($obj->data as $val)
 extract($val);
 $contentviewitems .="<div class='panel panel-default'>";
 $contentviewitems .="<div class='panel-heading' role='tab' id='heading".$contents_id."'>";
-$contentviewitems .="<h3 class='panel-title'> <a class='collapsed' data-toggle='collapse' data-parent='#accordion' href='#collapse".$contents_id."' aria-expanded='false' aria-controls='collapse".$contents_id."'>";
+$contentviewitems .="<h3 class='panel-title'><a class='collapsed' data-toggle='collapse' data-parent='#accordion' href='#collapse".$contents_id."' aria-expanded='false' aria-controls='collapse".$contents_id."'>";
 //
-$contentviewitems .= "<div class='row'>";
-$contentviewitems .= "<div class='col-xs-12 col-md-12'>";
-$contentviewitems .= "<div class='table-responsive'>";
-$contentviewitems .= "<table class='table table-bordered'>";
-$contentviewitems .= "<tbody>";
-$contentviewitems .= "<tr>";
+$contentviewitems .="<div class='row'>";
+$contentviewitems .="<div class='col-xs-12 col-md-12'>";
+//
+$contentviewitems .="<div class='row'>";
 if(file_exists(str_replace(hostingName, docRoot, hypertextWithOrWithoutWww.$contents_og_image_url)))
 {
-$contentviewitems .= "<td width='30%'><img class='img-responsive' src='".hypertextWithOrWithoutWww."$contents_og_image_url' /></td>";
+$contentviewitems .="<div class='col-xs-12 col-md-3'><img class='img-responsive' src='".hypertextWithOrWithoutWww."$contents_og_image_url' /></div>";
 }
 else
 {
-$contentviewitems .= "<td width='30%'><img class='img-responsive' src='".themeResource."/images/blankImage.jpg' /></td>";
+$contentviewitems .="<div class='col-xs-12 col-md-3'><img class='img-responsive' src='".themeResource."/images/blankImage.jpg' /></div>";
 }
-$contentviewitems .= "<td>";
+$contentviewitems .="<div class='col-xs-12 col-md-9'>";
 if($contents_approved==0)
 {
 $contentviewitems .= "<i class='fa fa-times-circle fa-lg' aria-hidden='true'></i> REVIEWING <br>";
@@ -85,81 +83,71 @@ $contentviewitems .= "<i class='fa fa-check-circle fa-lg' aria-hidden='true'></i
 $contentviewitems .= "<b>Title: ".ucfirst($contents_og_image_title)."</b><br>";
 $contentviewitems .= "<b>".$obj->visulString($contents_category)." <i class='fa fa-angle-double-right' aria-hidden='true'></i> ".$obj->visulString($contents_sub_category)."</b><br>";
 $contentviewitems .= "<b>ID: $contents_id</b>";
-$contentviewitems .= "</td>"; 
-$contentviewitems .= "</tr>";
-$contentviewitems .= "</tbody>";
-$contentviewitems .= "</table>";
+$contentviewitems .= "</div>"; 
 $contentviewitems .= "</div>";
+//
 $contentviewitems .= "</div>";
 $contentviewitems .= "</div>";
 //
-$contentviewitems .="</h3>";
+$contentviewitems .="</a></h3>";
 $contentviewitems .="</div>";
 $contentviewitems .="<div id='collapse".$contents_id."' class='panel-collapse collapse' role='tabpanel' aria-labelledby='heading".$contents_id."'>";
-$contentviewitems .="<div class='table-responsive panel-body'>";
-$contentviewitems .="<table class='table'>";
-$contentviewitems .="<tbody>";
-$contentviewitems .="<tr><td scope='row'>Author:</td><td>$username_contents</td></tr>";
-$contentviewitems .="<tr><td>Title:</td><td>".ucfirst($contents_og_image_title)."</td></tr>";
-$contentviewitems .="<tr><td>Category:</td><td>".$obj->visulString($contents_category)."</td></tr>";
-$contentviewitems .="<tr><td>Sub Category:</td><td>".$obj->visulString($contents_sub_category)."</td></tr>";
+//
+$contentviewitems .="<div class='row'><div class='col-xs-12 col-md-3'>Author:</div><div class='col-xs-12 col-md-9'>$username_contents</div></div>";
+$contentviewitems .="<div class='row'><div class='col-xs-12 col-md-3'>Title:</div><div class='col-xs-12 col-md-9'>".ucfirst($contents_og_image_title)."</div></div>";
+$contentviewitems .="<div class='row'><div class='col-xs-12 col-md-3'>Category:</div><div class='col-xs-12 col-md-9'>".$obj->visulString($contents_category)."</div></div>";
+$contentviewitems .="<div class='row'><div class='col-xs-12 col-md-3'>Sub Category:</div><div class='col-xs-12 col-md-9'>".$obj->visulString($contents_sub_category)."</div></div>";
 if(file_exists(str_replace(hostingName, docRoot, hypertextWithOrWithoutWww.$contents_og_image_url)))
 {
-$contentviewitems .="<tr><td>Profile Image:</td><td><img src='".hypertextWithOrWithoutWww."$contents_og_image_url' class='img-responsive' /></td></tr>";
+$contentviewitems .="<div class='row'><div class='col-xs-12 col-md-3'>Profile Image:</div><div class='col-xs-12 col-md-9'><img src='".hypertextWithOrWithoutWww."$contents_og_image_url' class='img-responsive' /></div></div>";
 }
-$contentviewitems .= "<tr><td>What to do:</td><td class='well'>".ucfirst($contents_og_image_what_to_do)."</td></tr>";
+$contentviewitems .="<div class='row'><div class='col-xs-12 col-md-3'>What to do:</div><div class='col-xs-12 col-md-9'>".ucfirst($contents_og_image_what_to_do)."</div></div>";
 if(!empty($contents_og_image_how_to_solve))
 {
-$contentviewitems .= "<tr><td>How to do:</td><td class='well'>".ucfirst($contents_og_image_how_to_solve)."</td></tr>";
+$contentviewitems .="<div class='row'><div class='col-xs-12 col-md-3'>How to do:</div><div class='col-xs-12 col-md-9'>".ucfirst($contents_og_image_how_to_solve)."</div></div>";
 }
 
 if(!empty($contents_affiliate_link))
 {
-$contentviewitems .= "<tr><td>Affiliate Link:</td><td><a rel='nofollow' href='".hypertextWithOrWithoutWww."$contents_affiliate_link' target='_blank'><button type='button' class='button submit' title='Visit'><span> Visit </span></button></a></td></tr>";
+$contentviewitems .="<div class='row'><div class='col-xs-12 col-md-3'>Affiliate Link:</div><div class='col-xs-12 col-md-9'><a rel='nofollow' href='".hypertextWithOrWithoutWww."$contents_affiliate_link' target='_blank'><button type='button' class='button submit' title='Visit'><span> Visit </span></button></a></div></div>";
 }
 
 if(!empty($contents_github_link))
 {
-$contentviewitems .= "<tr><td>Download:</td><td><a rel='nofollow' href='".hypertextWithOrWithoutWww."$contents_github_link' target='_blank'><button type='button' class='button submit' title='Download'><span> Download </span></button></a></td></tr>";
+$contentviewitems .="<div class='row'><div class='col-xs-12 col-md-3'>Download Link:</div><div class='col-xs-12 col-md-9'><a rel='nofollow' href='".hypertextWithOrWithoutWww."$contents_github_link' target='_blank'><button type='button' class='button submit' title='Download'><span> Download </span></button></a></div></div>";
 }
 if(!empty($contents_preview_link))
 {
-$contentviewitems .= "<tr><td>Preview:</td><td><a rel='nofollow' href='".hypertextWithOrWithoutWww."$contents_preview_link' target='_blank'><button type='button' class='button submit' title='Preview'><span> Preview </span></button></a></td></tr>";
+$contentviewitems .="<div class='row'><div class='col-xs-12 col-md-3'>Preview Link:</div><div class='col-xs-12 col-md-9'><a rel='nofollow' href='".hypertextWithOrWithoutWww."$contents_preview_link' target='_blank'><button type='button' class='button submit' title='Preview'><span> Preview </span></button></a></div></div>";
 }
 if(!empty($contents_video_link))
 {
-$contentviewitems .= "<tr><td>Video:</td>";
-$contentviewitems .= "<td>";
+$contentviewitems .="<div class='row'><div class='col-xs-12 col-md-3'>Video Link:</div>";
+$contentviewitems .="<div class='col-xs-12 col-md-9'>";
 $contentviewitems .="<div class='bs-example' data-example-id='responsive-embed-16by9-iframe-youtube'>";
 $contentviewitems .="<div class='embed-responsive embed-responsive-16by9'>";
 $contentviewitems .="<iframe class='embed-responsive-item' src='".hypertextWithOrWithoutWww."$contents_video_link' allowfullscreen=''>";
 $contentviewitems .="</iframe>";
 $contentviewitems .="</div>";
 $contentviewitems .="</div>";
-$contentviewitems .="</td>";
-$contentviewitems .= "</tr>";
-}
-$contentviewitems .= "<tr><td>Submit Date:</td><td>$contents_date</td></tr>";
-
-if(!empty($contents_og_image_url) and $contents_approved != 1)
-{
-$contentviewitems .= "<tr><td>OPTION:</td><td><form method='post'><input type='hidden' name='contents_id' value='$contents_id' /><div class='buttons-set'><button type='submit' name='approve_contents_items' title='PUBLISH' class='button submit'> <span> PUBLISH </span> </button></div></form></td></tr>";
-}
-$contentviewitems .= "<tr><td>OPTION:</td><td><form method='post'><input type='hidden' name='contents_id' value='$contents_id' /><input type='hidden' name='contents_og_image_url' value='$contents_og_image_url' /><input type='hidden' name='contents_og_small_image_url' value='$contents_og_small_image_url' /><div class='buttons-set'><button type='submit' name='notSercicesApproved' title='Not Approved' class='button submit'> <span> Not Approved </span> </button></div></form><form method='post'><input type='hidden' name='contents_id' value='$contents_id' /><input type='hidden' name='contents_og_image_url' value='$contents_og_image_url' /><input type='hidden' name='contents_og_small_image_url' value='$contents_og_small_image_url' /><div class='buttons-set'><button type='submit' name='reject_blogs_item' title='REJECT' class='button submit'> <span> REJECT </span> </button></div></form></td></tr>";
-$contentviewitems .="</tbody>";
-$contentviewitems .="</table>";
 $contentviewitems .="</div>";
+$contentviewitems .= "</div>";
+}
+$contentviewitems .="<div class='row'><div class='col-xs-12 col-md-3'>Submit Date:</div><div class='col-xs-12 col-md-9'>$contents_date</div></div>";
+
+if($contents_approved != 1)
+{
+$contentviewitems .="<div class='row'><div class='col-xs-12 col-md-3'>OPTION:</div><div class='col-xs-12 col-md-9'><form method='post'><input type='hidden' name='contents_id' value='$contents_id' /><div class='buttons-set'><button type='submit' name='approve_contents_items' title='PUBLISH' class='button submit'> <span> PUBLISH </span> </button></div></form></div></div>";
+}
+$contentviewitems .="<div class='row'><div class='col-xs-12 col-md-3'>OPTION:</div><div class='col-xs-12 col-md-9'><form action='contents-add-items_edit.php' method='get'><input type='hidden' name='username_contents' value='$username_contents' /><input type='hidden' name='contents_id' value='$contents_id' /><div class='buttons-set'><button type='submit' title='EDIT' class='button submit'> <span> EDIT </span> </button></div></form><form method='post'><input type='hidden' name='contents_id' value='$contents_id' /><input type='hidden' name='contents_og_image_url' value='$contents_og_image_url' /><input type='hidden' name='contents_og_small_image_url' value='$contents_og_small_image_url' /><div class='buttons-set'><button type='submit' name='notSercicesApproved' title='Not Approved' class='button submit'> <span> Not Approved </span> </button></div></form><form method='post'><input type='hidden' name='contents_id' value='$contents_id' /><input type='hidden' name='contents_og_image_url' value='$contents_og_image_url' /><input type='hidden' name='contents_og_small_image_url' value='$contents_og_small_image_url' /><div class='buttons-set'><button type='submit' name='reject_blogs_item' title='REJECT' class='button submit'> <span> REJECT </span> </button></div></form></div></div>";
+//
 $contentviewitems .="</div>";
 $contentviewitems .="</div>";
 }
 $contentviewitems .="</div>";
 echo $contentviewitems;
 }
-else
-{
-echo "<pre>No Entry Found</pre>";
-}
-?> 
+?>
     </div>
     <div class='col-xs-12 col-md-3 sidebar-offcanvas'>
       <?php include_once ("contents-my-account.php"); ?>

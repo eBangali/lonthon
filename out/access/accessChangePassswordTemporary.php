@@ -2,15 +2,9 @@
 <?php include_once (eblogin.'/session_access_retrive.inc.php'); ?>
 <?php include_once (eblayout.'/a-common-header-icon.php'); ?>
 <?php include_once (eblayout.'/a-common-header-meta-noindex.php'); ?>
-<meta property='og:image:url' content='<?php echo themeResource; ?>/images/Advertisement.jpg' />
-<meta property='og:image:type' content='image/jpeg' />
-<meta property='og:image:width' content='1366' />
-<meta property='og:image:height' content='768' />
-<meta property='og:title' content='Please change your password!' />
-<meta property='og:description' content='Convert your Idea into Code. Turn your Dreams comes True' />
-<title>Please change your password!</title>
-<meta name='description' content='Convert your Idea into Code. Turn your Dreams comes True' />
+<?php include_once (eblayout.'/a-common-header-title-one.php'); ?>
 <?php include_once (eblayout.'/a-common-header-meta-scripts.php'); ?>
+<?php include_once (eblayout.'/a-common-page-id-start.php'); ?>
 <?php include_once (eblayout.'/a-common-header.php'); ?>
 <?php include_once (eblayout.'/a-common-navebar.php'); ?>
 <div class='container'>
@@ -95,14 +89,20 @@ if($error ==0)
 extract($_REQUEST);
 include_once (eblogin.'/registration_page.php'); 
 $user = new ebapps\login\registration_page();
-if($password and $confirmpassword){
+if($password and $confirmpassword)
+{
 //
-if($password == $confirmpassword){
+if($password == $confirmpassword)
+{
 $ha = new ebapps\hashpassword\hashPassword();
 $password = $ha -> hashPassword($password);
 $user->changepassword($password);
 }
-else{echo '<pre><b>Password does not match</b></pre>';}
+else
+{
+echo "<b>Password does not match</b>";
+}
+//
 }
 }
 }
@@ -110,17 +110,25 @@ else{echo '<pre><b>Password does not match</b></pre>';}
 <div class='well'>
 <form method='post'>
 <fieldset class='group-select'>
-<ul>
+
 <input type='hidden' name='form_key' value='<?php echo $formKey->outputKey(); ?>'>
 <?php echo $formKey_error; ?>
-<li>New Password: <?php echo $password_error; ?></li>
-<li><input class='form-control' type='password' name='password'></li>
-<li>Confirm New Password: <?php echo $confirmpassword_error; ?></li>
-<li><input class='form-control' type='password' name='confirmpassword'></li>
+
+<div class='input-group'>
+<span class='input-group-addon' id='sizing-addon2'>New Password: <?php echo $password_error; ?></span>
+<input type='password' name='password' placeholder='New Password' class='form-control' aria-describedby='sizing-addon2' required  autofocus>
+</div>
+
+
+<div class='input-group'>
+<span class='input-group-addon' id='sizing-addon2'>Confirm New Password: <?php echo $confirmpassword_error; ?></span>
+<input type='password' name='confirmpassword' placeholder='Confirm New Password' class='form-control' aria-describedby='sizing-addon2' required  autofocus>
+</div>
+
 <div class='buttons-set'>
 <button type='submit' name='change_password' title='Change' class='button submit'> <span> Change </span> </button>
 </div>
-</ul>
+
 </fieldset>
 </form>
 </div>
